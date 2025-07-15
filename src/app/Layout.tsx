@@ -5,7 +5,7 @@ const Layout = () => {
   return (
     <div>
       <Nav />
-      <main className="p-6">
+      <main className="max-w-[1024px] mx-auto p-6">
         <Outlet />
       </main>
     </div>
