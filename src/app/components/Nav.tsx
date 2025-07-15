@@ -7,11 +7,11 @@ const Nav = () => {
         ☘️ Habits
       </Link>
 
-      <ul className="flex items-center justify-between gap-4">
+      <ul className="flex items-center justify-between gap-2">
         <li>
           <NavLink
             className={({ isActive }) =>
-              isActive ? "p-1 rounded bg-purple-200" : "p-1 rounded"
+              isActive ? "p-2 rounded bg-gray-200" : "p-2 rounded"
             }
             to="/"
           >
@@ -21,7 +21,7 @@ const Nav = () => {
         <li>
           <NavLink
             className={({ isActive }) =>
-              isActive ? "p-1 rounded bg-purple-200" : "p-1 rounded"
+              isActive ? "p-2 rounded bg-gray-200" : "p-2 rounded"
             }
             to="/stats"
           >
