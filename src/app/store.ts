@@ -1,6 +1,6 @@
 import {configureStore} from "@reduxjs/toolkit";
 import habitsSlice from "@/features/habits/slice.ts";
-import progressSlice from "@/features/progres/slice.ts";
+import progressSlice from "@/features/progress/slice.ts";
 
 export const store = configureStore({
   reducer: {
