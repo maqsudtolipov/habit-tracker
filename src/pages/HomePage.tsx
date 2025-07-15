@@ -1,11 +1,11 @@
 import HabitsList from "@/features/habits/components/HabitsList.tsx";
-import CompletionSummary from "@/features/habits/components/CompletionSummary.tsx";
+import DailSummary from "@/features/habits/components/DailSummary.tsx";
 
 const HomePage = () => {
   return (
     <div>
       <div>Date selection</div>
-      <CompletionSummary />
+      <DailSummary />
       <HabitsList />
     </div>
   );
