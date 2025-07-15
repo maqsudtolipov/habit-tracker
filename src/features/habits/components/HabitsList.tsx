@@ -8,7 +8,7 @@ const HabitsList = () => {
   return (
     <div>
       <h1>Habits here</h1>
-      <ul>
+      <ul className="flex flex-col gap-2">
         {habits.map((habit) => (
           <HabitCard key={habit.id} habit={habit} />
         ))}
