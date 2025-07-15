@@ -15,11 +15,6 @@ interface HabitCardProps {
 const HabitCard = ({ habit }: HabitCardProps) => {
   const [isCompleted, setIsCompleted] = useState(randomMe());
 
-  // Dev tests
-  const [isCustom, setIsCustom] = useState(randomMe());
-  const [isDescriptionAvailable, setIsDescriptionAvailable] =
-    useState(randomMe());
-
   const handleToggleCompleted = () => {
     setIsCompleted((prev) => !prev);
   };
@@ -45,12 +40,12 @@ const HabitCard = ({ habit }: HabitCardProps) => {
               <h2 className="text-lg font-medium">
                 <p className="-mb-1">{habit.name}</p>
                 <p className="text-xs text-muted-foreground">
-                  {isCustom ? "Custom" : "Default"}
+                  {randomMe() ? "Custom" : "Default"}
                 </p>
               </h2>
             </div>
 
-            {isDescriptionAvailable && habit.description && (
+            {habit.description && (
               <p className="text-sm text-muted-foreground">
                 {habit.description}
               </p>

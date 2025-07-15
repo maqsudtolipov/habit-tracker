@@ -14,8 +14,7 @@ const INITIAL_STATE: HabitsState = {
     {
       id: "4d5e6f",
       name: "Read 10 Pages",
-      description:
-        "Read at least 10 pages of a book to improve knowledge and focus.",
+      description: "",
       type: "predefined",
       createdAt: "2025-07-12T09:45:00.000Z",
       updatedAt: "2025-07-14T08:20:00.000Z",
@@ -40,7 +39,7 @@ const INITIAL_STATE: HabitsState = {
     {
       id: "3m4n5o",
       name: "Evening Walk",
-      description: "Take a 20-minute walk after dinner.",
+      description: "",
       type: "predefined",
       createdAt: "2025-07-05T19:00:00.000Z",
       updatedAt: "2025-07-14T19:00:00.000Z",
