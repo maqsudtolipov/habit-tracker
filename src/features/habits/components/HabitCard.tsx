@@ -1,23 +1,28 @@
 import type {Habit} from "@/features/habits/types.ts";
 import {Checkbox} from "@/components/ui/checkbox.tsx";
 import DatePicker from "@/shared/ui/DatePicker.tsx";
+import {useState} from "react";
 
 interface HabitCardProps {
   habit: Habit;
 }
 
 const HabitCard = ({ habit }: HabitCardProps) => {
-  const isCompleted = Math.random() > 0.5;
+  const [isCompleted, setIsCompleted] = useState(false);
+
+  const handleToggleCompleted = () => {
+    setIsCompleted((prev) => !prev);
+  };
 
   return (
     <li
       className={
-        "p-4 flex gap-3 rounded-lg outline-1 outline-gray-200" +
-        (isCompleted ? "border border-l-4 border-gray-200" : "")
+        "p-4 flex gap-3 rounded-lg outline-1 outline-gray-200 border border-l-4 border-gray-200/0" +
+        (isCompleted ? " border-gray-200/100" : "")
       }
     >
       <div className="pt-1">
-        <Checkbox className="size-6" />
+        <Checkbox className="size-6" onCheckedChange={handleToggleCompleted} />
       </div>
       <div className="flex flex-col gap-4">
         <div>
