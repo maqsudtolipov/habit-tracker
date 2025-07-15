@@ -4,11 +4,12 @@ import DatePicker from "@/shared/ui/DatePicker.tsx";
 import {Label} from "@/components/ui/label.tsx";
 import {Button} from "@/components/ui/button.tsx";
 import {XIcon} from "lucide-react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import type {RootState} from "@/app/store.ts";
-import {format} from "date-fns";
+import {toggleProgressStatus} from "@/features/progress/slice.ts";
+import getTodaysDate from "@/shared/utils/getTodaysDate.ts";
 
-const today = format(new Date(), "yyyy-MM-dd");
+const today = getTodaysDate();
 const randomMe = () => Math.random() > 0.5;
 
 interface HabitCardProps {
@@ -19,6 +20,8 @@ const HabitCard = ({ habit }: HabitCardProps) => {
   // const [isCompleted, setIsCompleted] = useState(randomMe());
 
   const progress = useSelector((state: RootState) => state.progress);
+  const dispatch = useDispatch();
+
   const todayProgress = progress
     .filter((progress) => progress.date === today)
     .find(
@@ -26,7 +29,12 @@ const HabitCard = ({ habit }: HabitCardProps) => {
     );
 
   const handleToggleCompleted = () => {
-    // setIsCompleted((prev) => !prev);
+    dispatch(
+      toggleProgressStatus({
+        date: today,
+        habitId: habit.id,
+      }),
+    );
   };
 
   const isCompleted = todayProgress?.status === "completed";
@@ -70,7 +78,9 @@ const HabitCard = ({ habit }: HabitCardProps) => {
             </Button>
             <Button size="sm">Confirm</Button>
           </div>
-          {todayProgress && <p className="text-xs text-muted-foreground">📚 stored</p>}
+          {todayProgress && (
+            <p className="text-xs text-muted-foreground">📚 stored</p>
+          )}
         </div>
       </Label>
     </li>

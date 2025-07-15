@@ -1,5 +1,6 @@
 import {createSlice, type PayloadAction} from "@reduxjs/toolkit";
 import {FAKE_PRORGRESS_DATA} from "@/features/progress/fakeData.ts";
+import getTodaysDate from "@/shared/utils/getTodaysDate.ts";
 
 const progressSlice = createSlice({
   name: "progress",
@@ -25,11 +26,13 @@ const progressSlice = createSlice({
       // Create new progress if not
       else {
         const newProgress = {
-          habitId: "dsds",
-          date: "p", // YYYY-MM-DD
+          habitId: action.payload.habitId,
+          date: getTodaysDate(),
           status: "completed" as const,
-          updatedAt: "dsd", // ISO 8601
+          updatedAt: new Date().toISOString(),
         };
+
+        console.log(newProgress);
         state.push(newProgress);
       }
     },
