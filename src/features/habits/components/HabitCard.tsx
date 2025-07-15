@@ -4,7 +4,7 @@ import DatePicker from "@/shared/ui/DatePicker.tsx";
 import {useState} from "react";
 import {Label} from "@/components/ui/label.tsx";
 import {Button} from "@/components/ui/button.tsx";
-import {CalendarIcon} from "lucide-react";
+import {XIcon} from "lucide-react";
 
 const randomMe = () => Math.random() > 0.5;
 
@@ -28,7 +28,7 @@ const HabitCard = ({ habit }: HabitCardProps) => {
     <li>
       <Label
         className={
-          "p-4 rounded-lg outline-1 outline-gray-200 border border-l-4 border-gray-200/0" +
+          "h-full items-start p-4 rounded-lg outline-1 outline-gray-200 border border-l-4 border-gray-200/0" +
           (isCompleted ? " border-gray-200/100" : "")
         }
       >
@@ -58,10 +58,10 @@ const HabitCard = ({ habit }: HabitCardProps) => {
           </div>
           <div className="flex items-center gap-2">
             <DatePicker />
-            <Button size="sm">
-              <CalendarIcon />
-              Confirm
+            <Button variant="outline" size="sm">
+              <XIcon />
             </Button>
+            <Button size="sm">Confirm</Button>
           </div>
         </div>
       </Label>
