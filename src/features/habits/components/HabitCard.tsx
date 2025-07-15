@@ -6,12 +6,19 @@ import {Label} from "@/components/ui/label.tsx";
 import {Button} from "@/components/ui/button.tsx";
 import {CalendarIcon} from "lucide-react";
 
+const randomMe = () => Math.random() > 0.5;
+
 interface HabitCardProps {
   habit: Habit;
 }
 
 const HabitCard = ({ habit }: HabitCardProps) => {
-  const [isCompleted, setIsCompleted] = useState(false);
+  const [isCompleted, setIsCompleted] = useState(randomMe());
+
+  // Dev tests
+  const [isCustom, setIsCustom] = useState(randomMe());
+  const [isDescriptionAvailable, setIsDescriptionAvailable] =
+    useState(randomMe());
 
   const handleToggleCompleted = () => {
     setIsCompleted((prev) => !prev);
@@ -21,26 +28,29 @@ const HabitCard = ({ habit }: HabitCardProps) => {
     <li>
       <Label
         className={
-          "p-4 flex items-start gap-3 rounded-lg outline-1 outline-gray-200 border border-l-4 border-gray-200/0" +
+          "p-4 rounded-lg outline-1 outline-gray-200 border border-l-4 border-gray-200/0" +
           (isCompleted ? " border-gray-200/100" : "")
         }
       >
-        <div className="pt-1">
-          <Checkbox
-            className="size-6"
-            onCheckedChange={handleToggleCompleted}
-          />
-        </div>
         <div className="flex flex-col gap-4">
-          <div>
-            <h2 className="text-lg font-medium">{habit.name}</h2>
-            {/*{isCompleted ? (*/}
-            {/*  <p className="text-xs text-green-600">Completed</p>*/}
-            {/*) : (*/}
-            {/*  <p className="text-xs">Not Completed</p>*/}
-            {/*)}*/}
+          <div className="flex flex-col gap-2">
+            <div className="flex items-start gap-3 ">
+              <div className="pt-1">
+                <Checkbox
+                  className="size-6"
+                  checked={isCompleted}
+                  onCheckedChange={handleToggleCompleted}
+                />
+              </div>
+              <h2 className="text-lg font-medium">
+                <p className="-mb-1">{habit.name}</p>
+                <p className="text-xs text-muted-foreground">
+                  {isCustom ? "Custom" : "Default"}
+                </p>
+              </h2>
+            </div>
 
-            {habit.description && (
+            {isDescriptionAvailable && habit.description && (
               <p className="text-sm text-muted-foreground">
                 {habit.description}
               </p>
