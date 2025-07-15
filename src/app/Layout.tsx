@@ -1,10 +1,13 @@
 import {Outlet} from "react-router-dom";
+import Nav from "@/app/components/Nav.tsx";
 
 const Layout = () => {
   return (
     <div>
-      <nav>Navigation</nav>
-      <main><Outlet /></main>
+      <Nav />
+      <main className="">
+        <Outlet />
+      </main>
     </div>
   );
 };
