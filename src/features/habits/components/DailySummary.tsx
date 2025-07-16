@@ -13,7 +13,7 @@ const DailySummary = () => {
 
   return (
     <span className="text-lg">
-       {completedHabitsCount} of 5 habits completed
+      For <em>DATE</em> {completedHabitsCount} of 5 habits completed
     </span>
   );
 };

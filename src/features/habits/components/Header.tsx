@@ -5,21 +5,16 @@ import {Plus} from "lucide-react";
 
 const Header = () => {
   return (
-    <>
-      <div className="p-2 pl-4 mb-6 bg-gray-50 outline-2 outline-gray-200 rounded-lg">
-        <p>
-          <span>🔥 For [DATE] </span>
-          <DailySummary />
-        </p>
-      </div>
+    <div className="mb-6     flex items-center justify-between flex-wrap gap-2">
+      <DailySummary />
 
-      <div className="flex justify-end">
+      <div className="flex items-center justify-end flex-1">
         <DatePicker />
-        <Button size="sm" className="mb-4">
+        <Button size="sm">
           <Plus /> New Habit
         </Button>
       </div>
-    </>
+    </div>
   );
 };
 
