@@ -7,8 +7,9 @@ import {Button} from "@/components/ui/button.tsx";
 const DatePicker = () => {
   const [open, setOpen] = React.useState(false);
   const [date, setDate] = React.useState<Date | undefined>(undefined);
+
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 pr-[1ch]">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button

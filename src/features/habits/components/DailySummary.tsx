@@ -12,9 +12,9 @@ const DailySummary = () => {
   ).length;
 
   return (
-    <p className="mb-4 text-lg">
-      🔥 {completedHabitsCount} of 5 habits completed
-    </p>
+    <span className="text-lg">
+       {completedHabitsCount} of 5 habits completed
+    </span>
   );
 };
 
