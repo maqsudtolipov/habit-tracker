@@ -1,10 +1,12 @@
 import {createSlice, type PayloadAction} from "@reduxjs/toolkit";
-import {FAKE_PRORGRESS_DATA} from "@/features/progress/fakeData.ts";
 import getTodaysDate from "@/shared/utils/getTodaysDate.ts";
+import type {HabitProgressState} from "@/features/progress/types.ts";
+
+const INITIAL_STATE: HabitProgressState = [];
 
 const progressSlice = createSlice({
   name: "progress",
-  initialState: FAKE_PRORGRESS_DATA,
+  initialState: INITIAL_STATE,
   reducers: {
     toggleProgressStatus: (
       state,
