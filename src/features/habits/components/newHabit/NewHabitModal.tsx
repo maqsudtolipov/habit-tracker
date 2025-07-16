@@ -1,6 +1,6 @@
 import {Button} from "@/components/ui/button.tsx";
 import {Plus} from "lucide-react";
-import NewHabitDialog from "@/shared/ui/NewHabitDialog.tsx";
+import NewHabitDialog from "@/features/habits/components/newHabit/NewHabitDialog.tsx";
 
 const NewHabitModal = () => {
   return (

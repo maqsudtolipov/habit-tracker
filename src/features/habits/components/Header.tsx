@@ -1,6 +1,6 @@
 import DailySummary from "@/features/habits/components/DailySummary.tsx";
 import DatePicker from "@/shared/ui/DatePicker.tsx";
-import NewHabitModal from "@/features/habits/components/NewHabitModal.tsx";
+import NewHabitModal from "@/features/habits/components/newHabit/NewHabitModal.tsx";
 
 const Header = () => {
   return (
