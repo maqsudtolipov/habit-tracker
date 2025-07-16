@@ -1,12 +1,12 @@
 import {Button} from "@/components/ui/button";
 import {
-    Dialog,
-    DialogClose,
-    DialogContent,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
 } from "@/components/ui/dialog";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import {Input} from "@/components/ui/input";
@@ -23,35 +23,35 @@ const NewHabitDialog = ({ children }: { children: ReactNode }) => {
             <DialogTitle>Create a new habit</DialogTitle>
           </DialogHeader>
 
-          <Tabs defaultValue="account" className="w-full">
+          <Tabs defaultValue="predefined" className="w-full">
             <TabsList>
-              <TabsTrigger value="account">Custom</TabsTrigger>
-              <TabsTrigger value="password">Predefined</TabsTrigger>
+              <TabsTrigger value="predefined">Predefined</TabsTrigger>
+              <TabsTrigger value="custom">Custom</TabsTrigger>
             </TabsList>
-            <TabsContent
-              className="text-sm text-muted-foreground"
-              value="account"
-            >
-              Create a custom habit here.
+            <TabsContent className="flex flex-col gap-4" value="custom">
+              <p className="text-sm text-muted-foreground">
+                Create a custom habit here.
+              </p>
+              <div className="grid gap-4">
+                <div className="grid gap-3">
+                  <Label htmlFor="name">* Name</Label>
+                  <Input id="name" name="name" />
+                </div>
+                <div className="grid gap-3">
+                  <Label htmlFor="description">Description</Label>
+                  <Input id="description" name="description" />
+                </div>
+              </div>
             </TabsContent>
             <TabsContent
               className="text-sm text-muted-foreground"
-              value="password"
+              value="predefined"
             >
-              Choose one of the predefined habits here.
+              <p className="text-sm text-muted-foreground">
+                Choose one of the predefined habits here.
+              </p>
             </TabsContent>
           </Tabs>
-
-          <div className="grid gap-4">
-            <div className="grid gap-3">
-              <Label htmlFor="name-1">Name</Label>
-              <Input id="name-1" name="name" defaultValue="Pedro Duarte" />
-            </div>
-            <div className="grid gap-3">
-              <Label htmlFor="username-1">Username</Label>
-              <Input id="username-1" name="username" defaultValue="@peduarte" />
-            </div>
-          </div>
 
           <DialogFooter>
             <DialogClose asChild>
