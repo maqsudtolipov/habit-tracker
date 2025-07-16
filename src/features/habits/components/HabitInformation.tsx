@@ -23,9 +23,9 @@ const HabitInformation = ({ habit, isCompleted }: HabitInformationProps) => {
   };
 
   return (
-    <div className="flex flex-col gap-2">
-      <div className='flex items-center justify-between'>
-        <div className="flex items-start gap-3 ">
+    <div className="mb-2 flex flex-col gap-2 flex-1">
+      <div className="flex items-center justify-between">
+        <div className="flex items-start gap-3">
           <div className="pt-1">
             <Checkbox
               className="size-6"
