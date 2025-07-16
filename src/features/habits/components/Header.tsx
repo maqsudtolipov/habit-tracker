@@ -1,7 +1,6 @@
 import DailySummary from "@/features/habits/components/DailySummary.tsx";
 import DatePicker from "@/shared/ui/DatePicker.tsx";
-import {Button} from "@/components/ui/button.tsx";
-import {Plus} from "lucide-react";
+import NewHabitModal from "@/features/habits/components/NewHabitModal.tsx";
 
 const Header = () => {
   return (
@@ -10,9 +9,7 @@ const Header = () => {
 
       <div className="flex items-center justify-end flex-1">
         <DatePicker />
-        <Button size="sm">
-          <Plus /> New Habit
-        </Button>
+        <NewHabitModal />
       </div>
     </div>
   );
