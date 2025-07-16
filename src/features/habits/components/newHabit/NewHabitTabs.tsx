@@ -1,15 +1,18 @@
 import {Tabs, TabsContent, TabsList, TabsTrigger,} from "@/components/ui/tabs.tsx";
 import CustomHabitForm from "@/features/habits/components/newHabit/CustomHabitForm.tsx";
+import {useState} from "react";
 
 const NewHabitTabs = () => {
+  const [selectedTab, setSelectedTab] = useState("custom");
+
   return (
-    <Tabs defaultValue="predefined" className="w-full">
+    <Tabs className="w-full" value={selectedTab} onValueChange={setSelectedTab}>
       <TabsList>
         <TabsTrigger value="predefined">Predefined</TabsTrigger>
         <TabsTrigger value="custom">Custom</TabsTrigger>
       </TabsList>
       <TabsContent className="flex flex-col gap-4" value="custom">
-        <CustomHabitForm />
+        <CustomHabitForm selectedTab={selectedTab} />
       </TabsContent>
       <TabsContent className="text-sm text-muted-foreground" value="predefined">
         <p className="text-sm text-muted-foreground">

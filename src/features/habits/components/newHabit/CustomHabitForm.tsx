@@ -4,7 +4,11 @@ import {useDispatch} from "react-redux";
 import {createNewHabit} from "@/features/habits/slice.ts";
 import {useState} from "react";
 
-const CustomHabitForm = () => {
+const CustomHabitForm = ({
+  selectedTab,
+}: {
+  selectedTab: "custom" | "predefined";
+}) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const dispatch = useDispatch();
@@ -19,7 +23,7 @@ const CustomHabitForm = () => {
       createNewHabit({
         name: `${name} ${Math.floor(Math.random() * 100)}`,
         description: description,
-        type: "custom",
+        type: selectedTab,
       }),
     );
   };
