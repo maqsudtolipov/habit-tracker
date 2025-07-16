@@ -3,6 +3,7 @@ import {toggleProgressStatus} from "@/features/progress/slice.ts";
 import {useDispatch} from "react-redux";
 import getTodaysDate from "@/shared/utils/getTodaysDate.ts";
 import type {Habit} from "@/features/habits/types.ts";
+import HabitControls from "@/features/habits/components/HabitControls.tsx";
 
 interface HabitInformationProps {
   habit: Habit;
@@ -23,18 +24,21 @@ const HabitInformation = ({ habit, isCompleted }: HabitInformationProps) => {
 
   return (
     <div className="flex flex-col gap-2">
-      <div className="flex items-start gap-3 ">
-        <div className="pt-1">
-          <Checkbox
-            className="size-6"
-            checked={isCompleted}
-            onCheckedChange={handleToggleCompleted}
-          />
+      <div className='flex items-center justify-between'>
+        <div className="flex items-start gap-3 ">
+          <div className="pt-1">
+            <Checkbox
+              className="size-6"
+              checked={isCompleted}
+              onCheckedChange={handleToggleCompleted}
+            />
+          </div>
+          <h2 className="text-lg font-medium">
+            <p className="-mb-1">{habit.name}</p>
+            <p className="text-xs text-muted-foreground">{habit.type}</p>
+          </h2>
         </div>
-        <h2 className="text-lg font-medium">
-          <p className="-mb-1">{habit.name}</p>
-          <p className="text-xs text-muted-foreground">{habit.type}</p>
-        </h2>
+        <HabitControls />
       </div>
 
       {habit.description && (
