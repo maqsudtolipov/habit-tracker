@@ -27,9 +27,6 @@ const HabitCard = ({ habit }: HabitCardProps) => {
     <HabitCardContainer isCompleted={isCompleted}>
       <HabitInformation habit={habit} isCompleted={isCompleted} />
       <HabitDatePicker />
-      {todayProgress && (
-        <p className="text-xs text-muted-foreground">📚 stored</p>
-      )}
     </HabitCardContainer>
   );
 };
