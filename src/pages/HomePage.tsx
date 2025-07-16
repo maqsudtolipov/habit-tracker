@@ -1,10 +1,10 @@
 import HabitsList from "@/features/habits/components/HabitsList.tsx";
-import DailSummary from "@/features/habits/components/DailSummary.tsx";
+import DailySummary from "@/features/habits/components/DailySummary.tsx";
 
 const HomePage = () => {
   return (
     <>
-      <DailSummary />
+      <DailySummary />
       <HabitsList />
     </>
   );

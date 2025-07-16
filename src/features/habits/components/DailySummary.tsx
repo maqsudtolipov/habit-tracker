@@ -4,7 +4,7 @@ import getTodaysDate from "@/shared/utils/getTodaysDate.ts";
 
 const today = getTodaysDate();
 
-const DailSummary = () => {
+const DailySummary = () => {
   const progress = useSelector((state: RootState) => state.progress);
 
   const completedHabitsCount = progress.filter(
@@ -18,4 +18,4 @@ const DailSummary = () => {
   );
 };
 
-export default DailSummary;
+export default DailySummary;
