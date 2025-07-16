@@ -9,15 +9,39 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog.tsx";
 
-import type {ReactNode} from "react";
+import type {FormEvent, ReactNode} from "react";
 import NewHabitTabs from "@/features/habits/components/newHabit/NewHabitTabs.tsx";
+import {createNewHabit} from "@/features/habits/slice.ts";
+import {useDispatch} from "react-redux";
 
 const NewHabitDialog = ({ children }: { children: ReactNode }) => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    console.log("handleSubmit", e);
+
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name"),
+      description: formData.get("description"),
+    };
+
+    dispatch(
+      createNewHabit({
+        name: `${data.name} ${Math.floor(Math.random() * 100)}`,
+        description: data.description,
+        type: "custom",
+      }),
+    );
+  };
+
   return (
     <Dialog>
-      <form>
-        <DialogTrigger asChild>{children}</DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
+      <DialogTrigger asChild>{children}</DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <form onSubmit={handleSubmit}>
           <DialogHeader>
             <DialogTitle>Create a new habit</DialogTitle>
           </DialogHeader>
@@ -30,8 +54,8 @@ const NewHabitDialog = ({ children }: { children: ReactNode }) => {
             </DialogClose>
             <Button type="submit">Save changes</Button>
           </DialogFooter>
-        </DialogContent>
-      </form>
+        </form>
+      </DialogContent>
     </Dialog>
   );
 };
