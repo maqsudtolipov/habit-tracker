@@ -4,7 +4,7 @@ import NewHabitTriggerButton from "@/features/habits/components/newHabit/NewHabi
 
 const Header = () => {
   return (
-    <div className="mb-6     flex items-center justify-between flex-wrap gap-2">
+    <div className="mb-6 flex items-center justify-between flex-wrap gap-2">
       <DailySummary />
 
       <div className="flex items-center justify-end flex-1">

@@ -10,8 +10,9 @@ const CustomHabitForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = () => {
-    if (name.trim().length < 3 || description.trim().length < 6) {
+    if (name.trim().length < 3) {
       console.log("Invalid input");
+      return;
     }
 
     dispatch(

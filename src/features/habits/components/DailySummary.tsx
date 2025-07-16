@@ -5,6 +5,7 @@ import getTodaysDate from "@/shared/utils/getTodaysDate.ts";
 const today = getTodaysDate();
 
 const DailySummary = () => {
+  const habits = useSelector((state: RootState) => state.habits.habits);
   const progress = useSelector((state: RootState) => state.progress);
 
   const completedHabitsCount = progress.filter(
@@ -13,7 +14,8 @@ const DailySummary = () => {
 
   return (
     <span className="text-lg">
-      For <em>DATE</em> {completedHabitsCount} of 5 habits completed
+      For <em>DATE</em> {completedHabitsCount} of {habits.length} habits
+      completed
     </span>
   );
 };
