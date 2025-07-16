@@ -11,8 +11,6 @@ const DailSummary = () => {
     (progress) => progress.date === today && progress.status === "completed",
   ).length;
 
-  console.log(progress.filter((progress) => progress.date === today && progress.status === 'completed'));
-
   return (
     <p className="mb-4 text-lg">
       🔥 {completedHabitsCount} of 5 habits completed
