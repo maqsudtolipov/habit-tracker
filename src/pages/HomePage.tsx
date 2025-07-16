@@ -3,11 +3,10 @@ import DailSummary from "@/features/habits/components/DailSummary.tsx";
 
 const HomePage = () => {
   return (
-    <div>
-      <div>Date selection</div>
+    <>
       <DailSummary />
       <HabitsList />
-    </div>
+    </>
   );
 };
 

@@ -23,7 +23,7 @@ const progressSlice = createSlice({
         progress.status = progress.status === "completed" ? null : "completed";
       }
 
-      // Create new progress if not
+      // Create new progress if status doesn't exist
       else {
         const newProgress = {
           habitId: action.payload.habitId,

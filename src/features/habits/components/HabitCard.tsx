@@ -17,8 +17,6 @@ interface HabitCardProps {
 }
 
 const HabitCard = ({ habit }: HabitCardProps) => {
-  // const [isCompleted, setIsCompleted] = useState(randomMe());
-
   const progress = useSelector((state: RootState) => state.progress);
   const dispatch = useDispatch();
 
