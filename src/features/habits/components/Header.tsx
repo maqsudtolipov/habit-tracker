@@ -1,6 +1,6 @@
 import DailySummary from "@/features/habits/components/DailySummary.tsx";
 import DatePicker from "@/shared/ui/DatePicker.tsx";
-import NewHabitModal from "@/features/habits/components/newHabit/NewHabitModal.tsx";
+import NewHabitTriggerButton from "@/features/habits/components/newHabit/NewHabitTriggerButton.tsx";
 
 const Header = () => {
   return (
@@ -9,7 +9,7 @@ const Header = () => {
 
       <div className="flex items-center justify-end flex-1">
         <DatePicker />
-        <NewHabitModal />
+        <NewHabitTriggerButton />
       </div>
     </div>
   );
