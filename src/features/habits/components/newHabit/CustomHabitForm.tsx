@@ -7,7 +7,11 @@ import type {FormEvent} from "react";
 import {MAX_DESCRIPTION_LENGTH, MAX_NAME_LENGTH,} from "@/features/habits/constants.ts";
 import {createNewHabit} from "@/features/habits/slice.ts";
 
-const CustomHabitForm = ({ onCloseDialog }) => {
+interface CustomHabitFormProps {
+  onCloseDialog: () => void;
+}
+
+const CustomHabitForm = ({ onCloseDialog }: CustomHabitFormProps) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

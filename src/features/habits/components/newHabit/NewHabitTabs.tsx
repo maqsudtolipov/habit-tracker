@@ -3,7 +3,11 @@ import CustomHabitForm from "@/features/habits/components/newHabit/CustomHabitFo
 import {useState} from "react";
 import PredefinedHabitsList from "@/features/habits/components/newHabit/PredefinedHabitsList.tsx";
 
-const NewHabitTabs = ({ onCloseDialog }) => {
+interface NewHabitTabsProps {
+  onCloseDialog: () => void;
+}
+
+const NewHabitTabs = ({ onCloseDialog }: NewHabitTabsProps) => {
   const [selectedTab, setSelectedTab] = useState("predefined");
   const [selectedHabitId, setSelectedHabitId] = useState<null | string>(null);
 
