@@ -18,8 +18,6 @@ const NewHabitDialog = ({ children }: { children: ReactNode }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    console.log("handleSubmit", e);
-
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
@@ -27,6 +25,11 @@ const NewHabitDialog = ({ children }: { children: ReactNode }) => {
       name: formData.get("name"),
       description: formData.get("description"),
     };
+
+    // Validate
+    if (!data.name || data.name.trim().length < 3) {
+      return;
+    }
 
     dispatch(
       createNewHabit({
@@ -41,11 +44,11 @@ const NewHabitDialog = ({ children }: { children: ReactNode }) => {
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
-        <form onSubmit={handleSubmit}>
-          <DialogHeader>
-            <DialogTitle>Create a new habit</DialogTitle>
-          </DialogHeader>
+        <DialogHeader>
+          <DialogTitle>Create a new habit</DialogTitle>
+        </DialogHeader>
 
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <NewHabitTabs />
 
           <DialogFooter>
