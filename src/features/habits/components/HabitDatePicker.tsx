@@ -4,7 +4,7 @@ import {XIcon} from "lucide-react";
 
 const HabitDatePicker = () => {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 shrink-0">
       <DatePicker />
       <Button variant="outline" size="sm">
         <XIcon />

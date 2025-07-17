@@ -4,8 +4,16 @@ const Nav = () => {
   return (
     <nav className=" border-b">
       <div className="max-w-[1024px] mx-auto p-4 flex items-center justify-between ">
-        <Link className="font-medium" to="/">
-          ☘️ Habits
+        <Link
+          className="flex items-center gap-2 font-medium select-none"
+          to="/"
+        >
+          <img
+            className="size-8"
+            src="/logo.svg"
+            alt="Check mark inside rounded box"
+          />
+          <span>Habits</span>
         </Link>
 
         <ul className="flex items-center justify-between gap-2">

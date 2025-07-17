@@ -18,7 +18,7 @@ const HabitCardContainer = ({
           (isCompleted ? " border-gray-200/100" : "")
         }
       >
-        <div className="flex flex-col gap-4 w-full">{children}</div>
+        <div className="h-full w-full flex flex-col gap-2">{children}</div>
       </Label>
     </li>
   );

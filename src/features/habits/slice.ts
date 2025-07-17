@@ -1,5 +1,6 @@
-import {createSlice} from "@reduxjs/toolkit";
-import type {HabitsState} from "@/features/habits/types.ts";
+import {createSlice, type PayloadAction} from "@reduxjs/toolkit";
+import type {Habit, HabitsState} from "@/features/habits/types.ts";
+import {nanoid} from "nanoid";
 
 const INITIAL_STATE: HabitsState = {
   habits: [
@@ -50,7 +51,31 @@ const INITIAL_STATE: HabitsState = {
 const habitsSlice = createSlice({
   name: "habits",
   initialState: INITIAL_STATE,
-  reducers: {},
+  reducers: {
+    createNewHabit: (
+      state: HabitsState,
+      action: PayloadAction<{
+        name: string;
+        description: string;
+        type: "predefined" | "custom";
+      }>,
+    ) => {
+      // Add new habit
+      const newHabit: Habit = {
+        id: nanoid(),
+        name: action.payload.name,
+        description: action.payload.description,
+        type: action.payload.type,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      };
+
+      state.habits.push(newHabit);
+
+      console.log("new habit", newHabit);
+    },
+  },
 });
 
+export const { createNewHabit } = habitsSlice.actions;
 export default habitsSlice;
