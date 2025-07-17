@@ -8,7 +8,7 @@ import {DialogClose, DialogFooter} from "@/components/ui/dialog.tsx";
 import {Button} from "@/components/ui/button.tsx";
 import {PREDEFINED_HABITS} from "@/features/habits/constants.ts";
 
-const NewHabitTabs = () => {
+const NewHabitTabs = ({ onCloseDialog }) => {
   const [selectedTab, setSelectedTab] = useState("predefined");
   const [selectedHabitId, setSelectedHabitId] = useState<null | string>(null);
   const dispatch = useDispatch();
@@ -19,8 +19,8 @@ const NewHabitTabs = () => {
     if (selectedTab === "custom") {
       const formData = new FormData(e.currentTarget);
       const data = {
-        name: formData.get("name"),
-        description: formData.get("description") || "",
+        name: formData.get("name")?.toString().trim() ?? "",
+        description: formData.get("description")?.toString().trim() ?? "",
       };
 
       // Validate
@@ -35,6 +35,8 @@ const NewHabitTabs = () => {
           type: "custom",
         }),
       );
+
+      onCloseDialog();
     }
 
     if (selectedTab === "predefined") {
@@ -51,6 +53,8 @@ const NewHabitTabs = () => {
           type: "predefined",
         }),
       );
+
+      onCloseDialog();
     }
   };
 
