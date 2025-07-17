@@ -1,6 +1,6 @@
 import {useSelector} from "react-redux";
 import type {RootState} from "@/app/store.ts";
-import HabitCard from "@/features/habits/components/HabitCard.tsx";
+import HabitCard from "@/features/habits/components/habitCard/HabitCard.tsx";
 import {compareAsc} from "date-fns";
 
 const HabitsList = () => {

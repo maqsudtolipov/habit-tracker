@@ -3,7 +3,7 @@ import {toggleProgressStatus} from "@/features/progress/slice.ts";
 import {useDispatch} from "react-redux";
 import getTodaysDate from "@/shared/utils/getTodaysDate.ts";
 import type {Habit} from "@/features/habits/types.ts";
-import HabitControls from "@/features/habits/components/HabitControls.tsx";
+import HabitControls from "@/features/habits/components/habitCard/HabitControls.tsx";
 
 interface HabitInformationProps {
   habit: Habit;

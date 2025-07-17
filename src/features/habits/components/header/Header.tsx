@@ -1,4 +1,4 @@
-import DailySummary from "@/features/habits/components/DailySummary.tsx";
+import DailySummary from "@/features/habits/components/header/DailySummary.tsx";
 import DatePicker from "@/shared/ui/DatePicker.tsx";
 import NewHabitTriggerButton from "@/features/habits/components/newHabit/NewHabitTriggerButton.tsx";
 
