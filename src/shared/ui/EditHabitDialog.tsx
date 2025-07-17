@@ -13,6 +13,8 @@ import {Label} from "@/components/ui/label.tsx";
 import {Input} from "@/components/ui/input.tsx";
 
 interface EditHabitDialogProps {
+  open?: boolean;
+  onOpenChange?: (id: boolean) => void;
   defaultNameValue?: string;
   defaultDescriptionValue?: string;
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
@@ -20,13 +22,15 @@ interface EditHabitDialogProps {
 }
 
 const EditHabitDialog = ({
+  open = false,
+  onOpenChange = () => {},
   defaultNameValue = "",
   defaultDescriptionValue = "",
   handleSubmit,
   children,
 }: EditHabitDialogProps) => {
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
