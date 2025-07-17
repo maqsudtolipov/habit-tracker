@@ -13,11 +13,18 @@ import {Label} from "@/components/ui/label.tsx";
 import {Input} from "@/components/ui/input.tsx";
 
 interface EditHabitDialogProps {
+  defaultNameValue?: string;
+  defaultDescriptionValue?: string;
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
   children: ReactNode;
 }
 
-const EditHabitDialog = ({ handleSubmit, children }: EditHabitDialogProps) => {
+const EditHabitDialog = ({
+  defaultNameValue = "",
+  defaultDescriptionValue = "",
+  handleSubmit,
+  children,
+}: EditHabitDialogProps) => {
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
@@ -30,11 +37,15 @@ const EditHabitDialog = ({ handleSubmit, children }: EditHabitDialogProps) => {
           <div className="flex flex-col gap-4">
             <div className="grid gap-3">
               <Label htmlFor="name">* Name</Label>
-              <Input id="name" name="name" />
+              <Input id="name" name="name" defaultValue={defaultNameValue} />
             </div>
             <div className="grid gap-3">
               <Label htmlFor="description">Description</Label>
-              <Input id="description" name="description" />
+              <Input
+                id="description"
+                name="description"
+                defaultValue={defaultDescriptionValue}
+              />
             </div>
           </div>
 

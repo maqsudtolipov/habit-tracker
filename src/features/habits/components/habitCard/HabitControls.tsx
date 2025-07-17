@@ -5,12 +5,13 @@ import {useDispatch} from "react-redux";
 import {deleteHabit} from "@/features/habits/slice.ts";
 import EditHabitDialog from "@/shared/ui/EditHabitDialog.tsx";
 import type {FormEvent} from "react";
+import type {Habit} from "@/features/habits/types.ts";
 
 interface HabitControlsProps {
-  habitId: string;
+  habit: Habit;
 }
 
-const HabitControls = ({ habitId }: HabitControlsProps) => {
+const HabitControls = ({ habit }: HabitControlsProps) => {
   const dispatch = useDispatch();
 
   const handleEditHabit = (e: FormEvent<HTMLFormElement>) => {
@@ -20,12 +21,16 @@ const HabitControls = ({ habitId }: HabitControlsProps) => {
   };
 
   const handleDeleteHabit = () => {
-    dispatch(deleteHabit(habitId));
+    dispatch(deleteHabit(habit.id));
   };
 
   return (
     <div className="p-1 bg-gray-100 rounded-md flex items-center gap-2">
-      <EditHabitDialog handleSubmit={handleEditHabit}>
+      <EditHabitDialog
+        defaultNameValue={habit.name}
+        defaultDescriptionValue={habit.description}
+        handleSubmit={handleEditHabit}
+      >
         <Button variant="outline" size="icon" className="h-8 w-8">
           <Pencil className="w-4 h-4" />
           <span className="sr-only">Edit habit</span>

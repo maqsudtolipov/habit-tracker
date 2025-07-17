@@ -38,7 +38,7 @@ const HabitInformation = ({ habit, isCompleted }: HabitInformationProps) => {
             <p className="text-xs text-muted-foreground">{habit.type}</p>
           </h2>
         </div>
-        <HabitControls  habitId={habit.id}/>
+        <HabitControls habit={habit} />
       </div>
 
       {habit.description && (
