@@ -12,7 +12,7 @@ const PredefinedHabitsList = ({
   onCloseDialog,
 }: {
   selectedHabitId: string | null;
-  onSelectHabit: () => void;
+  onSelectHabit: (id: string) => void;
   onCloseDialog: () => void;
 }) => {
   const dispatch = useDispatch();
