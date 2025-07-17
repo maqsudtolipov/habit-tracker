@@ -3,7 +3,7 @@ import {toggleProgressStatus} from "@/features/progress/slice.ts";
 import {useDispatch} from "react-redux";
 import getTodaysDate from "@/shared/utils/getTodaysDate.ts";
 import type {Habit} from "@/features/habits/types.ts";
-import HabitControls from "@/features/habits/components/HabitControls.tsx";
+import HabitControls from "@/features/habits/components/habitCard/HabitControls.tsx";
 
 interface HabitInformationProps {
   habit: Habit;
@@ -38,7 +38,7 @@ const HabitInformation = ({ habit, isCompleted }: HabitInformationProps) => {
             <p className="text-xs text-muted-foreground">{habit.type}</p>
           </h2>
         </div>
-        <HabitControls />
+        <HabitControls  habitId={habit.id}/>
       </div>
 
       {habit.description && (

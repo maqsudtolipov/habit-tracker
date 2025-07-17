@@ -2,9 +2,9 @@ import type {Habit} from "@/features/habits/types.ts";
 import {useSelector} from "react-redux";
 import type {RootState} from "@/app/store.ts";
 import getTodaysDate from "@/shared/utils/getTodaysDate.ts";
-import HabitCardContainer from "@/features/habits/components/HabitCardContainer.tsx";
-import HabitDatePicker from "@/features/habits/components/HabitDatePicker.tsx";
-import HabitInformation from "@/features/habits/components/HabitInformation.tsx";
+import HabitCardContainer from "@/features/habits/components/habitCard/HabitCardContainer.tsx";
+import HabitDatePicker from "@/features/habits/components/habitCard/HabitDatePicker.tsx";
+import HabitInformation from "@/features/habits/components/habitCard/HabitInformation.tsx";
 
 const today = getTodaysDate();
 

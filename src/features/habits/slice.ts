@@ -71,11 +71,21 @@ const habitsSlice = createSlice({
       };
 
       state.habits.push(newHabit);
+    },
+    editHabit: () => {},
+    deleteHabit: (state: HabitsState, action: PayloadAction<string>) => {
+      const existingHabit = state.habits.find(
+        (habit) => habit.id === action.payload,
+      );
 
-      console.log("new habit", newHabit);
+      if (existingHabit) {
+        state.habits = state.habits.filter(
+          (habit) => habit.id !== action.payload,
+        );
+      }
     },
   },
 });
 
-export const { createNewHabit } = habitsSlice.actions;
+export const { createNewHabit, editHabit, deleteHabit } = habitsSlice.actions;
 export default habitsSlice;
