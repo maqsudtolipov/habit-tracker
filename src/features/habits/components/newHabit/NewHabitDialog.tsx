@@ -9,12 +9,13 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog.tsx";
 
-import type {FormEvent, ReactNode} from "react";
+import {type FormEvent, type ReactNode, useState} from "react";
 import NewHabitTabs from "@/features/habits/components/newHabit/NewHabitTabs.tsx";
 import {createNewHabit} from "@/features/habits/slice.ts";
 import {useDispatch} from "react-redux";
 
 const NewHabitDialog = ({ children }: { children: ReactNode }) => {
+  const [selectedHabitId, setSelectedHabitId] = useState<null | string>(null);
   const dispatch = useDispatch();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -49,7 +50,10 @@ const NewHabitDialog = ({ children }: { children: ReactNode }) => {
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <NewHabitTabs />
+          <NewHabitTabs
+            selectedHabitId={selectedHabitId}
+            onSelectHabit={setSelectedHabitId}
+          />
 
           <DialogFooter>
             <DialogClose asChild>
