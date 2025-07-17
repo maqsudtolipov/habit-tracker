@@ -4,10 +4,10 @@ import {useState} from "react";
 import PredefinedHabitsList from "@/features/habits/components/newHabit/PredefinedHabitsList.tsx";
 
 const NewHabitTabs = () => {
-  const [selectedTab, setSelectedTab] = useState("custom");
+  const [selectedTab, setSelectedTab] = useState("predefined");
 
   return (
-    <Tabs className="w-full" value={selectedTab} onValueChange={setSelectedTab}>
+    <Tabs className="w-full gap-4" value={selectedTab} onValueChange={setSelectedTab}>
       <TabsList>
         <TabsTrigger value="predefined">Predefined</TabsTrigger>
         <TabsTrigger value="custom">Custom</TabsTrigger>
