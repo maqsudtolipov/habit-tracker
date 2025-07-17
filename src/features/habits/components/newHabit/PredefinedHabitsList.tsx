@@ -38,7 +38,7 @@ const PredefinedHabitsList = ({
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
       <ScrollArea className="h-60 rounded-md border">
         <ul className="flex flex-col gap-2 p-2 pr-4">
           {PREDEFINED_HABITS.map((habit) => {
