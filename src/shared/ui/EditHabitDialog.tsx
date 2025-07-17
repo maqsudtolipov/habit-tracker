@@ -1,16 +1,6 @@
-import {Button} from "@/components/ui/button";
-import {
-    Dialog,
-    DialogClose,
-    DialogContent,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from "@/components/ui/dialog.tsx";
+import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger,} from "@/components/ui/dialog.tsx";
 import type {FormEvent, ReactNode} from "react";
-import {Label} from "@/components/ui/label.tsx";
-import {Input} from "@/components/ui/input.tsx";
+import HabitFormFields from "@/shared/ui/HabitFormFields.tsx";
 
 interface EditHabitDialogProps {
   open?: boolean;
@@ -37,29 +27,11 @@ const EditHabitDialog = ({
           <DialogTitle>Edit habit</DialogTitle>
         </DialogHeader>
 
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-          <div className="flex flex-col gap-4">
-            <div className="grid gap-3">
-              <Label htmlFor="name">* Name</Label>
-              <Input id="name" name="name" defaultValue={defaultNameValue} />
-            </div>
-            <div className="grid gap-3">
-              <Label htmlFor="description">Description</Label>
-              <Input
-                id="description"
-                name="description"
-                defaultValue={defaultDescriptionValue}
-              />
-            </div>
-          </div>
-
-          <DialogFooter>
-            <DialogClose asChild>
-              <Button variant="outline">Cancel</Button>
-            </DialogClose>
-            <Button type="submit">Save changes</Button>
-          </DialogFooter>
-        </form>
+        <HabitFormFields
+          defaultNameValue={defaultNameValue}
+          defaultDescriptionValue={defaultDescriptionValue}
+          handleSubmit={handleSubmit}
+        />
       </DialogContent>
     </Dialog>
   );
