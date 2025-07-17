@@ -6,7 +6,7 @@ import {useDispatch} from "react-redux";
 import {createNewHabit} from "@/features/habits/slice.ts";
 import {DialogClose, DialogFooter} from "@/components/ui/dialog.tsx";
 import {Button} from "@/components/ui/button.tsx";
-import {PREDEFINED_HABITS} from "@/features/habits/constants.ts";
+import {MAX_DESCRIPTION_LENGTH, MAX_NAME_LENGTH, PREDEFINED_HABITS,} from "@/features/habits/constants.ts";
 
 const NewHabitTabs = ({ onCloseDialog }) => {
   const [selectedTab, setSelectedTab] = useState("predefined");
@@ -24,7 +24,12 @@ const NewHabitTabs = ({ onCloseDialog }) => {
       };
 
       // Validate
-      if (!data.name || data.name.trim().length < 3) {
+      if (
+        !data.name ||
+        data.name.length < 3 ||
+        data.name.length > MAX_NAME_LENGTH ||
+        data.description.length > MAX_DESCRIPTION_LENGTH
+      ) {
         return;
       }
 

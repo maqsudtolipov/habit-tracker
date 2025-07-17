@@ -162,3 +162,6 @@ export const PREDEFINED_HABITS: Habit[] = [
     updatedAt: "2025-07-17T10:00:00.000Z",
   },
 ];
+
+export const MAX_NAME_LENGTH = 24;
+export const MAX_DESCRIPTION_LENGTH = 200;
