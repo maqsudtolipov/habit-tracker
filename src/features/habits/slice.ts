@@ -72,7 +72,24 @@ const habitsSlice = createSlice({
 
       state.habits.push(newHabit);
     },
-    editHabit: () => {},
+    editHabit: (
+      state: HabitsState,
+      action: PayloadAction<{
+        id: string;
+        name: string;
+        description: string;
+      }>,
+    ) => {
+      const existingHabitIndex = state.habits.findIndex(
+        (habit) => habit.id === action.payload.id,
+      );
+
+      state.habits[existingHabitIndex] = {
+        ...state.habits[existingHabitIndex],
+        name: action.payload.name,
+        description: action.payload.description,
+      };
+    },
     deleteHabit: (state: HabitsState, action: PayloadAction<string>) => {
       const existingHabit = state.habits.find(
         (habit) => habit.id === action.payload,

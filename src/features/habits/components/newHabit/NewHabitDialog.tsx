@@ -5,7 +5,6 @@ import NewHabitTabs from "@/features/habits/components/newHabit/NewHabitTabs.tsx
 
 const NewHabitDialog = ({ children }: { children: ReactNode }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-
   const handleCloseDialog = () => setIsDialogOpen(false);
 
   return (
