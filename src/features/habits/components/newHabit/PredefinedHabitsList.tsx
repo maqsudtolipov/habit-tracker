@@ -5,8 +5,9 @@ const PredefinedHabitsList = ({
   selectedHabitId,
   onSelectHabit,
 }: {
-  selectedHabitId: string;
+  selectedHabitId: string | null;
   onSelectHabit: () => void;
+  onSubmit: () => void;
 }) => {
   return (
     <ScrollArea className="h-60 rounded-md border">

@@ -6,8 +6,8 @@ import {useDispatch} from "react-redux";
 import {createNewHabit} from "@/features/habits/slice.ts";
 import {DialogClose, DialogFooter} from "@/components/ui/dialog.tsx";
 import {Button} from "@/components/ui/button.tsx";
+import {PREDEFINED_HABITS} from "@/features/habits/constants.ts";
 
-// I dont like prop drilling here
 const NewHabitTabs = () => {
   const [selectedTab, setSelectedTab] = useState("predefined");
   const [selectedHabitId, setSelectedHabitId] = useState<null | string>(null);
@@ -16,26 +16,42 @@ const NewHabitTabs = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log("Submit it hit");
+    if (selectedTab === "custom") {
+      const formData = new FormData(e.currentTarget);
+      const data = {
+        name: formData.get("name"),
+        description: formData.get("description") || "",
+      };
 
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      name: formData.get("name"),
-      description: formData.get("description"),
-    };
+      // Validate
+      if (!data.name || data.name.trim().length < 3) {
+        return;
+      }
 
-    // Validate
-    if (!data.name || data.name.trim().length < 3) {
-      return;
+      dispatch(
+        createNewHabit({
+          name: `${data.name} ${Math.floor(Math.random() * 100)}`,
+          description: data.description,
+          type: "custom",
+        }),
+      );
     }
 
-    dispatch(
-      createNewHabit({
-        name: `${data.name} ${Math.floor(Math.random() * 100)}`,
-        description: data.description,
-        type: "custom",
-      }),
-    );
+    if (selectedTab === "predefined") {
+      const selectedHabit = PREDEFINED_HABITS.find(
+        (habit) => habit.id === selectedHabitId,
+      );
+
+      if (!selectedHabit) return;
+
+      dispatch(
+        createNewHabit({
+          name: `${selectedHabit.name} ${Math.floor(Math.random() * 100)}`,
+          description: selectedHabit.description,
+          type: "predefined",
+        }),
+      );
+    }
   };
 
   return (
@@ -50,7 +66,7 @@ const NewHabitTabs = () => {
           <TabsTrigger value="custom">Custom</TabsTrigger>
         </TabsList>
         <TabsContent className="flex flex-col gap-4" value="custom">
-          <CustomHabitForm selectedTab={selectedTab} />
+          <CustomHabitForm />
         </TabsContent>
         <TabsContent
           className="text-sm text-muted-foreground"
