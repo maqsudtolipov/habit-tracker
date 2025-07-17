@@ -27,7 +27,7 @@ const EditHabitDialog = ({ handleSubmit, children }: EditHabitDialogProps) => {
         </DialogHeader>
 
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-          <div className="h-60 flex flex-col gap-4">
+          <div className="flex flex-col gap-4">
             <div className="grid gap-3">
               <Label htmlFor="name">* Name</Label>
               <Input id="name" name="name" />

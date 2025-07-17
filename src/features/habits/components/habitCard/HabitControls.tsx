@@ -3,6 +3,8 @@ import {Pencil, Trash2} from "lucide-react";
 import ConfirmDialog from "@/shared/ui/ConfirmDialog.tsx";
 import {useDispatch} from "react-redux";
 import {deleteHabit} from "@/features/habits/slice.ts";
+import EditHabitDialog from "@/shared/ui/EditHabitDialog.tsx";
+import type {FormEvent} from "react";
 
 interface HabitControlsProps {
   habitId: string;
@@ -11,16 +13,24 @@ interface HabitControlsProps {
 const HabitControls = ({ habitId }: HabitControlsProps) => {
   const dispatch = useDispatch();
 
+  const handleEditHabit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    console.log("Submit edit");
+  };
+
   const handleDeleteHabit = () => {
     dispatch(deleteHabit(habitId));
   };
 
   return (
     <div className="p-1 bg-gray-100 rounded-md flex items-center gap-2">
-      <Button variant="outline" size="icon" className="h-8 w-8">
-        <Pencil className="w-4 h-4" />
-        <span className="sr-only">Edit habit</span>
-      </Button>
+      <EditHabitDialog handleSubmit={handleEditHabit}>
+        <Button variant="outline" size="icon" className="h-8 w-8">
+          <Pencil className="w-4 h-4" />
+          <span className="sr-only">Edit habit</span>
+        </Button>
+      </EditHabitDialog>
       <ConfirmDialog onConfirm={handleDeleteHabit}>
         <Button variant="outline" size="icon" className="h-8 w-8">
           <Trash2 className="w-4 h-4" />
