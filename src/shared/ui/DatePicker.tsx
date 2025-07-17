@@ -23,7 +23,10 @@ const DatePicker = () => {
             <ChevronDownIcon />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-auto overflow-hidden p-0" align="start">
+        <PopoverContent
+          className="w-auto overflow-hidden mt-2 shadow-lg outline outline-accent rounded-lg"
+          align="start"
+        >
           <Calendar
             mode="single"
             selected={date}
