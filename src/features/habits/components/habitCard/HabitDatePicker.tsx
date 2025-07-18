@@ -3,9 +3,13 @@ import {Button} from "@/components/ui/button.tsx";
 import {XIcon} from "lucide-react";
 
 const HabitDatePicker = () => {
+  const handlePickDate = (date: Date) => {
+    console.log("pick date", date);
+  };
+
   return (
     <div className="flex items-center gap-2 shrink-0">
-      <DatePicker />
+      <DatePicker onPickDate={handlePickDate} />
       <Button variant="outline" size="sm">
         <XIcon />
       </Button>

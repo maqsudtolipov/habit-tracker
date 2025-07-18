@@ -4,7 +4,11 @@ import {CalendarIcon, ChevronDownIcon} from "lucide-react";
 import {Calendar} from "@/components/ui/calendar.tsx";
 import {Button} from "@/components/ui/button.tsx";
 
-const DatePicker = () => {
+interface DatePickerProps {
+  onPickDate?: (date: Date) => void;
+}
+
+const DatePicker = ({ onPickDate }: DatePickerProps) => {
   const [open, setOpen] = React.useState(false);
   const [date, setDate] = React.useState<Date | undefined>(undefined);
 
@@ -33,6 +37,11 @@ const DatePicker = () => {
             captionLayout="dropdown"
             onSelect={(date) => {
               setDate(date);
+
+              if (date && onPickDate) {
+                onPickDate(date);
+              }
+
               setOpen(false);
             }}
             disabled={(date) =>
