@@ -1,9 +1,10 @@
 import {Checkbox} from "@/components/ui/checkbox.tsx";
 import {toggleProgressStatus} from "@/features/progress/slice.ts";
-import {useDispatch} from "react-redux";
-import getTodaysDate from "@/shared/utils/getTodaysDate.ts";
+import {useDispatch, useSelector} from "react-redux";
 import type {Habit} from "@/features/habits/types.ts";
 import HabitControls from "@/features/habits/components/habitCard/HabitControls.tsx";
+import type {RootState} from "@/app/store.ts";
+import getFormatedDate from "@/shared/utils/getFormatedDate.ts";
 
 interface HabitInformationProps {
   habit: Habit;
@@ -11,12 +12,15 @@ interface HabitInformationProps {
 }
 
 const HabitInformation = ({ habit, isCompleted }: HabitInformationProps) => {
+  const selectedDate = useSelector(
+    (state: RootState) => state.habits.selectedDate,
+  );
   const dispatch = useDispatch();
 
   const handleToggleCompleted = () => {
     dispatch(
       toggleProgressStatus({
-        date: getTodaysDate(),
+        date: getFormatedDate(selectedDate),
         habitId: habit.id,
       }),
     );
