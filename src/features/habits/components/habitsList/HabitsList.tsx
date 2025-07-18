@@ -4,7 +4,7 @@ import HabitCard from "@/features/habits/components/habitCard/HabitCard.tsx";
 import {compareAsc} from "date-fns";
 
 const HabitsList = () => {
-  const habits = useSelector((state: RootState) => state.habits.habits);
+  const { habits } = useSelector((state: RootState) => state.habits);
   const sortedHabitsByDate = [...habits].sort((a, b) =>
     compareAsc(b.createdAt, a.createdAt),
   );

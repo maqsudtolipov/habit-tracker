@@ -3,6 +3,7 @@ import type {Habit, HabitsState} from "@/features/habits/types.ts";
 import {nanoid} from "nanoid";
 
 const INITIAL_STATE: HabitsState = {
+  selectedDate: new Date(),
   habits: [
     {
       id: "1a2b3c",
@@ -101,8 +102,12 @@ const habitsSlice = createSlice({
         );
       }
     },
+    changeSelectedDate: (state: HabitsState, action: PayloadAction<Date>) => {
+      state.selectedDate = action.payload;
+    },
   },
 });
 
-export const { createNewHabit, editHabit, deleteHabit } = habitsSlice.actions;
+export const { createNewHabit, editHabit, deleteHabit, changeSelectedDate } =
+  habitsSlice.actions;
 export default habitsSlice;

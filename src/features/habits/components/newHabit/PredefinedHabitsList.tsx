@@ -47,7 +47,7 @@ const PredefinedHabitsList = ({
             return (
               <li
                 key={habit.id}
-                className={`p-2 rounded select-none ${isSelected && "outline-2 outline-black/50"}`}
+                className={`p-2 rounded select-none ${isSelected && " bg-neutral-100 outline-2 outline-neutral-200"}`}
                 onClick={() => onSelectHabit(habit.id)}
               >
                 <p className="text-black font-medium">{habit.name}</p>

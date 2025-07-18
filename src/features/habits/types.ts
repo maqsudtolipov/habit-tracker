@@ -8,5 +8,6 @@ export interface Habit {
 }
 
 export interface HabitsState {
+  selectedDate: Date;
   habits: Habit[];
 }
