@@ -6,11 +6,19 @@ import {Button} from "@/components/ui/button.tsx";
 
 interface DatePickerProps {
   onPickDate?: (date: Date) => void;
+  value: Date;
+  onChange: (date: Date) => void;
 }
 
-const DatePicker = ({ onPickDate }: DatePickerProps) => {
+const DatePicker = ({ value, onChange }: DatePickerProps) => {
   const [open, setOpen] = React.useState(false);
-  const [date, setDate] = React.useState<Date | undefined>(undefined);
+
+  const handleSelect = (date: Date | undefined) => {
+    if (date && onChange) {
+      onChange(date);
+    }
+    setOpen(false);
+  };
 
   return (
     <div className="flex flex-col gap-3 pr-[1ch]">
@@ -18,12 +26,11 @@ const DatePicker = ({ onPickDate }: DatePickerProps) => {
         <PopoverTrigger asChild>
           <Button
             variant="outline"
-            id="date"
             className="w-36 justify-between font-normal"
             size="sm"
           >
             <CalendarIcon />
-            {date ? date.toLocaleDateString() : "Select date"}
+            {value ? value.toLocaleDateString() : "Select date"}
             <ChevronDownIcon />
           </Button>
         </PopoverTrigger>
@@ -33,17 +40,9 @@ const DatePicker = ({ onPickDate }: DatePickerProps) => {
         >
           <Calendar
             mode="single"
-            selected={date}
+            selected={value}
             captionLayout="dropdown"
-            onSelect={(date) => {
-              setDate(date);
-
-              if (date && onPickDate) {
-                onPickDate(date);
-              }
-
-              setOpen(false);
-            }}
+            onSelect={handleSelect}
             disabled={(date) =>
               date > new Date() || date < new Date("1900-01-01")
             }
