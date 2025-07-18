@@ -26,7 +26,7 @@ const HabitCard = ({ habit }: HabitCardProps) => {
   return (
     <HabitCardContainer isCompleted={isCompleted}>
       <HabitInformation habit={habit} isCompleted={isCompleted} />
-      <HabitDatePicker />
+      <HabitDatePicker habit={habit} />
     </HabitCardContainer>
   );
 };
