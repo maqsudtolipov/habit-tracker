@@ -27,7 +27,10 @@ const HabitDatePicker = ({ habit }: { habit: Habit }) => {
     setSelectedDate(date);
   };
 
-  const handleSavePastProgress = () => {
+  const handleSavePastProgress = (e: Event) => {
+    e.preventDefault();
+    e.stopPropagation();
+
     dispatch(
       toggleProgressStatus({
         habitId: habit.id,

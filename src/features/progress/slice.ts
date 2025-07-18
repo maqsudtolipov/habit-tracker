@@ -33,7 +33,6 @@ const progressSlice = createSlice({
           updatedAt: new Date().toISOString(),
         };
 
-        console.log(newProgress);
         state.push(newProgress);
       }
     },
