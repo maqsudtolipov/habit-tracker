@@ -19,10 +19,8 @@ const HabitDatePicker = ({ habit }: { habit: Habit }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!isSameDay(selectedDate, globalSelectedDate)) {
-      setSelectedDate(globalSelectedDate);
-    }
-  }, [globalSelectedDate, selectedDate]);
+    setSelectedDate(globalSelectedDate);
+  }, [globalSelectedDate]);
 
   const isProgressAlreadySaved = progress.find(
     (item) =>
@@ -30,7 +28,7 @@ const HabitDatePicker = ({ habit }: { habit: Habit }) => {
       item.date === getFormatedDate(selectedDate) &&
       item.status === "completed",
   );
-  const isDateToday = isSameDay(selectedDate, new Date());
+  const isDateToday = isSameDay(selectedDate, globalSelectedDate);
 
   const handlePickDate = (date: Date) => {
     setSelectedDate(date);
