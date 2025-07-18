@@ -1,7 +1,8 @@
 import DatePicker from "@/shared/ui/DatePicker.tsx";
 import {Button} from "@/components/ui/button.tsx";
-import {XIcon} from "lucide-react";
+import {RotateCcw} from "lucide-react";
 import getFormatedDate from "@/shared/utils/getFormatedDate.ts";
+import type {MouseEvent} from "react";
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import type {RootState} from "@/app/store.ts";
@@ -27,7 +28,7 @@ const HabitDatePicker = ({ habit }: { habit: Habit }) => {
     setSelectedDate(date);
   };
 
-  const handleSavePastProgress = (e: Event) => {
+  const handleSavePastProgress = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     e.stopPropagation();
 
@@ -39,13 +40,25 @@ const HabitDatePicker = ({ habit }: { habit: Habit }) => {
     );
   };
 
+  const handleResetPickedDate = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault(); // This is bc card wrapped with Label
+    e.stopPropagation();
+
+    setSelectedDate(new Date());
+  };
+
   return (
     <div className="flex items-center gap-2 shrink-0">
       <DatePicker value={selectedDate} onChange={handlePickDate} />
       {!isProgressAlreadySaved && !isDateToday && (
         <>
-          <Button variant="outline" size="sm">
-            <XIcon />
+          <Button
+            className="size-8"
+            variant="outline"
+            size="icon"
+            onClick={handleResetPickedDate}
+          >
+            <RotateCcw />
           </Button>
           <Button size="sm" onClick={handleSavePastProgress}>
             Confirm
