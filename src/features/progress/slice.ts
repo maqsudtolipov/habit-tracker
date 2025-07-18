@@ -1,5 +1,4 @@
 import {createSlice, type PayloadAction} from "@reduxjs/toolkit";
-import getTodaysDate from "@/shared/utils/getTodaysDate.ts";
 import type {HabitProgressState} from "@/features/progress/types.ts";
 
 const INITIAL_STATE: HabitProgressState = [];
@@ -29,7 +28,7 @@ const progressSlice = createSlice({
       else {
         const newProgress = {
           habitId: action.payload.habitId,
-          date: getTodaysDate(),
+          date: action.payload.date,
           status: "completed" as const,
           updatedAt: new Date().toISOString(),
         };
