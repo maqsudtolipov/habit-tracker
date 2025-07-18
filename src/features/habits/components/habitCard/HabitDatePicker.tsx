@@ -2,8 +2,7 @@ import DatePicker from "@/shared/ui/DatePicker.tsx";
 import {Button} from "@/components/ui/button.tsx";
 import {RotateCcw} from "lucide-react";
 import getFormatedDate from "@/shared/utils/getFormatedDate.ts";
-import type {MouseEvent} from "react";
-import {useState} from "react";
+import {type MouseEvent, useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import type {RootState} from "@/app/store.ts";
 import type {Habit} from "@/features/habits/types.ts";
@@ -12,9 +11,18 @@ import {toggleProgressStatus} from "@/features/progress/slice.ts";
 
 const HabitDatePicker = ({ habit }: { habit: Habit }) => {
   const progress = useSelector((state: RootState) => state.progress);
+  const globalSelectedDate = useSelector(
+    (state: RootState) => state.habits.selectedDate,
+  );
+  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+
   const dispatch = useDispatch();
 
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+  useEffect(() => {
+    if (!isSameDay(selectedDate, globalSelectedDate)) {
+      setSelectedDate(globalSelectedDate);
+    }
+  }, [globalSelectedDate, selectedDate]);
 
   const isProgressAlreadySaved = progress.find(
     (item) =>
