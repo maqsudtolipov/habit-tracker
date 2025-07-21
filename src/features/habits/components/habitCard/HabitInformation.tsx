@@ -5,6 +5,7 @@ import type {Habit} from "@/features/habits/types.ts";
 import HabitControls from "@/features/habits/components/habitCard/HabitControls.tsx";
 import type {RootState} from "@/app/store.ts";
 import getFormatedDate from "@/shared/utils/getFormatedDate.ts";
+import {Link} from "react-router-dom";
 
 interface HabitInformationProps {
   habit: Habit;
@@ -49,6 +50,7 @@ const HabitInformation = ({ habit, isCompleted }: HabitInformationProps) => {
       {habit.description && (
         <p className="text-sm text-muted-foreground">{habit.description}</p>
       )}
+      <Link className='hover:underline' to={`/habit/${habit.id}`}>View more</Link>
     </div>
   );
 };
