@@ -27,6 +27,7 @@ const DatePicker = ({ value, onChange }: DatePickerProps) => {
             variant="outline"
             className="w-36 justify-between font-normal"
             size="sm"
+            aria-label={`Pick a date. Currently selected: ${value.toLocaleDateString()}`}
           >
             <CalendarIcon />
             {value ? value.toLocaleDateString() : "Select date"}

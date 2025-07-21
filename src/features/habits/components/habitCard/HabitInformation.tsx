@@ -33,14 +33,19 @@ const HabitInformation = ({ habit, isCompleted }: HabitInformationProps) => {
         <div className="flex items-start gap-3">
           <div className="pt-1">
             <Checkbox
+              id={`checkbox-${habit.id}`}
               className="size-6"
               checked={isCompleted}
               onCheckedChange={handleToggleCompleted}
             />
           </div>
-          <h2 className="text-lg font-medium">
-            <p className="-mb-1 text-neutral-900">{habit.name}</p>
-
+          <div>
+            <h2
+              className="text-lg font-medium -mb-1 text-neutral-900"
+              id={`habit-${habit.id}-name`}
+            >
+              {habit.name}
+            </h2>
             <p className="flex items-center gap-1 text-xs font-normal text-neutral-600">
               {habit.type === "predefined" ? (
                 <Box className="size-3" />
@@ -50,7 +55,7 @@ const HabitInformation = ({ habit, isCompleted }: HabitInformationProps) => {
 
               {habit.type}
             </p>
-          </h2>
+          </div>
         </div>
 
         {habit.type === "custom" && <HabitControls habit={habit} />}

@@ -10,7 +10,10 @@ const HabitsList = () => {
   );
 
   return (
-    <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
+    <ul
+      className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6"
+      aria-label="List of your habits"
+    >
       {sortedHabitsByDate.map((habit) => (
         <HabitCard key={habit.id} habit={habit} />
       ))}

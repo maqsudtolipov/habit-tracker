@@ -29,14 +29,19 @@ const HabitCard = ({ habit }: HabitCardProps) => {
   const isCompleted = todayProgress?.status === "completed";
 
   return (
-    <HabitCardContainer isCompleted={isCompleted}>
+    <HabitCardContainer isCompleted={isCompleted} habitId={habit.id}>
+      <span className="sr-only">
+        Habit is {isCompleted ? "completed" : "not completed"} for selected date
+      </span>
+
       <HabitInformation habit={habit} isCompleted={isCompleted} />
 
-      <div className='flex flex-col gap-2 sm:flex-row sm:justify-between'>
+      <div className="flex flex-col gap-2 sm:flex-row sm:justify-between">
         <HabitDatePicker habit={habit} />
         <Link
           className="flex items-center gap-0/5 text-sm text-neutral-600 font-medium hover:underline"
           to={`/habit/${habit.id}`}
+          aria-label={`See details for ${habit.name}`}
         >
           See details <ChevronRightIcon className="size-4" />
         </Link>
