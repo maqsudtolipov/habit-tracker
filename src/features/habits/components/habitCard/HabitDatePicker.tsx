@@ -58,6 +58,9 @@ const HabitDatePicker = ({ habit }: { habit: Habit }) => {
 
   return (
     <div className="flex items-center gap-2 shrink-0">
+      <span id={`date-label-${habit.id}`} className="sr-only">
+        Select date to mark habit "{habit.name}" as complete
+      </span>
       <DatePicker value={selectedDate} onChange={handlePickDate} />
       {!isProgressAlreadySaved && !isDateToday && (
         <>
@@ -66,10 +69,15 @@ const HabitDatePicker = ({ habit }: { habit: Habit }) => {
             variant="outline"
             size="icon"
             onClick={handleResetPickedDate}
+            aria-label="Reset selected date"
           >
             <RotateCcw />
           </Button>
-          <Button size="sm" onClick={handleSavePastProgress}>
+          <Button
+            size="sm"
+            onClick={handleSavePastProgress}
+            aria-label={`Confirm progress for ${getFormatedDate(selectedDate)}`}
+          >
             Confirm
           </Button>
         </>
