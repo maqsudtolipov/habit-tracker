@@ -16,7 +16,7 @@ const HabitCardContainer = ({
     <li role="region" aria-labelledby={`habit-${habitId}-name`}>
       <Label
         className={
-          "h-full items-start p-4 rounded-lg outline-1 outline-gray-200 border border-l-4 border-gray-200/0" +
+          "h-full items-start p-4 rounded-lg outline-1 outline-gray-200 border border-l-4 border-gray-200/0 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]" +
           (isCompleted ? " border-gray-200/100" : "")
         }
         htmlFor={`checkbox-${habitId}`}
