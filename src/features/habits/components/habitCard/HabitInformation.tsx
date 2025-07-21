@@ -38,8 +38,8 @@ const HabitInformation = ({ habit, isCompleted }: HabitInformationProps) => {
             />
           </div>
           <h2 className="text-lg font-medium">
-            <p className="-mb-1">{habit.name}</p>
-            <p className="text-xs text-muted-foreground">{habit.type}</p>
+            <p className="-mb-1 text-neutral-900">{habit.name}</p>
+            <p className="text-xs text-neutral-600">{habit.type}</p>
           </h2>
         </div>
 
@@ -47,7 +47,7 @@ const HabitInformation = ({ habit, isCompleted }: HabitInformationProps) => {
       </div>
 
       {habit.description && (
-        <p className="text-sm text-muted-foreground">{habit.description}</p>
+        <p className="text-sm text-neutral-500">{habit.description}</p>
       )}
     </div>
   );

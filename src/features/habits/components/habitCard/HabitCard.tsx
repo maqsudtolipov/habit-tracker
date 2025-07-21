@@ -35,7 +35,7 @@ const HabitCard = ({ habit }: HabitCardProps) => {
       <div className='flex flex-col gap-2 sm:flex-row sm:justify-between'>
         <HabitDatePicker habit={habit} />
         <Link
-          className="flex items-center gap-0/5 text-sm hover:underline"
+          className="flex items-center gap-0/5 text-sm text-neutral-600 font-medium hover:underline"
           to={`/habit/${habit.id}`}
         >
           See details <ChevronRightIcon className="size-4" />
