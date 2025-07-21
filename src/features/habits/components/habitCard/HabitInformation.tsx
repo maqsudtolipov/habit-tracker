@@ -5,6 +5,7 @@ import type {Habit} from "@/features/habits/types.ts";
 import HabitControls from "@/features/habits/components/habitCard/HabitControls.tsx";
 import type {RootState} from "@/app/store.ts";
 import getFormatedDate from "@/shared/utils/getFormatedDate.ts";
+import {Box, Sparkle} from "lucide-react";
 
 interface HabitInformationProps {
   habit: Habit;
@@ -39,7 +40,16 @@ const HabitInformation = ({ habit, isCompleted }: HabitInformationProps) => {
           </div>
           <h2 className="text-lg font-medium">
             <p className="-mb-1 text-neutral-900">{habit.name}</p>
-            <p className="text-xs text-neutral-600">{habit.type}</p>
+
+            <p className="flex items-center gap-1 text-xs font-normal text-neutral-600">
+              {habit.type === "predefined" ? (
+                <Box className="size-3" />
+              ) : (
+                <Sparkle className="size-3" />
+              )}
+
+              {habit.type}
+            </p>
           </h2>
         </div>
 
