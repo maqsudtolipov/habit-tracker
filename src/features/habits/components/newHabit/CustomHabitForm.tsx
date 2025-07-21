@@ -32,7 +32,7 @@ const CustomHabitForm = ({ onCloseDialog }: CustomHabitFormProps) => {
 
     dispatch(
       createNewHabit({
-        name: `${data.name} ${Math.floor(Math.random() * 100)}`,
+        name: data.name,
         description: data.description,
         type: "custom",
       }),
