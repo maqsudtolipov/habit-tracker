@@ -51,7 +51,7 @@ const PredefinedHabitsList = ({
             return (
               <li
                 key={habit.id}
-                className={`p-2 rounded select-none ${isSelected && " bg-neutral-100 outline-2 outline-neutral-200"}`}
+                className={`p-2 rounded focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]  ${isSelected && " bg-neutral-100 outline-2 outline-neutral-200"}`}
                 onClick={() => onSelectHabit(habit.id)}
                 role="radio"
                 aria-checked={isSelected}
