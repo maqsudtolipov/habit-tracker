@@ -22,7 +22,13 @@ const HabitCardContainer = ({
         htmlFor={`checkbox-${habitId}`}
         tabIndex={0}
       >
-        <div className="h-full w-full flex flex-col gap-2">{children}</div>
+        <div className="h-full w-full flex flex-col gap-2">
+          <span className="sr-only">
+            Habit is {isCompleted ? "completed" : "not completed"} for selected
+            date
+          </span>
+          {children}
+        </div>
       </Label>
     </li>
   );
