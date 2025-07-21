@@ -1,9 +1,6 @@
 import {useSelector} from "react-redux";
 import type {RootState} from "@/app/store.ts";
-import getTodaysDate from "@/shared/utils/getTodaysDate.ts";
-import {format} from "date-fns";
-
-const today = getTodaysDate();
+import {format, isSameDay} from "date-fns";
 
 const DailySummary = () => {
   const { habits, selectedDate } = useSelector(
@@ -12,7 +9,9 @@ const DailySummary = () => {
   const progress = useSelector((state: RootState) => state.progress);
 
   const completedHabitsCount = progress.filter(
-    (progress) => progress.date === today && progress.status === "completed",
+    (progress) =>
+      isSameDay(progress.date, selectedDate.toISOString()) &&
+      progress.status === "completed",
   ).length;
 
   return (
