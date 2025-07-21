@@ -40,7 +40,7 @@ const HabitControls = ({ habit }: HabitControlsProps) => {
     dispatch(
       editHabit({
         id: habit.id,
-        name: `${data.name} ${Math.floor(Math.random() * 100)}`,
+        name: data.name,
         description: data.description,
       }),
     );

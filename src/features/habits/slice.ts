@@ -89,6 +89,7 @@ const habitsSlice = createSlice({
         ...state.habits[existingHabitIndex],
         name: action.payload.name,
         description: action.payload.description,
+        updatedAt: new Date().toISOString(),
       };
     },
     deleteHabit: (state: HabitsState, action: PayloadAction<string>) => {
