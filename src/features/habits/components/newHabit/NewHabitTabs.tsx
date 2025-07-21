@@ -1,4 +1,4 @@
-import {Tabs, TabsContent, TabsList, TabsTrigger,} from "@/components/ui/tabs.tsx";
+import {Tabs, TabsContent, TabsList, TabsTrigger,} from "@/shared/ui/tabs.tsx";
 import CustomHabitForm from "@/features/habits/components/newHabit/CustomHabitForm.tsx";
 import {useState} from "react";
 import PredefinedHabitsList from "@/features/habits/components/newHabit/PredefinedHabitsList.tsx";

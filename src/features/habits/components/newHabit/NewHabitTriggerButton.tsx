@@ -1,4 +1,4 @@
-import {Button} from "@/components/ui/button.tsx";
+import {Button} from "@/shared/ui/button.tsx";
 import {Plus} from "lucide-react";
 import NewHabitDialog from "@/features/habits/components/newHabit/NewHabitDialog.tsx";
 

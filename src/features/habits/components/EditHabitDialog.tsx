@@ -1,6 +1,6 @@
-import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger,} from "@/components/ui/dialog.tsx";
+import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger,} from "@/shared/ui/dialog.tsx";
 import type {FormEvent, ReactNode} from "react";
-import HabitFormFields from "@/shared/ui/HabitFormFields.tsx";
+import HabitFormFields from "@/shared/components/HabitFormFields.tsx";
 
 interface EditHabitDialogProps {
   open?: boolean;

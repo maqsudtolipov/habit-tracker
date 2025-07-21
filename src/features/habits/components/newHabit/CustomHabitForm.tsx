@@ -2,7 +2,7 @@ import {useDispatch} from "react-redux";
 import type {FormEvent} from "react";
 import {MAX_DESCRIPTION_LENGTH, MAX_NAME_LENGTH,} from "@/features/habits/constants.ts";
 import {createNewHabit} from "@/features/habits/slice.ts";
-import HabitFormFields from "@/shared/ui/HabitFormFields.tsx";
+import HabitFormFields from "@/shared/components/HabitFormFields.tsx";
 
 interface CustomHabitFormProps {
   onCloseDialog: () => void;

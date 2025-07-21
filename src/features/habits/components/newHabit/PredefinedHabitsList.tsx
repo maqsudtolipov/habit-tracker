@@ -1,10 +1,10 @@
 import {PREDEFINED_HABITS} from "@/features/habits/constants.ts";
-import {ScrollArea} from "@/components/ui/scroll-area.tsx";
+import {ScrollArea} from "@/shared/ui/scroll-area.tsx";
 import {createNewHabit} from "@/features/habits/slice.ts";
 import type {FormEvent} from "react";
 import {useDispatch} from "react-redux";
-import {DialogClose, DialogFooter} from "@/components/ui/dialog.tsx";
-import {Button} from "@/components/ui/button.tsx";
+import {DialogClose, DialogFooter} from "@/shared/ui/dialog.tsx";
+import {Button} from "@/shared/ui/button.tsx";
 
 const PredefinedHabitsList = ({
   selectedHabitId,

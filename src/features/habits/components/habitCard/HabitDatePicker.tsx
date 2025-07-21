@@ -1,5 +1,5 @@
 import DatePicker from "@/shared/ui/DatePicker.tsx";
-import {Button} from "@/components/ui/button.tsx";
+import {Button} from "@/shared/ui/button.tsx";
 import {RotateCcw} from "lucide-react";
 import getFormatedDate from "@/shared/utils/getFormatedDate.ts";
 import {type MouseEvent, useEffect, useState} from "react";

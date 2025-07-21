@@ -1,9 +1,9 @@
-import {Button} from "@/components/ui/button.tsx";
+import {Button} from "@/shared/ui/button.tsx";
 import {Pencil, Trash2} from "lucide-react";
 import ConfirmDialog from "@/shared/ui/ConfirmDialog.tsx";
 import {useDispatch} from "react-redux";
 import {deleteHabit, editHabit} from "@/features/habits/slice.ts";
-import EditHabitDialog from "@/shared/ui/EditHabitDialog.tsx";
+import EditHabitDialog from "@/features/habits/components/EditHabitDialog.tsx";
 import {type FormEvent, useState} from "react";
 import type {Habit} from "@/features/habits/types.ts";
 import {MAX_DESCRIPTION_LENGTH, MAX_NAME_LENGTH,} from "@/features/habits/constants.ts";
@@ -12,7 +12,7 @@ interface HabitControlsProps {
   habit: Habit;
 }
 
-const HabitControls = ({ habit }: HabitControlsProps) => {
+const HabitControlButtons = ({ habit }: HabitControlsProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const handleCloseDialog = () => setIsDialogOpen(false);
   const dispatch = useDispatch();
@@ -76,4 +76,4 @@ const HabitControls = ({ habit }: HabitControlsProps) => {
   );
 };
 
-export default HabitControls;
+export default HabitControlButtons;

@@ -1,4 +1,4 @@
-import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger,} from "@/components/ui/dialog.tsx";
+import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger,} from "@/shared/ui/dialog.tsx";
 
 import {type ReactNode, useState} from "react";
 import NewHabitTabs from "@/features/habits/components/newHabit/NewHabitTabs.tsx";

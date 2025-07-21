@@ -1,8 +1,8 @@
-import {Label} from "@/components/ui/label.tsx";
-import {Input} from "@/components/ui/input.tsx";
+import {Label} from "@/shared/ui/label.tsx";
+import {Input} from "@/shared/ui/input.tsx";
 import type {FormEvent} from "react";
-import {DialogClose, DialogFooter} from "@/components/ui/dialog.tsx";
-import {Button} from "@/components/ui/button.tsx";
+import {DialogClose, DialogFooter} from "@/shared/ui/dialog.tsx";
+import {Button} from "@/shared/ui/button.tsx";
 
 interface HabitFormFieldsProps {
   defaultNameValue?: string;

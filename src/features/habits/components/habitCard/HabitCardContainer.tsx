@@ -1,4 +1,4 @@
-import {Label} from "@/components/ui/label.tsx";
+import {Label} from "@/shared/ui/label.tsx";
 import type {ReactNode} from "react";
 
 interface HabitCardContainerProps {

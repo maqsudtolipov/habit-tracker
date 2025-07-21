@@ -1,8 +1,8 @@
 import React from "react";
 import {Popover, PopoverContent, PopoverTrigger,} from "@radix-ui/react-popover";
 import {CalendarIcon, ChevronDownIcon} from "lucide-react";
-import {Calendar} from "@/components/ui/calendar.tsx";
-import {Button} from "@/components/ui/button.tsx";
+import {Calendar} from "@/shared/ui/calendar.tsx";
+import {Button} from "@/shared/ui/button.tsx";
 
 interface DatePickerProps {
   value: Date;

@@ -4,7 +4,7 @@ import "./index.css";
 import AppRoutes from "./app/AppRoutes.tsx";
 import {Provider} from "react-redux";
 import {store} from "@/app/store.ts";
-import {Toaster} from "@/components/ui/sonner.tsx";
+import {Toaster} from "@/shared/ui/sonner.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
