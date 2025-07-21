@@ -71,7 +71,6 @@ const PredefinedHabitsList = ({
         </ul>
       </ScrollArea>
 
-      {/* NOTE: DUPLICATED on each tab */}
       <DialogFooter>
         <DialogClose asChild>
           <Button variant="outline">Cancel</Button>
