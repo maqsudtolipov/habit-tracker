@@ -50,7 +50,7 @@ const HabitDatePicker = ({ habit }: { habit: Habit }) => {
     e.preventDefault(); // This is bc card wrapped with Label
     e.stopPropagation();
 
-    setSelectedDate(new Date());
+    setSelectedDate(globalSelectedDate);
   };
 
   return (
