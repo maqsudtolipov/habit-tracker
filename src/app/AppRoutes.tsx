@@ -1,6 +1,6 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import HomePage from "@/pages/HomePage.tsx";
-import Layout from "@/app/Layout.tsx";
+import Layout from "@/app/components/Layout.tsx";
 import HabitPage from "@/pages/HabitPage.tsx";
 import StatsPage from "@/pages/StatsPage.tsx";
 

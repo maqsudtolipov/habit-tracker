@@ -3,7 +3,7 @@ import {Link, NavLink} from "react-router-dom";
 const Nav = () => {
   return (
     <nav className=" border-b">
-      <div className="max-w-[1024px] mx-auto p-4 flex items-center justify-between ">
+      <div className="max-w-[1024px] mx-auto p-4 flex items-center justify-between">
         <Link
           className="flex items-center gap-2 font-medium select-none"
           to="/"
