@@ -5,9 +5,8 @@ import {useDispatch} from "react-redux";
 import {changeSelectedDate} from "@/features/habits/slice.ts";
 
 const HeaderActions = () => {
-  const [filterDate, setFilterDate] = useState(new Date());
-
   const dispatch = useDispatch();
+  const [filterDate, setFilterDate] = useState(new Date());
 
   useEffect(() => {
     dispatch(changeSelectedDate(filterDate));
