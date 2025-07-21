@@ -8,6 +8,7 @@ import type {RootState} from "@/app/store.ts";
 import type {Habit} from "@/features/habits/types.ts";
 import {isSameDay} from "date-fns";
 import {toggleProgressStatus} from "@/features/progress/slice.ts";
+import {toast} from "sonner";
 
 const HabitDatePicker = ({ habit }: { habit: Habit }) => {
   const progress = useSelector((state: RootState) => state.progress);
@@ -44,6 +45,8 @@ const HabitDatePicker = ({ habit }: { habit: Habit }) => {
         date: getFormatedDate(selectedDate),
       }),
     );
+
+    toast.success(`Habit Completed for ${getFormatedDate(selectedDate)}`);
   };
 
   const handleResetPickedDate = (e: MouseEvent<HTMLButtonElement>) => {
