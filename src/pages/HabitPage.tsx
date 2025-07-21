@@ -1,5 +1,22 @@
+import {useSelector} from "react-redux";
+import type {RootState} from "@/app/store.ts";
+import {useParams} from "react-router-dom";
+
 const HabitPage = () => {
-  return <h1>Habit Details here</h1>;
+  const habitList = useSelector((state: RootState) => state.habits.habits);
+  const { id } = useParams();
+  const currentHabit = habitList.find((habit) => habit.id === id);
+
+  if (!currentHabit) {
+    return <h2>404 not found</h2>;
+  }
+
+  return (
+    <div>
+      <h1 className="pb-1 text-2xl font-medium">{currentHabit.name}</h1>
+      {currentHabit.description && <p>{currentHabit.description}</p>}
+    </div>
+  );
 };
 
 export default HabitPage;
