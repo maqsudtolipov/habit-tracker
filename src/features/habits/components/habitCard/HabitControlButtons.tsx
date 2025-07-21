@@ -2,62 +2,31 @@ import {Button} from "@/shared/ui/button.tsx";
 import {Pencil, Trash2} from "lucide-react";
 import ConfirmDialog from "@/shared/ui/ConfirmDialog.tsx";
 import {useDispatch} from "react-redux";
-import {deleteHabit, editHabit} from "@/features/habits/slice.ts";
-import EditHabitDialog from "@/features/habits/components/EditHabitDialog.tsx";
-import {type FormEvent, useState} from "react";
+import {deleteHabit} from "@/features/habits/slice.ts";
+import EditHabitDialog from "@/features/habits/components/editHabit/EditHabitDialog.tsx";
+import {useState} from "react";
 import type {Habit} from "@/features/habits/types.ts";
-import {MAX_DESCRIPTION_LENGTH, MAX_NAME_LENGTH,} from "@/features/habits/constants.ts";
+import {useSubmitEditHabitForm} from "@/features/habits/hooks/useSubmitEditHabitForm.ts";
 
 interface HabitControlsProps {
   habit: Habit;
 }
 
 const HabitControlButtons = ({ habit }: HabitControlsProps) => {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const handleCloseDialog = () => setIsDialogOpen(false);
   const dispatch = useDispatch();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  // INFO: Edit and Create forms can be merged
-  const handleEditHabit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      name: formData.get("name")?.toString().trim() ?? "",
-      description: formData.get("description")?.toString().trim() ?? "",
-    };
-
-    // Validate
-    if (
-      !data.name ||
-      data.name.length < 3 ||
-      data.name.length > MAX_NAME_LENGTH ||
-      data.description.length > MAX_DESCRIPTION_LENGTH
-    ) {
-      return;
-    }
-
-    dispatch(
-      editHabit({
-        id: habit.id,
-        name: data.name,
-        description: data.description,
-      }),
-    );
-
-    handleCloseDialog();
-  };
-
-  const handleDeleteHabit = () => {
-    dispatch(deleteHabit(habit.id));
-  };
+  const { handleSubmit: handleEditSubmit } = useSubmitEditHabitForm(habit, () =>
+    setIsDialogOpen(false),
+  );
+  const handleDeleteHabit = () => dispatch(deleteHabit(habit.id));
 
   return (
     <div className="p-1 bg-gray-100 rounded-md flex items-center gap-2">
       <EditHabitDialog
         defaultNameValue={habit.name}
         defaultDescriptionValue={habit.description}
-        handleSubmit={handleEditHabit}
+        handleSubmit={handleEditSubmit}
         open={isDialogOpen}
         onOpenChange={setIsDialogOpen}
       >
