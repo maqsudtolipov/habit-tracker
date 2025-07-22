@@ -22,9 +22,11 @@ const NewHabitTabs = ({ onCloseDialog }: NewHabitTabsProps) => {
   ];
 
   return (
-    <div className="flex flex-col gap-4">
-      <TabsWrapper defaultValue="predefined" items={tabItems} />
-    </div>
+    <TabsWrapper
+      className="w-full gap-4"
+      defaultValue="predefined"
+      items={tabItems}
+    />
   );
 };
 

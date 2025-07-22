@@ -6,6 +6,7 @@ import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage,} from "@
 import {Input} from "@/shared/ui/input.tsx";
 import {useSubmitHabitForm} from "@/features/habits/hooks/useSubmitHabitForm.ts";
 import type {Habit} from "@/features/habits/types.ts";
+import {DialogClose, DialogFooter} from "@/shared/ui/dialog.tsx";
 
 const schema = z.object({
   name: z.string().min(3).max(24),
@@ -64,9 +65,16 @@ const HabitFormFields = ({ type, habit, onClose }: HabitFormFieldsProps) => {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full">
-          {type === "edit" ? "Update Habit" : "Create Habit"}
-        </Button>
+
+        <DialogFooter>
+          <DialogClose asChild>
+            <Button variant="outline">Cancel</Button>
+          </DialogClose>
+          <Button type="submit">
+            {" "}
+            {type === "edit" ? "Update Habit" : "Create Habit"}
+          </Button>
+        </DialogFooter>
       </form>
     </Form>
   );
