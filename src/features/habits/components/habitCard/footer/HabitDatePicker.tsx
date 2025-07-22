@@ -62,7 +62,7 @@ const HabitDatePicker = ({ habit }: { habit: Habit }) => {
         Select date to mark habit "{habit.name}" as complete
       </span>
       <DatePicker value={selectedDate} onChange={handlePickDate} />
-      {!isProgressAlreadySaved && !isDateToday && (
+      {!isProgressAlreadySaved && !isDateToday ? (
         <>
           <Button
             className="size-8"
@@ -81,6 +81,9 @@ const HabitDatePicker = ({ habit }: { habit: Habit }) => {
             Confirm
           </Button>
         </>
+      ) : (
+        // This is due to card changing height when date picked
+        <div className="w-[116px]"></div>
       )}
     </div>
   );

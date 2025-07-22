@@ -9,10 +9,10 @@ interface HabitFooterProps {
 
 const HabitFooter = ({ habit }: HabitFooterProps) => {
   return (
-    <div className="flex flex-col gap-2 sm:flex-row sm:justify-between">
+    <div className="flex gap-2 flex-wrap justify-between">
       <HabitDatePicker habit={habit} />
       <Link
-        className="self-start flex items-center gap-0/5 text-sm text-neutral-600 font-medium hover:underline sm:self-auto"
+        className=" flex items-center gap-0/5 text-sm text-neutral-600 font-medium hover:underline sm:self-auto"
         to={`/habit/${habit.id}`}
         aria-label={`See details for ${habit.name}`}
       >
