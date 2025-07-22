@@ -4,6 +4,7 @@ import {useState} from "react";
 import {DialogClose, DialogFooter} from "@/shared/ui/dialog.tsx";
 import {Button} from "@/shared/ui/button.tsx";
 import {useSubmitEditHabitForm} from "@/features/habits/hooks/useSubmitEditHabitForm.ts";
+import PredefinedHabitItem from "@/features/habits/components/newHabit/predefinedHabit/PredefinedHabitItem.tsx";
 
 const PredefinedHabitsList = ({
   onCloseDialog,
@@ -14,6 +15,10 @@ const PredefinedHabitsList = ({
 
   const { handleSubmit } = useSubmitEditHabitForm("createNew", onCloseDialog);
 
+  const handleSelectHabit = (id: string) => {
+    setSelectedHabitId(id);
+  };
+
   return (
     <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
       <ScrollArea className="h-60 rounded-md border">
@@ -22,29 +27,13 @@ const PredefinedHabitsList = ({
           role="radiogroup"
           aria-label="Predefined habit selection"
         >
-          {PREDEFINED_HABITS.map((habit) => {
-            const isSelected = habit.id === selectedHabitId;
-
-            return (
-              <li
-                key={habit.id}
-                className={`p-2 rounded focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]  ${isSelected && " bg-neutral-100 outline-2 outline-neutral-200"}`}
-                onClick={() => setSelectedHabitId(habit.id)}
-                role="radio"
-                aria-checked={isSelected}
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    setSelectedHabitId(habit.id);
-                  }
-                }}
-              >
-                <p className="text-black font-medium">{habit.name}</p>
-                <p className="text-sm">{habit.description}</p>
-              </li>
-            );
-          })}
+          {PREDEFINED_HABITS.map((habit) => (
+            <PredefinedHabitItem
+              habit={habit}
+              selectedHabitId={selectedHabitId}
+              onSelectHabit={handleSelectHabit}
+            />
+          ))}
         </ul>
       </ScrollArea>
 
