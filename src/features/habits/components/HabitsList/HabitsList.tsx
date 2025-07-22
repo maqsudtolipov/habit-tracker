@@ -1,8 +1,8 @@
 import {useSelector} from "react-redux";
 import type {RootState} from "@/app/store.ts";
-import HabitCard from "@/features/habits/components/habitCard/HabitCard.tsx";
+import HabitCard from "@/features/habits/components/HabitCard/HabitCard.tsx";
 import {compareAsc} from "date-fns";
-import NoHabitsMessage from "@/features/habits/components/habitsList/NoHabitsMessage.tsx";
+import NoHabitsMessage from "@/features/habits/components/HabitsList/NoHabitsMessage.tsx";
 
 const HabitsList = () => {
   const habits = useSelector((state: RootState) => state.habits.habits);

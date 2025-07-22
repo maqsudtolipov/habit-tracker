@@ -1,6 +1,6 @@
 import type {Habit} from "@/features/habits/types.ts";
-import HabitEditButton from "@/features/habits/components/habitCard/editHabit/HabitEditButton.tsx";
-import HabitDeleteButton from "@/features/habits/components/habitCard/deleteHabit/HabitDeleteButton.tsx";
+import EditHabitButton from "@/features/habits/components/HabitCard/editHabit/EditHabitButton.tsx";
+import DeleteHabitButton from "@/features/habits/components/HabitCard/deleteHabit/DeleteHabitButton.tsx";
 
 interface HabitControlsProps {
   habit: Habit;
@@ -9,8 +9,8 @@ interface HabitControlsProps {
 const HabitControlButtons = ({ habit }: HabitControlsProps) => {
   return (
     <div className="p-1 bg-gray-100 rounded-md flex items-center gap-2">
-      <HabitEditButton habit={habit} />
-      <HabitDeleteButton habit={habit} />
+      <EditHabitButton habit={habit} />
+      <DeleteHabitButton habit={habit} />
     </div>
   );
 };

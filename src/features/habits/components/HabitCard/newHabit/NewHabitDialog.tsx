@@ -1,8 +1,8 @@
 import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger,} from "@/shared/ui/dialog.tsx";
 
 import {useState} from "react";
-import NewHabitTabs from "@/features/habits/components/habitCard/newHabit/NewHabitTabs.tsx";
-import NewHabitButton from "@/features/habits/components/habitCard/newHabit/NewHabitButton.tsx";
+import NewHabitTabs from "@/features/habits/components/HabitCard/newHabit/NewHabitTabs.tsx";
+import NewHabitButton from "@/features/habits/components/HabitCard/newHabit/NewHabitButton.tsx";
 
 const NewHabitDialog = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);

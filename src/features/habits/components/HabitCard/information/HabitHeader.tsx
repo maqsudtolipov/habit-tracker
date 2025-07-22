@@ -5,7 +5,7 @@ import {toggleProgressStatus} from "@/features/progress/slice.ts";
 import getFormatedDate from "@/shared/utils/getFormatedDate.ts";
 import {Checkbox} from "@/shared/ui/checkbox.tsx";
 import {Box, Sparkle} from "lucide-react";
-import HabitControlButtons from "@/features/habits/components/habitCard/information/HabitControlButtons.tsx";
+import HabitControlButtons from "@/features/habits/components/HabitCard/information/HabitControlButtons.tsx";
 
 interface HabitHeaderProps {
   habit: Habit;

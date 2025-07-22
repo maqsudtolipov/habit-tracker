@@ -9,7 +9,7 @@ interface HabitDeleteButtonProps {
   habit: Habit;
 }
 
-const HabitDeleteButton = ({ habit }: HabitDeleteButtonProps) => {
+const DeleteHabitButton = ({ habit }: HabitDeleteButtonProps) => {
   const dispatch = useDispatch();
   const handleDeleteHabit = () => dispatch(deleteHabit(habit.id));
 
@@ -23,4 +23,4 @@ const HabitDeleteButton = ({ habit }: HabitDeleteButtonProps) => {
   );
 };
 
-export default HabitDeleteButton;
+export default DeleteHabitButton;

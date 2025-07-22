@@ -1,6 +1,6 @@
 import type {Habit} from "@/features/habits/types.ts";
-import HabitHeader from "@/features/habits/components/habitCard/information/HabitHeader.tsx";
-import HabitDescription from "@/features/habits/components/habitCard/information/HabitDescription.tsx";
+import HabitHeader from "@/features/habits/components/HabitCard/information/HabitHeader.tsx";
+import HabitDescription from "@/features/habits/components/HabitCard/information/HabitDescription.tsx";
 
 interface HabitInformationProps {
   habit: Habit;

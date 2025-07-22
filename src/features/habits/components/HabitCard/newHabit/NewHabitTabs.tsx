@@ -1,8 +1,8 @@
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/shared/ui/tabs.tsx";
-import CustomHabitForm from "@/features/habits/components/habitCard/newHabit/customHabit/CustomHabitForm.tsx";
+import CustomHabitForm from "@/features/habits/components/HabitCard/newHabit/customHabit/CustomHabitForm.tsx";
 import {useState} from "react";
-import PredefinedHabitsList
-  from "@/features/habits/components/habitCard/newHabit/predefinedHabit/PredefinedHabitsList.tsx";
+import PredefinedHabitsForm
+  from "@/features/habits/components/HabitCard/newHabit/predefinedHabit/PredefinedHabitsForm.tsx";
 
 interface NewHabitTabsProps {
   onCloseDialog: () => void;
@@ -31,7 +31,7 @@ const NewHabitTabs = ({ onCloseDialog }: NewHabitTabsProps) => {
           className="text-sm text-muted-foreground"
           value="predefined"
         >
-          <PredefinedHabitsList
+          <PredefinedHabitsForm
             onCloseDialog={onCloseDialog}
           />
         </TabsContent>

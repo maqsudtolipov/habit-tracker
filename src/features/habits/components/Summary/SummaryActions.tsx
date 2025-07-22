@@ -2,9 +2,9 @@ import DatePicker from "@/shared/ui/DatePicker.tsx";
 import {useDispatch, useSelector} from "react-redux";
 import type {RootState} from "@/app/store.ts";
 import {changeSelectedDate} from "@/features/habits/slice.ts";
-import NewHabitDialog from "@/features/habits/components/habitCard/newHabit/NewHabitDialog.tsx";
+import NewHabitDialog from "@/features/habits/components/HabitCard/newHabit/NewHabitDialog.tsx";
 
-const HeaderActions = () => {
+const SummaryActions = () => {
   const dispatch = useDispatch();
   const selectedDate = useSelector(
     (state: RootState) => state.habits.selectedDate,
@@ -22,4 +22,4 @@ const HeaderActions = () => {
   );
 };
 
-export default HeaderActions;
+export default SummaryActions;

@@ -1,4 +1,4 @@
-import NewHabitDialog from "@/features/habits/components/habitCard/newHabit/NewHabitDialog.tsx";
+import NewHabitDialog from "@/features/habits/components/HabitCard/newHabit/NewHabitDialog.tsx";
 
 const NoHabitsMessage = () => {
   return (

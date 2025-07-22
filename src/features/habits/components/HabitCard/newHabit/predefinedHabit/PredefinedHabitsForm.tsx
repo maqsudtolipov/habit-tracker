@@ -4,12 +4,12 @@ import {type FormEvent, useState} from "react";
 import {DialogClose, DialogFooter} from "@/shared/ui/dialog.tsx";
 import {Button} from "@/shared/ui/button.tsx";
 import PredefinedHabitItem
-    from "@/features/habits/components/habitCard/newHabit/predefinedHabit/PredefinedHabitItem.tsx";
+  from "@/features/habits/components/HabitCard/newHabit/predefinedHabit/PredefinedHabitItem.tsx";
 import {useSubmitPredefinedHabit} from "@/features/habits/hooks/useSubmitPredefinedHabit.ts";
 import {useSelector} from "react-redux";
 import type {RootState} from "@/app/store.ts";
 
-const PredefinedHabitsList = ({
+const PredefinedHabitsForm = ({
   onCloseDialog,
 }: {
   onCloseDialog: () => void;
@@ -68,4 +68,4 @@ const PredefinedHabitsList = ({
   );
 };
 
-export default PredefinedHabitsList;
+export default PredefinedHabitsForm;

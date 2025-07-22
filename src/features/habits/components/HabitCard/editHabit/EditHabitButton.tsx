@@ -10,7 +10,7 @@ interface HabitEditButtonProps {
   habit: Habit;
 }
 
-const HabitEditButton = ({ habit }: HabitEditButtonProps) => {
+const EditHabitButton = ({ habit }: HabitEditButtonProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { handleSubmit } = useSubmitHabitForm(
     "edit",
@@ -41,4 +41,4 @@ const HabitEditButton = ({ habit }: HabitEditButtonProps) => {
   );
 };
 
-export default HabitEditButton;
+export default EditHabitButton;
