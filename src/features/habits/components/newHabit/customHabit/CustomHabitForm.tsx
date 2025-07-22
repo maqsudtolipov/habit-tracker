@@ -1,8 +1,8 @@
 import {useDispatch} from "react-redux";
 import type {FormEvent} from "react";
-import {MAX_DESCRIPTION_LENGTH, MAX_NAME_LENGTH,} from "@/features/habits/constants.ts";
 import {createNewHabit} from "@/features/habits/slice.ts";
 import HabitFormFields from "@/shared/components/HabitFormFields.tsx";
+import {parseAndValidateHabitForm} from "@/features/utils.ts";
 
 interface CustomHabitFormProps {
   onCloseDialog: () => void;
@@ -14,26 +14,12 @@ const CustomHabitForm = ({ onCloseDialog }: CustomHabitFormProps) => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      name: formData.get("name")?.toString().trim() ?? "",
-      description: formData.get("description")?.toString().trim() ?? "",
-    };
-
-    // Validate
-    if (
-      !data.name ||
-      data.name.length < 3 ||
-      data.name.length > MAX_NAME_LENGTH ||
-      data.description.length > MAX_DESCRIPTION_LENGTH
-    ) {
-      return;
-    }
+    const data = parseAndValidateHabitForm(e.currentTarget);
+    if (!data) return;
 
     dispatch(
       createNewHabit({
-        name: data.name,
-        description: data.description,
+        ...data,
         type: "custom",
       }),
     );
