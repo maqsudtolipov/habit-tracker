@@ -1,8 +1,11 @@
-import {Label} from "@/shared/ui/label.tsx";
 import {Input} from "@/shared/ui/input.tsx";
 import type {FormEvent} from "react";
 import {DialogClose, DialogFooter} from "@/shared/ui/dialog.tsx";
 import {Button} from "@/shared/ui/button.tsx";
+import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage,} from "@/shared/ui/form.tsx";
+import {z} from "zod";
+import {useForm} from "react-hook-form";
+import {zodResolver} from "@hookform/resolvers/zod";
 
 interface HabitFormFieldsProps {
   defaultNameValue?: string;
@@ -10,35 +13,87 @@ interface HabitFormFieldsProps {
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
 }
 
+const formSchema = z.object({
+  name: z
+    .string()
+    .min(3, {
+      message: "Name must be at least 3 characters.",
+    })
+    .max(24, {
+      message: "Name must be max 24 characters.",
+    }),
+  description: z
+    .string()
+    .max(160, {
+      message: "Description must be max 160 characters.",
+    })
+    .optional(),
+});
+
 const HabitFormFields = ({
   defaultNameValue = "",
   defaultDescriptionValue = "",
   handleSubmit,
 }: HabitFormFieldsProps) => {
-  return (
-    <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-      <div className="flex flex-col gap-4">
-        <div className="grid gap-3">
-          <Label htmlFor="name">* Name</Label>
-          <Input id="name" name="name" defaultValue={defaultNameValue} />
-        </div>
-        <div className="grid gap-3">
-          <Label htmlFor="description">Description</Label>
-          <Input
-            id="description"
-            name="description"
-            defaultValue={defaultDescriptionValue}
-          />
-        </div>
-      </div>
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: defaultNameValue,
+      description: defaultDescriptionValue,
+    },
+  });
 
-      <DialogFooter>
-        <DialogClose asChild>
-          <Button variant="outline">Cancel</Button>
-        </DialogClose>
-        <Button type="submit">Save changes</Button>
-      </DialogFooter>
-    </form>
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
+    console.log(values);
+
+    handleSubmit(values);
+  }
+
+  return (
+    <Form {...form}>
+      <form
+        className="flex flex-col gap-4"
+        onSubmit={form.handleSubmit(onSubmit)}
+      >
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Name *</FormLabel>
+              <FormControl>
+                <Input placeholder="Habit Name" {...field} />
+              </FormControl>
+
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="description"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Description</FormLabel>
+              <FormControl>
+                <Input placeholder="Optional Description" {...field} />
+              </FormControl>
+
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <DialogFooter>
+          <DialogClose asChild>
+            <Button variant="outline">Cancel</Button>
+          </DialogClose>
+          <Button type="submit">Save changes</Button>
+        </DialogFooter>
+      </form>
+    </Form>
   );
 };
 
