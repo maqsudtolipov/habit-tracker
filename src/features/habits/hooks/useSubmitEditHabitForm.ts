@@ -39,7 +39,6 @@ export const useSubmitEditHabitForm = (
     }
 
     if (mode === "createNew") {
-      console.log("Entered submit");
       dispatch(
         createNewHabit({
           ...data,
