@@ -14,10 +14,12 @@ export const useHabitDatePicker = (habit: Habit) => {
   );
   const progress = useSelector((state: RootState) => state.progress);
 
+  const globalSelectedDateAsDate = new Date(globalSelectedDate);
+
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
   useEffect(() => {
-    setSelectedDate(globalSelectedDate);
+    setSelectedDate(new Date(globalSelectedDate));
   }, [globalSelectedDate]);
 
   const handlePickDate = (date: Date) => {
@@ -27,7 +29,7 @@ export const useHabitDatePicker = (habit: Habit) => {
   const handleReset = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     e.stopPropagation();
-    setSelectedDate(globalSelectedDate);
+    setSelectedDate(globalSelectedDateAsDate);
   };
 
   const handleConfirm = (e: MouseEvent<HTMLButtonElement>) => {
@@ -44,7 +46,7 @@ export const useHabitDatePicker = (habit: Habit) => {
     toast.success(`Habit Completed for ${getFormatedDate(selectedDate)}`);
   };
 
-  const formattedDate = getFormatedDate(globalSelectedDate);
+  const formattedDate = getFormatedDate(globalSelectedDateAsDate);
 
   const isToday = isSameDay(selectedDate, globalSelectedDate);
 

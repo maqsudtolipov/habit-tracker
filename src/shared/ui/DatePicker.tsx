@@ -5,7 +5,7 @@ import {Calendar} from "@/shared/ui/calendar.tsx";
 import {Button} from "@/shared/ui/button.tsx";
 
 interface DatePickerProps {
-  value: string; // ISO string
+  value: Date;
   onChange: (date: Date) => void;
 }
 

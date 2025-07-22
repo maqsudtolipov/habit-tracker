@@ -16,7 +16,7 @@ const SummaryActions = () => {
 
   return (
     <div className="flex items-center justify-end flex-1">
-      <DatePicker value={selectedDate} onChange={handleDateChange} />
+      <DatePicker value={new Date(selectedDate)} onChange={handleDateChange} />
       <NewHabitDialog />
     </div>
   );
