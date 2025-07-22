@@ -1,38 +1,18 @@
 import {PREDEFINED_HABITS} from "@/features/habits/constants.ts";
 import {ScrollArea} from "@/shared/ui/scroll-area.tsx";
-import {createNewHabit} from "@/features/habits/slice.ts";
-import {type FormEvent, useState} from "react";
-import {useDispatch} from "react-redux";
+import {useState} from "react";
 import {DialogClose, DialogFooter} from "@/shared/ui/dialog.tsx";
 import {Button} from "@/shared/ui/button.tsx";
+import {useSubmitEditHabitForm} from "@/features/habits/hooks/useSubmitEditHabitForm.ts";
 
 const PredefinedHabitsList = ({
   onCloseDialog,
 }: {
   onCloseDialog: () => void;
 }) => {
-  const dispatch = useDispatch();
   const [selectedHabitId, setSelectedHabitId] = useState<null | string>(null);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const selectedHabit = PREDEFINED_HABITS.find(
-      (habit) => habit.id === selectedHabitId,
-    );
-
-    if (!selectedHabit) return;
-
-    dispatch(
-      createNewHabit({
-        name: `${selectedHabit.name} ${Math.floor(Math.random() * 100)}`,
-        description: selectedHabit.description,
-        type: "predefined",
-      }),
-    );
-
-    onCloseDialog();
-  };
+  const { handleSubmit } = useSubmitEditHabitForm("createNew", onCloseDialog);
 
   return (
     <form className="flex flex-col gap-4" onSubmit={handleSubmit}>

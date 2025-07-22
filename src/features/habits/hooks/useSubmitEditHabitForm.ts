@@ -4,7 +4,7 @@ import {MAX_DESCRIPTION_LENGTH, MAX_NAME_LENGTH,} from "@/features/habits/consta
 import {createNewHabit, editHabit} from "@/features/habits/slice.ts";
 
 export const useSubmitEditHabitForm = (
-  mode: "create" | "edit",
+  mode: "createNew" | "createPre" | "edit",
   onSuccess: () => void,
   habitId?: string,
 ) => {
@@ -39,11 +39,20 @@ export const useSubmitEditHabitForm = (
       );
     }
 
-    if (mode === "create") {
+    if (mode === "createNew") {
       dispatch(
         createNewHabit({
           ...data,
           type: "custom",
+        }),
+      );
+    }
+
+    if (mode === "createPre") {
+      dispatch(
+        createNewHabit({
+          ...data,
+          type: "predefined",
         }),
       );
     }

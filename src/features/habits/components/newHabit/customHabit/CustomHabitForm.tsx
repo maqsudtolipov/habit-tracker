@@ -6,7 +6,7 @@ interface CustomHabitFormProps {
 }
 
 const CustomHabitForm = ({ onCloseDialog }: CustomHabitFormProps) => {
-  const { handleSubmit } = useSubmitEditHabitForm("create", onCloseDialog);
+  const { handleSubmit } = useSubmitEditHabitForm("createNew", onCloseDialog);
 
   return <HabitFormFields handleSubmit={handleSubmit} />;
 };
