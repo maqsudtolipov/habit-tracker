@@ -1,5 +1,6 @@
 import {useDispatch} from "react-redux";
 import {createNewHabit, editHabit} from "@/features/habits/slice.ts";
+import {toast} from "sonner";
 
 export const useSubmitHabitForm = (
   mode: "createNew" | "edit",
@@ -24,6 +25,7 @@ export const useSubmitHabitForm = (
           description,
         }),
       );
+      toast.success(`Habit is updated`);
     }
 
     if (mode === "createNew") {
@@ -34,6 +36,7 @@ export const useSubmitHabitForm = (
           type: "custom",
         }),
       );
+      toast.success(`New habit is created`);
     }
 
     onSuccess();

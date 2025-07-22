@@ -1,6 +1,7 @@
 import {useDispatch} from "react-redux";
 import {MAX_DESCRIPTION_LENGTH, MAX_NAME_LENGTH,} from "@/features/habits/constants.ts";
 import {createNewHabit} from "@/features/habits/slice.ts";
+import {toast} from "sonner";
 
 export const useSubmitPredefinedHabit = (onSuccess: () => void) => {
   const dispatch = useDispatch();
@@ -16,6 +17,8 @@ export const useSubmitPredefinedHabit = (onSuccess: () => void) => {
     }
 
     dispatch(createNewHabit({ id, name, description, type: "predefined" }));
+    toast.success(`New habit is created`);
+
     onSuccess();
   };
 
