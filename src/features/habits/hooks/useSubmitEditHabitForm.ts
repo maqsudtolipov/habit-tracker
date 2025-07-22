@@ -4,7 +4,7 @@ import {MAX_DESCRIPTION_LENGTH, MAX_NAME_LENGTH,} from "@/features/habits/consta
 import {createNewHabit, editHabit} from "@/features/habits/slice.ts";
 
 export const useSubmitEditHabitForm = (
-  mode: "createNew" | "createPre" | "edit",
+  mode: "createNew" | "edit",
   onSuccess: () => void,
   habitId?: string,
 ) => {
@@ -12,7 +12,6 @@ export const useSubmitEditHabitForm = (
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Triggered submit");
 
     const formData = new FormData(e.currentTarget);
     const data = {
@@ -20,9 +19,6 @@ export const useSubmitEditHabitForm = (
       description: formData.get("description")?.toString().trim() ?? "",
     };
 
-    console.log("data", data);
-
-    // Validate
     if (
       !data.name ||
       data.name.length < 3 ||
@@ -43,20 +39,11 @@ export const useSubmitEditHabitForm = (
     }
 
     if (mode === "createNew") {
-      console.log('Entered submit');
+      console.log("Entered submit");
       dispatch(
         createNewHabit({
           ...data,
           type: "custom",
-        }),
-      );
-    }
-
-    if (mode === "createPre") {
-      dispatch(
-        createNewHabit({
-          ...data,
-          type: "predefined",
         }),
       );
     }
