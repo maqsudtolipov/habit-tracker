@@ -1,21 +1,18 @@
 import {PREDEFINED_HABITS} from "@/features/habits/constants.ts";
 import {ScrollArea} from "@/shared/ui/scroll-area.tsx";
 import {createNewHabit} from "@/features/habits/slice.ts";
-import type {FormEvent} from "react";
+import {type FormEvent, useState} from "react";
 import {useDispatch} from "react-redux";
 import {DialogClose, DialogFooter} from "@/shared/ui/dialog.tsx";
 import {Button} from "@/shared/ui/button.tsx";
 
 const PredefinedHabitsList = ({
-  selectedHabitId,
-  onSelectHabit,
   onCloseDialog,
 }: {
-  selectedHabitId: string | null;
-  onSelectHabit: (id: string) => void;
   onCloseDialog: () => void;
 }) => {
   const dispatch = useDispatch();
+  const [selectedHabitId, setSelectedHabitId] = useState<null | string>(null);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -52,14 +49,14 @@ const PredefinedHabitsList = ({
               <li
                 key={habit.id}
                 className={`p-2 rounded focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]  ${isSelected && " bg-neutral-100 outline-2 outline-neutral-200"}`}
-                onClick={() => onSelectHabit(habit.id)}
+                onClick={() => setSelectedHabitId(habit.id)}
                 role="radio"
                 aria-checked={isSelected}
                 tabIndex={0}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
-                    onSelectHabit(habit.id);
+                    setSelectedHabitId(habit.id);
                   }
                 }}
               >

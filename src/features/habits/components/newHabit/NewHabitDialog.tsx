@@ -13,14 +13,13 @@ const NewHabitDialog = () => {
       <DialogTrigger>
         <NewHabitButton />
       </DialogTrigger>
+
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Create a new habit</DialogTitle>
         </DialogHeader>
 
-        <div className="flex flex-col gap-4">
-          <NewHabitTabs onCloseDialog={handleCloseDialog} />
-        </div>
+        <NewHabitTabs onCloseDialog={handleCloseDialog} />
       </DialogContent>
     </Dialog>
   );
