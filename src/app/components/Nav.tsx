@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -8,6 +8,12 @@ import {
 } from "@/shared/ui/navigation-menu";
 
 const Nav = () => {
+  const data = useLocation();
+
+  const generateActiveLinkStyle = (path: string) => {
+    return data.pathname === path ? "bg-gray-100" : "";
+  };
+
   return (
     <nav className=" border-b">
       <div className="max-w-[1024px] mx-auto p-4 flex items-center justify-between">
@@ -28,7 +34,7 @@ const Nav = () => {
             <NavigationMenuItem>
               <NavigationMenuLink
                 asChild
-                className={navigationMenuTriggerStyle()}
+                className={`${navigationMenuTriggerStyle()} ${generateActiveLinkStyle("/")}`}
               >
                 <Link to="/">Home</Link>
               </NavigationMenuLink>
@@ -36,7 +42,7 @@ const Nav = () => {
             <NavigationMenuItem>
               <NavigationMenuLink
                 asChild
-                className={navigationMenuTriggerStyle()}
+                className={`${navigationMenuTriggerStyle()} ${generateActiveLinkStyle("/stats")}`}
               >
                 <Link to="/stats">Stats</Link>
               </NavigationMenuLink>
