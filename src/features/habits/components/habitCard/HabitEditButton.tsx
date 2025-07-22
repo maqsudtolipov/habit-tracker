@@ -12,8 +12,10 @@ interface HabitEditButtonProps {
 const HabitEditButton = ({ habit }: HabitEditButtonProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const { handleSubmit: handleEditSubmit } = useSubmitEditHabitForm(habit, () =>
-    setIsDialogOpen(false),
+  const { handleSubmit: handleEditSubmit } = useSubmitEditHabitForm(
+    "edit",
+    () => setIsDialogOpen(false),
+    habit.id,
   );
 
   return (
