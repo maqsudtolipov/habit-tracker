@@ -44,6 +44,7 @@ const PredefinedHabitsForm = ({
           >
             {filteredHabits.map((habit) => (
               <PredefinedHabitItem
+                key={habit.id}
                 habit={habit}
                 selectedHabitId={selectedHabitId}
                 onSelectHabit={setSelectedHabitId}
