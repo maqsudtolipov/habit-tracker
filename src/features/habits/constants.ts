@@ -163,49 +163,5 @@ export const PREDEFINED_HABITS: Habit[] = [
   },
 ];
 
-export const SAVED_HABITS_STATE: Habit[] = [
-  {
-    id: "1a2b3c",
-    name: "Drink Water",
-    description: "Drink at least 8 cups of water a day to stay hydrated.",
-    type: "predefined",
-    createdAt: "2025-07-15T06:00:00.000Z",
-    updatedAt: "2025-07-15T06:00:00.000Z",
-  },
-  {
-    id: "4d5e6f",
-    name: "Read 10 Pages",
-    description: "",
-    type: "predefined",
-    createdAt: "2025-07-12T09:45:00.000Z",
-    updatedAt: "2025-07-14T08:20:00.000Z",
-  },
-  {
-    id: "7g8h9i",
-    name: "Stretch in the Morning",
-    description:
-      "Do a quick 5-minute stretch after waking up to improve flexibility.",
-    type: "custom",
-    createdAt: "2025-06-25T07:30:00.000Z",
-    updatedAt: "2025-07-10T07:30:00.000Z",
-  },
-  {
-    id: "0j1k2l",
-    name: "No Sugar Day",
-    description: "Avoid all added sugars for the day.",
-    type: "custom",
-    createdAt: "2025-07-01T10:15:00.000Z",
-    updatedAt: "2025-07-13T10:15:00.000Z",
-  },
-  {
-    id: "3m4n5o",
-    name: "Evening Walk",
-    description: "",
-    type: "predefined",
-    createdAt: "2025-07-05T19:00:00.000Z",
-    updatedAt: "2025-07-14T19:00:00.000Z",
-  },
-];
-
 export const MAX_NAME_LENGTH = 24;
 export const MAX_DESCRIPTION_LENGTH = 200;

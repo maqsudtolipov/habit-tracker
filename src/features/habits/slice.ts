@@ -1,16 +1,15 @@
 import {createSlice, type PayloadAction} from "@reduxjs/toolkit";
 import type {HabitsState} from "@/features/habits/types.ts";
 import {nanoid} from "nanoid";
-import {SAVED_HABITS_STATE} from "@/features/habits/constants.ts";
 
-const INITIAL_STATE: HabitsState = {
+const INITIAL__EMPTY_STATE: HabitsState = {
   selectedDate: new Date(),
-  habits: SAVED_HABITS_STATE,
+  habits: [],
 };
 
 const habitsSlice = createSlice({
   name: "habits",
-  initialState: INITIAL_STATE,
+  initialState: INITIAL__EMPTY_STATE,
   reducers: {
     // Habits
     createNewHabit: (
