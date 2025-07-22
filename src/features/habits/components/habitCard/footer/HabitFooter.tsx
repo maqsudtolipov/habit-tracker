@@ -1,4 +1,4 @@
-import HabitDatePicker from "@/features/habits/components/habitCard/footer/HabitDatePicker.tsx";
+import HabitDatePicker from "@/features/habits/components/habitCard/datePicker/HabitDatePicker.tsx";
 import {Link} from "react-router-dom";
 import {ChevronRightIcon} from "lucide-react";
 import type {Habit} from "@/features/habits/types.ts";
