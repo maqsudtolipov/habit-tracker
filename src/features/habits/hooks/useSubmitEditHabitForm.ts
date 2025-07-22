@@ -12,12 +12,15 @@ export const useSubmitEditHabitForm = (
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log("Triggered submit");
 
     const formData = new FormData(e.currentTarget);
     const data = {
       name: formData.get("name")?.toString().trim() ?? "",
       description: formData.get("description")?.toString().trim() ?? "",
     };
+
+    console.log("data", data);
 
     // Validate
     if (
@@ -40,6 +43,7 @@ export const useSubmitEditHabitForm = (
     }
 
     if (mode === "createNew") {
+      console.log('Entered submit');
       dispatch(
         createNewHabit({
           ...data,

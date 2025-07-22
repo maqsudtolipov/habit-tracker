@@ -1,11 +1,11 @@
 import {PREDEFINED_HABITS} from "@/features/habits/constants.ts";
 import {ScrollArea} from "@/shared/ui/scroll-area.tsx";
-import {useState} from "react";
+import {type FormEvent, useState} from "react";
 import {DialogClose, DialogFooter} from "@/shared/ui/dialog.tsx";
 import {Button} from "@/shared/ui/button.tsx";
-import {useSubmitEditHabitForm} from "@/features/habits/hooks/useSubmitEditHabitForm.ts";
 import PredefinedHabitItem
     from "@/features/habits/components/habitCard/newHabit/predefinedHabit/PredefinedHabitItem.tsx";
+import {useSubmitPredefinedHabit} from "@/features/habits/hooks/useSubmitPredefinedHabit.ts";
 
 const PredefinedHabitsList = ({
   onCloseDialog,
@@ -14,14 +14,22 @@ const PredefinedHabitsList = ({
 }) => {
   const [selectedHabitId, setSelectedHabitId] = useState<null | string>(null);
 
-  const { handleSubmit } = useSubmitEditHabitForm("createNew", onCloseDialog);
+  const { handleSubmit } = useSubmitPredefinedHabit(onCloseDialog);
 
-  const handleSelectHabit = (id: string) => {
-    setSelectedHabitId(id);
+  // DOES NOT USE FORM DATA
+  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const habit = PREDEFINED_HABITS.find(
+      (habit) => habit.id === selectedHabitId,
+    );
+    if (!habit) return;
+
+    handleSubmit(habit.name, habit.description);
   };
 
   return (
-    <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+    <form className="flex flex-col gap-4" onSubmit={handleFormSubmit}>
       <ScrollArea className="h-60 rounded-md border">
         <ul
           className="flex flex-col gap-2 p-2 pr-4"
@@ -32,7 +40,7 @@ const PredefinedHabitsList = ({
             <PredefinedHabitItem
               habit={habit}
               selectedHabitId={selectedHabitId}
-              onSelectHabit={handleSelectHabit}
+              onSelectHabit={setSelectedHabitId}
             />
           ))}
         </ul>
