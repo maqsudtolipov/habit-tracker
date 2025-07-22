@@ -5,7 +5,7 @@ import {createNewHabit} from "@/features/habits/slice.ts";
 export const useSubmitPredefinedHabit = (onSuccess: () => void) => {
   const dispatch = useDispatch();
 
-  const handleSubmit = (name: string, description: string) => {
+  const handleSubmit = (id: string, name: string, description: string) => {
     if (
       !name ||
       name.length < 3 ||
@@ -15,7 +15,7 @@ export const useSubmitPredefinedHabit = (onSuccess: () => void) => {
       return;
     }
 
-    dispatch(createNewHabit({ name, description, type: "predefined" }));
+    dispatch(createNewHabit({ id, name, description, type: "predefined" }));
     onSuccess();
   };
 

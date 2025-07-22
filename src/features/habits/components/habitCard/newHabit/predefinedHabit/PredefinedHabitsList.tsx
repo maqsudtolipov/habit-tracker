@@ -6,12 +6,15 @@ import {Button} from "@/shared/ui/button.tsx";
 import PredefinedHabitItem
     from "@/features/habits/components/habitCard/newHabit/predefinedHabit/PredefinedHabitItem.tsx";
 import {useSubmitPredefinedHabit} from "@/features/habits/hooks/useSubmitPredefinedHabit.ts";
+import {useSelector} from "react-redux";
+import type {RootState} from "@/app/store.ts";
 
 const PredefinedHabitsList = ({
   onCloseDialog,
 }: {
   onCloseDialog: () => void;
 }) => {
+  const habits = useSelector((state: RootState) => state.habits.habits);
   const [selectedHabitId, setSelectedHabitId] = useState<null | string>(null);
   const { handleSubmit } = useSubmitPredefinedHabit(onCloseDialog);
 
@@ -23,8 +26,12 @@ const PredefinedHabitsList = ({
     );
     if (!habit) return;
 
-    handleSubmit(habit.name, habit.description);
+    handleSubmit(habit.id, habit.name, habit.description);
   };
+
+  const filteredHabits = PREDEFINED_HABITS.filter(
+    (habit) => !habits.find((storedHabit) => habit.id === storedHabit.id),
+  );
 
   return (
     <form className="flex flex-col gap-4" onSubmit={handleFormSubmit}>
@@ -34,7 +41,7 @@ const PredefinedHabitsList = ({
           role="radiogroup"
           aria-label="Predefined habit selection"
         >
-          {PREDEFINED_HABITS.map((habit) => (
+          {filteredHabits.map((habit) => (
             <PredefinedHabitItem
               habit={habit}
               selectedHabitId={selectedHabitId}

@@ -15,6 +15,7 @@ const habitsSlice = createSlice({
     createNewHabit: (
       state: HabitsState,
       action: PayloadAction<{
+        id?: string;
         name: string;
         description: string;
         type: "predefined" | "custom";
@@ -22,7 +23,7 @@ const habitsSlice = createSlice({
     ) => {
       const timestamp = new Date().toISOString();
       state.habits.push({
-        id: nanoid(),
+        id: action.payload.id || nanoid(),
         name: action.payload.name,
         description: action.payload.description,
         type: action.payload.type,
