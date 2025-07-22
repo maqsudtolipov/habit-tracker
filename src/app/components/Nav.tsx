@@ -1,4 +1,11 @@
-import {Link, NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from "@/shared/ui/navigation-menu";
 
 const Nav = () => {
   return (
@@ -16,28 +23,26 @@ const Nav = () => {
           <span>Habits</span>
         </Link>
 
-        <ul className="flex items-center justify-between gap-2">
-          <li>
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? "p-2 rounded bg-gray-200" : "p-2 rounded"
-              }
-              to="/"
-            >
-              🏠 Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? "p-2 rounded bg-gray-200" : "p-2 rounded"
-              }
-              to="/stats"
-            >
-              📊 Stats
-            </NavLink>
-          </li>
-        </ul>
+        <NavigationMenu>
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                asChild
+                className={navigationMenuTriggerStyle()}
+              >
+                <Link to="/">Home</Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                asChild
+                className={navigationMenuTriggerStyle()}
+              >
+                <Link to="/stats">Stats</Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
       </div>
     </nav>
   );
