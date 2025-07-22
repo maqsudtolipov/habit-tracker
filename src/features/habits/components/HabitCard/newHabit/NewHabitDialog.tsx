@@ -16,8 +16,6 @@ const NewHabitDialog = () => {
       {(onClose) => <NewHabitTabs onCloseDialog={onClose} />}
     </DialogWrapper>
   );
-
-  // <DialogContent className="sm:max-w-[425px]">
 };
 
 export default NewHabitDialog;
