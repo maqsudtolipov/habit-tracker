@@ -36,19 +36,26 @@ const PredefinedHabitsList = ({
   return (
     <form className="flex flex-col gap-4" onSubmit={handleFormSubmit}>
       <ScrollArea className="h-60 rounded-md border">
-        <ul
-          className="flex flex-col gap-2 p-2 pr-4"
-          role="radiogroup"
-          aria-label="Predefined habit selection"
-        >
-          {filteredHabits.map((habit) => (
-            <PredefinedHabitItem
-              habit={habit}
-              selectedHabitId={selectedHabitId}
-              onSelectHabit={setSelectedHabitId}
-            />
-          ))}
-        </ul>
+        {filteredHabits.length > 0 ? (
+          <ul
+            className="flex flex-col gap-2 p-2 pr-4"
+            role="radiogroup"
+            aria-label="Predefined habit selection"
+          >
+            {filteredHabits.map((habit) => (
+              <PredefinedHabitItem
+                habit={habit}
+                selectedHabitId={selectedHabitId}
+                onSelectHabit={setSelectedHabitId}
+              />
+            ))}
+          </ul>
+        ) : (
+          <p className="p-4">
+            You already selected all the predefined habits. You can create a
+            custom one on the next tab.
+          </p>
+        )}
       </ScrollArea>
 
       <DialogFooter>
