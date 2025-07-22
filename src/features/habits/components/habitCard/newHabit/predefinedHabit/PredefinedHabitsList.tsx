@@ -13,10 +13,8 @@ const PredefinedHabitsList = ({
   onCloseDialog: () => void;
 }) => {
   const [selectedHabitId, setSelectedHabitId] = useState<null | string>(null);
-
   const { handleSubmit } = useSubmitPredefinedHabit(onCloseDialog);
 
-  // DOES NOT USE FORM DATA
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
