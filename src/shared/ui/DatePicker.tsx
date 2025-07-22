@@ -13,7 +13,7 @@ const DatePicker = ({ value, onChange }: DatePickerProps) => {
   const [open, setOpen] = React.useState(false);
 
   const handleSelect = (date: Date | undefined) => {
-    if (date && onChange) {
+    if (date) {
       onChange(date);
     }
     setOpen(false);

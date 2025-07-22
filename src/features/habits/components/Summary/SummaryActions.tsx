@@ -11,7 +11,7 @@ const SummaryActions = () => {
   );
 
   const handleDateChange = (date: Date) => {
-    dispatch(changeSelectedDate(date));
+    dispatch(changeSelectedDate(date.toISOString()));
   };
 
   return (

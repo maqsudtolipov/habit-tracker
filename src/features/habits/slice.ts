@@ -55,8 +55,8 @@ const habitsSlice = createSlice({
     },
 
     // Date
-    changeSelectedDate: (state: HabitsState, action: PayloadAction<Date>) => {
-      state.selectedDate = action.payload.toISOString();
+    changeSelectedDate: (state: HabitsState, action: PayloadAction<string>) => {
+      state.selectedDate = action.payload;
     },
   },
 });
