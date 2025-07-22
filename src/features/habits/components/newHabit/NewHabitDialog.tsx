@@ -6,7 +6,6 @@ import NewHabitButton from "@/features/habits/components/newHabit/NewHabitButton
 
 const NewHabitDialog = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const handleCloseDialog = () => setIsDialogOpen(false);
 
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -19,7 +18,7 @@ const NewHabitDialog = () => {
           <DialogTitle>Create a new habit</DialogTitle>
         </DialogHeader>
 
-        <NewHabitTabs onCloseDialog={handleCloseDialog} />
+        <NewHabitTabs onCloseDialog={() => setIsDialogOpen(false)} />
       </DialogContent>
     </Dialog>
   );
