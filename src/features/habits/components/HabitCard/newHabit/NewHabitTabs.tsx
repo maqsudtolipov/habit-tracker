@@ -1,41 +1,29 @@
-import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/shared/ui/tabs.tsx";
 import CustomHabitForm from "@/features/habits/components/HabitCard/newHabit/customHabit/CustomHabitForm.tsx";
-import {useState} from "react";
 import PredefinedHabitsForm
   from "@/features/habits/components/HabitCard/newHabit/predefinedHabit/PredefinedHabitsForm.tsx";
+import TabsWrapper from "@/shared/ui/TabsWrapper.tsx";
 
 interface NewHabitTabsProps {
   onCloseDialog: () => void;
 }
 
 const NewHabitTabs = ({ onCloseDialog }: NewHabitTabsProps) => {
-  const [selectedTab, setSelectedTab] = useState("predefined");
+  const tabItems = [
+    {
+      label: "Predefined",
+      value: "predefined",
+      content: <PredefinedHabitsForm onCloseDialog={onCloseDialog} />,
+    },
+    {
+      label: "Custom",
+      value: "custom",
+      content: <CustomHabitForm onCloseDialog={onCloseDialog} />,
+    },
+  ];
 
   return (
     <div className="flex flex-col gap-4">
-      <Tabs
-        className="w-full gap-4"
-        value={selectedTab}
-        onValueChange={setSelectedTab}
-      >
-        <TabsList>
-          <TabsTrigger value="predefined">Predefined</TabsTrigger>
-          <TabsTrigger value="custom">Custom</TabsTrigger>
-        </TabsList>
-
-        <TabsContent className="flex flex-col gap-4" value="custom">
-          <CustomHabitForm onCloseDialog={onCloseDialog} />
-        </TabsContent>
-
-        <TabsContent
-          className="text-sm text-muted-foreground"
-          value="predefined"
-        >
-          <PredefinedHabitsForm
-            onCloseDialog={onCloseDialog}
-          />
-        </TabsContent>
-      </Tabs>
+      <TabsWrapper defaultValue="predefined" items={tabItems} />
     </div>
   );
 };
