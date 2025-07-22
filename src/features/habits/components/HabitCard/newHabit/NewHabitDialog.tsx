@@ -2,15 +2,18 @@ import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger,} from "
 
 import {useState} from "react";
 import NewHabitTabs from "@/features/habits/components/HabitCard/newHabit/NewHabitTabs.tsx";
-import NewHabitButton from "@/features/habits/components/HabitCard/newHabit/NewHabitButton.tsx";
+import {Button} from "@/shared/ui/button.tsx";
+import {Plus} from "lucide-react";
 
 const NewHabitDialog = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-      <DialogTrigger>
-        <NewHabitButton />
+      <DialogTrigger asChild>
+        <Button size="sm">
+          <Plus /> New Habit
+        </Button>
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-[425px]">
