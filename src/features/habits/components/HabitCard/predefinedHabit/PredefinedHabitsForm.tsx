@@ -3,8 +3,7 @@ import {ScrollArea} from "@/shared/ui/scroll-area.tsx";
 import {type FormEvent, useState} from "react";
 import {DialogClose, DialogFooter} from "@/shared/ui/dialog.tsx";
 import {Button} from "@/shared/ui/button.tsx";
-import PredefinedHabitItem
-  from "@/features/habits/components/HabitCard/newHabit/predefinedHabit/PredefinedHabitItem.tsx";
+import PredefinedHabitItem from "@/features/habits/components/HabitCard/predefinedHabit/PredefinedHabitItem.tsx";
 import {useSubmitPredefinedHabit} from "@/features/habits/hooks/useSubmitPredefinedHabit.ts";
 import {useSelector} from "react-redux";
 import type {RootState} from "@/app/store.ts";

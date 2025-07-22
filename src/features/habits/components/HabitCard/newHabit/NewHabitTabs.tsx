@@ -1,5 +1,4 @@
-import PredefinedHabitsForm
-  from "@/features/habits/components/HabitCard/newHabit/predefinedHabit/PredefinedHabitsForm.tsx";
+import PredefinedHabitsForm from "@/features/habits/components/HabitCard/predefinedHabit/PredefinedHabitsForm.tsx";
 import TabsWrapper from "@/shared/components/TabsWrapper.tsx";
 import HabitForm from "@/shared/components/HabitForm.tsx";
 
