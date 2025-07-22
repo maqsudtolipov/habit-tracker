@@ -1,12 +1,12 @@
 import HabitFormFields from "@/shared/components/HabitFormFields.tsx";
-import {useSubmitEditHabitForm} from "@/features/habits/hooks/useSubmitEditHabitForm.ts";
+import {useSubmitHabitForm} from "@/features/habits/hooks/useSubmitHabitForm.ts";
 
 interface CustomHabitFormProps {
   onCloseDialog: () => void;
 }
 
 const CustomHabitForm = ({ onCloseDialog }: CustomHabitFormProps) => {
-  const { handleSubmit } = useSubmitEditHabitForm("createNew", onCloseDialog);
+  const { handleSubmit } = useSubmitHabitForm("createNew", onCloseDialog);
 
   return <HabitFormFields handleSubmit={handleSubmit} />;
 };

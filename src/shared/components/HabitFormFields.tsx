@@ -1,5 +1,4 @@
 import {Input} from "@/shared/ui/input.tsx";
-import type {FormEvent} from "react";
 import {DialogClose, DialogFooter} from "@/shared/ui/dialog.tsx";
 import {Button} from "@/shared/ui/button.tsx";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage,} from "@/shared/ui/form.tsx";
@@ -10,7 +9,13 @@ import {zodResolver} from "@hookform/resolvers/zod";
 interface HabitFormFieldsProps {
   defaultNameValue?: string;
   defaultDescriptionValue?: string;
-  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  handleSubmit: ({
+    name,
+    description,
+  }: {
+    name: string;
+    description: string;
+  }) => void;
 }
 
 const formSchema = z.object({
@@ -22,12 +27,9 @@ const formSchema = z.object({
     .max(24, {
       message: "Name must be max 24 characters.",
     }),
-  description: z
-    .string()
-    .max(160, {
-      message: "Description must be max 160 characters.",
-    })
-    .optional(),
+  description: z.string().max(160, {
+    message: "Description must be max 160 characters.",
+  }),
 });
 
 const HabitFormFields = ({
@@ -44,8 +46,6 @@ const HabitFormFields = ({
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
     console.log(values);
 
     handleSubmit(values);
