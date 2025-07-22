@@ -1,72 +1,52 @@
-import {Input} from "@/shared/ui/input.tsx";
-import {DialogClose, DialogFooter} from "@/shared/ui/dialog.tsx";
-import {Button} from "@/shared/ui/button.tsx";
-import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage,} from "@/shared/ui/form.tsx";
-import {z} from "zod";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
+import {z} from "zod";
+import {Button} from "@/shared/ui/button.tsx";
+import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage,} from "@/shared/ui/form.tsx";
+import {Input} from "@/shared/ui/input.tsx";
+import {useSubmitHabitForm} from "@/features/habits/hooks/useSubmitHabitForm.ts";
+import type {Habit} from "@/features/habits/types.ts";
 
-interface HabitFormFieldsProps {
-  defaultNameValue?: string;
-  defaultDescriptionValue?: string;
-  handleSubmit: ({
-    name,
-    description,
-  }: {
-    name: string;
-    description: string;
-  }) => void;
-}
-
-const formSchema = z.object({
-  name: z
-    .string()
-    .min(3, {
-      message: "Name must be at least 3 characters.",
-    })
-    .max(24, {
-      message: "Name must be max 24 characters.",
-    }),
-  description: z.string().max(160, {
-    message: "Description must be max 160 characters.",
-  }),
+const schema = z.object({
+  name: z.string().min(3).max(24),
+  description: z.string().max(160),
 });
 
-const HabitFormFields = ({
-  defaultNameValue = "",
-  defaultDescriptionValue = "",
-  handleSubmit,
-}: HabitFormFieldsProps) => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+type HabitFormSchema = z.infer<typeof schema>;
+
+interface HabitFormFieldsProps {
+  type: "edit" | "createNew";
+  habit?: Habit;
+  onClose: () => void;
+}
+
+const HabitFormFields = ({ type, habit, onClose }: HabitFormFieldsProps) => {
+  const form = useForm<HabitFormSchema>({
+    resolver: zodResolver(schema),
     defaultValues: {
-      name: defaultNameValue,
-      description: defaultDescriptionValue,
+      name: habit?.name ?? "",
+      description: habit?.description ?? "",
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  const { handleSubmit } = useSubmitHabitForm(type, onClose, habit?.id);
 
-    handleSubmit(values);
-  }
+  const onSubmit = (data: HabitFormSchema) => {
+    handleSubmit(data);
+  };
 
   return (
     <Form {...form}>
-      <form
-        className="flex flex-col gap-4"
-        onSubmit={form.handleSubmit(onSubmit)}
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <FormField
           control={form.control}
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name *</FormLabel>
+              <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input placeholder="Habit Name" {...field} />
+                <Input {...field} />
               </FormControl>
-
               <FormMessage />
             </FormItem>
           )}
@@ -78,20 +58,15 @@ const HabitFormFields = ({
             <FormItem>
               <FormLabel>Description</FormLabel>
               <FormControl>
-                <Input placeholder="Optional Description" {...field} />
+                <Input {...field} />
               </FormControl>
-
               <FormMessage />
             </FormItem>
           )}
         />
-
-        <DialogFooter>
-          <DialogClose asChild>
-            <Button variant="outline">Cancel</Button>
-          </DialogClose>
-          <Button type="submit">Save changes</Button>
-        </DialogFooter>
+        <Button type="submit" className="w-full">
+          {type === "edit" ? "Update Habit" : "Create Habit"}
+        </Button>
       </form>
     </Form>
   );

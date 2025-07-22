@@ -4,7 +4,6 @@ import {useState} from "react";
 import {Pencil} from "lucide-react";
 import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger,} from "@/shared/ui/dialog.tsx";
 import HabitFormFields from "@/shared/components/HabitFormFields.tsx";
-import {useSubmitHabitForm} from "@/features/habits/hooks/useSubmitHabitForm.ts";
 
 interface HabitEditButtonProps {
   habit: Habit;
@@ -12,11 +11,6 @@ interface HabitEditButtonProps {
 
 const EditHabitButton = ({ habit }: HabitEditButtonProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const { handleSubmit } = useSubmitHabitForm(
-    "edit",
-    () => setIsDialogOpen(false),
-    habit.id,
-  );
 
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -32,9 +26,9 @@ const EditHabitButton = ({ habit }: HabitEditButtonProps) => {
         </DialogHeader>
 
         <HabitFormFields
-          defaultNameValue={habit.name}
-          defaultDescriptionValue={habit.description}
-          handleSubmit={handleSubmit}
+          type="edit"
+          habit={habit}
+          onClose={() => setIsDialogOpen(false)}
         />
       </DialogContent>
     </Dialog>
