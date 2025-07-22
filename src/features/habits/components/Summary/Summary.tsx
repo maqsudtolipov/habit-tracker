@@ -1,10 +1,10 @@
-import DailySummary from "@/features/habits/components/Summary/DailySummary.tsx";
+import SummaryText from "@/features/habits/components/Summary/SummaryText.tsx";
 import SummaryActions from "@/features/habits/components/Summary/SummaryActions.tsx";
 
 const Summary = () => {
   return (
     <div className="mb-6 flex items-center justify-between flex-wrap gap-2">
-      <DailySummary />
+      <SummaryText />
       <SummaryActions />
     </div>
   );

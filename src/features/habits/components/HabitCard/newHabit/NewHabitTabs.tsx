@@ -1,7 +1,7 @@
-import CustomHabitForm from "@/features/habits/components/HabitCard/newHabit/customHabit/CustomHabitForm.tsx";
 import PredefinedHabitsForm
   from "@/features/habits/components/HabitCard/newHabit/predefinedHabit/PredefinedHabitsForm.tsx";
 import TabsWrapper from "@/shared/components/TabsWrapper.tsx";
+import HabitForm from "@/shared/components/HabitForm.tsx";
 
 interface NewHabitTabsProps {
   onCloseDialog: () => void;
@@ -17,7 +17,7 @@ const NewHabitTabs = ({ onCloseDialog }: NewHabitTabsProps) => {
     {
       label: "Custom",
       value: "custom",
-      content: <CustomHabitForm onCloseDialog={onCloseDialog} />,
+      content: <HabitForm type="createNew" onClose={onCloseDialog} />,
     },
   ];
 

@@ -3,7 +3,7 @@ import type {RootState} from "@/app/store.ts";
 import {format, isSameDay} from "date-fns";
 import {useMemo} from "react";
 
-const DailySummary = () => {
+const SummaryText = () => {
   const { habits, selectedDate } = useSelector(
     (state: RootState) => state.habits,
   );
@@ -32,4 +32,4 @@ const DailySummary = () => {
   );
 };
 
-export default DailySummary;
+export default SummaryText;

@@ -18,10 +18,14 @@ type HabitFormSchema = z.infer<typeof schema>;
 interface HabitFormFieldsProps {
   type: "edit" | "createNew";
   habit?: Habit;
-  onClose: () => void;
+  onClose?: () => void;
 }
 
-const HabitForm = ({ type, habit, onClose }: HabitFormFieldsProps) => {
+const HabitForm = ({
+  type,
+  habit,
+  onClose = () => {},
+}: HabitFormFieldsProps) => {
   const form = useForm<HabitFormSchema>({
     resolver: zodResolver(schema),
     defaultValues: {

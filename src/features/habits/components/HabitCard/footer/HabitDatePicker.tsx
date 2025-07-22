@@ -1,6 +1,6 @@
 import DatePicker from "@/shared/components/DatePicker.tsx";
 import type {Habit} from "@/features/habits/types.ts";
-import HabitDatePickerActions from "@/features/habits/components/HabitCard/datePicker/HabitDatePickerActions.tsx";
+import HabitDatePickerActions from "@/features/habits/components/HabitCard/footer/HabitDatePickerActions.tsx";
 import {useHabitDatePicker} from "@/features/habits/hooks/useHabitDatePicker.ts";
 
 const HabitDatePicker = ({ habit }: { habit: Habit }) => {
