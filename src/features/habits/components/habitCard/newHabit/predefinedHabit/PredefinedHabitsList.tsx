@@ -4,7 +4,8 @@ import {useState} from "react";
 import {DialogClose, DialogFooter} from "@/shared/ui/dialog.tsx";
 import {Button} from "@/shared/ui/button.tsx";
 import {useSubmitEditHabitForm} from "@/features/habits/hooks/useSubmitEditHabitForm.ts";
-import PredefinedHabitItem from "@/features/habits/components/newHabit/predefinedHabit/PredefinedHabitItem.tsx";
+import PredefinedHabitItem
+    from "@/features/habits/components/habitCard/newHabit/predefinedHabit/PredefinedHabitItem.tsx";
 
 const PredefinedHabitsList = ({
   onCloseDialog,

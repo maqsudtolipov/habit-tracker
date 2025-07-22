@@ -1,8 +1,8 @@
 import type {Habit} from "@/features/habits/types.ts";
 import HabitCardContainer from "@/features/habits/components/habitCard/HabitCardContainer.tsx";
-import HabitInformation from "@/features/habits/components/habitCard/HabitInformation.tsx";
+import HabitInformation from "@/features/habits/components/habitCard/information/HabitInformation.tsx";
 import {useHabitProgress} from "@/features/habits/hooks/useHabitProgress.ts";
-import HabitFooter from "@/features/habits/components/habitCard/HabitFooter.tsx";
+import HabitFooter from "@/features/habits/components/habitCard/footer/HabitFooter.tsx";
 
 interface HabitCardProps {
   habit: Habit;

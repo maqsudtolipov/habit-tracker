@@ -2,7 +2,7 @@ import DatePicker from "@/shared/ui/DatePicker.tsx";
 import {useDispatch, useSelector} from "react-redux";
 import type {RootState} from "@/app/store.ts";
 import {changeSelectedDate} from "@/features/habits/slice.ts";
-import NewHabitDialog from "@/features/habits/components/newHabit/NewHabitDialog.tsx";
+import NewHabitDialog from "@/features/habits/components/habitCard/newHabit/NewHabitDialog.tsx";
 
 const HeaderActions = () => {
   const dispatch = useDispatch();

@@ -2,7 +2,7 @@ import {Checkbox} from "@/shared/ui/checkbox.tsx";
 import {toggleProgressStatus} from "@/features/progress/slice.ts";
 import {useDispatch, useSelector} from "react-redux";
 import type {Habit} from "@/features/habits/types.ts";
-import HabitControlButtons from "@/features/habits/components/habitCard/HabitControlButtons.tsx";
+import HabitControlButtons from "@/features/habits/components/habitCard/information/HabitControlButtons.tsx";
 import type {RootState} from "@/app/store.ts";
 import getFormatedDate from "@/shared/utils/getFormatedDate.ts";
 import {Box, Sparkle} from "lucide-react";
