@@ -13,19 +13,19 @@ const progressSlice = createSlice({
     ) => {
       const { date, habitId } = action.payload;
 
-      const existingIndex = state.findIndex(
+      const existingIndex = state.find(
         (progress) => progress.date === date && progress.habitId === habitId,
       );
 
-      // Toggle existing progress
-      if (existingIndex > -1) {
-        const progress = state[existingIndex];
-        progress.status = progress.status === "completed" ? null : "completed";
-        progress.updatedAt = new Date().toISOString();
-      }
+      if (existingIndex) {
+        // Toggle existing progress
 
-      // Add new completed progress
-      else {
+        existingIndex.status =
+          existingIndex.status === "completed" ? null : "completed";
+        existingIndex.updatedAt = new Date().toISOString();
+      } else {
+        // Add new completed progress
+
         state.push({
           habitId,
           date,
