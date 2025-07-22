@@ -1,7 +1,7 @@
 import CustomHabitForm from "@/features/habits/components/HabitCard/newHabit/customHabit/CustomHabitForm.tsx";
 import PredefinedHabitsForm
   from "@/features/habits/components/HabitCard/newHabit/predefinedHabit/PredefinedHabitsForm.tsx";
-import TabsWrapper from "@/shared/ui/TabsWrapper.tsx";
+import TabsWrapper from "@/shared/components/TabsWrapper.tsx";
 
 interface NewHabitTabsProps {
   onCloseDialog: () => void;

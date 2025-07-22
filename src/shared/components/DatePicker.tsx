@@ -15,11 +15,11 @@ const DatePicker = ({ value, onChange }: DatePickerProps) => {
   const handleSelect = (date: Date | undefined) => {
     if (date) {
       onChange(date);
+      setOpen(false);
     }
-    setOpen(false);
   };
 
-  const valueAsDate = new Date(value);
+  const label = value.toLocaleDateString();
 
   return (
     <div className="flex flex-col gap-3 pr-[1ch]">
@@ -29,10 +29,10 @@ const DatePicker = ({ value, onChange }: DatePickerProps) => {
             variant="outline"
             className="w-36 justify-between font-normal"
             size="sm"
-            aria-label={`Pick a date. Currently selected: ${valueAsDate.toLocaleDateString()}`}
+            aria-label={`Pick a date. Currently selected: ${label}`}
           >
             <CalendarIcon />
-            {valueAsDate ? valueAsDate.toLocaleDateString() : "Select date"}
+            {label}
             <ChevronDownIcon />
           </Button>
         </PopoverTrigger>
@@ -42,7 +42,7 @@ const DatePicker = ({ value, onChange }: DatePickerProps) => {
         >
           <Calendar
             mode="single"
-            selected={valueAsDate}
+            selected={value}
             captionLayout="dropdown"
             onSelect={handleSelect}
             disabled={(date) =>

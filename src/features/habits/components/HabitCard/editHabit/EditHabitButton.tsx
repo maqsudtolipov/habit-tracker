@@ -1,7 +1,7 @@
 import {Button} from "@/shared/ui/button.tsx";
 import type {Habit} from "@/features/habits/types.ts";
 import {Pencil} from "lucide-react";
-import HabitFormFields from "@/shared/components/HabitFormFields.tsx";
+import HabitForm from "@/shared/components/HabitForm.tsx";
 import DialogWrapper from "@/shared/components/DialogWrapper.tsx";
 
 interface HabitEditButtonProps {
@@ -20,7 +20,7 @@ const EditHabitButton = ({ habit }: HabitEditButtonProps) => {
       }
     >
       {(onClose) => (
-        <HabitFormFields type="edit" habit={habit} onClose={onClose} />
+        <HabitForm type="edit" habit={habit} onClose={onClose} />
       )}
     </DialogWrapper>
   );

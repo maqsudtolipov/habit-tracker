@@ -1,4 +1,4 @@
-import DatePicker from "@/shared/ui/DatePicker.tsx";
+import DatePicker from "@/shared/components/DatePicker.tsx";
 import {useDispatch, useSelector} from "react-redux";
 import type {RootState} from "@/app/store.ts";
 import {changeSelectedDate} from "@/features/habits/slice.ts";

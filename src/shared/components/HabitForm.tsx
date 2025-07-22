@@ -21,7 +21,7 @@ interface HabitFormFieldsProps {
   onClose: () => void;
 }
 
-const HabitFormFields = ({ type, habit, onClose }: HabitFormFieldsProps) => {
+const HabitForm = ({ type, habit, onClose }: HabitFormFieldsProps) => {
   const form = useForm<HabitFormSchema>({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -80,4 +80,4 @@ const HabitFormFields = ({ type, habit, onClose }: HabitFormFieldsProps) => {
   );
 };
 
-export default HabitFormFields;
+export default HabitForm;

@@ -1,4 +1,4 @@
-import DatePicker from "@/shared/ui/DatePicker.tsx";
+import DatePicker from "@/shared/components/DatePicker.tsx";
 import type {Habit} from "@/features/habits/types.ts";
 import HabitDatePickerActions from "@/features/habits/components/HabitCard/datePicker/HabitDatePickerActions.tsx";
 import {useHabitDatePicker} from "@/features/habits/hooks/useHabitDatePicker.ts";

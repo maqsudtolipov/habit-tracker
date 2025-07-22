@@ -1,4 +1,4 @@
-import ConfirmDialog from "@/shared/ui/ConfirmDialog.tsx";
+import ConfirmDialog from "@/shared/components/ConfirmDialog.tsx";
 import {Button} from "@/shared/ui/button.tsx";
 import {Trash2} from "lucide-react";
 import type {Habit} from "@/features/habits/types.ts";
