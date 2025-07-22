@@ -8,6 +8,6 @@ export interface Habit {
 }
 
 export interface HabitsState {
-  selectedDate: Date;
+  selectedDate: string; // ISO 8601
   habits: Habit[];
 }

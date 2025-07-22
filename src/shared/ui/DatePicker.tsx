@@ -5,7 +5,7 @@ import {Calendar} from "@/shared/ui/calendar.tsx";
 import {Button} from "@/shared/ui/button.tsx";
 
 interface DatePickerProps {
-  value: Date;
+  value: string; // ISO string
   onChange: (date: Date) => void;
 }
 
@@ -19,6 +19,8 @@ const DatePicker = ({ value, onChange }: DatePickerProps) => {
     setOpen(false);
   };
 
+  const valueAsDate = new Date(value);
+
   return (
     <div className="flex flex-col gap-3 pr-[1ch]">
       <Popover open={open} onOpenChange={setOpen}>
@@ -27,10 +29,10 @@ const DatePicker = ({ value, onChange }: DatePickerProps) => {
             variant="outline"
             className="w-36 justify-between font-normal"
             size="sm"
-            aria-label={`Pick a date. Currently selected: ${value.toLocaleDateString()}`}
+            aria-label={`Pick a date. Currently selected: ${valueAsDate.toLocaleDateString()}`}
           >
             <CalendarIcon />
-            {value ? value.toLocaleDateString() : "Select date"}
+            {valueAsDate ? valueAsDate.toLocaleDateString() : "Select date"}
             <ChevronDownIcon />
           </Button>
         </PopoverTrigger>
@@ -40,7 +42,7 @@ const DatePicker = ({ value, onChange }: DatePickerProps) => {
         >
           <Calendar
             mode="single"
-            selected={value}
+            selected={valueAsDate}
             captionLayout="dropdown"
             onSelect={handleSelect}
             disabled={(date) =>

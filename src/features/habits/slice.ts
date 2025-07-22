@@ -3,7 +3,7 @@ import type {HabitsState} from "@/features/habits/types.ts";
 import {nanoid} from "nanoid";
 
 const INITIAL__EMPTY_STATE: HabitsState = {
-  selectedDate: new Date(),
+  selectedDate: new Date().toISOString(),
   habits: [],
 };
 
