@@ -1,15 +1,18 @@
 import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger,} from "@/shared/ui/dialog.tsx";
 
-import {type ReactNode, useState} from "react";
+import {useState} from "react";
 import NewHabitTabs from "@/features/habits/components/newHabit/NewHabitTabs.tsx";
+import NewHabitButton from "@/features/habits/components/newHabit/NewHabitButton.tsx";
 
-const NewHabitDialog = ({ children }: { children: ReactNode }) => {
+const NewHabitDialog = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const handleCloseDialog = () => setIsDialogOpen(false);
 
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-      <DialogTrigger asChild>{children}</DialogTrigger>
+      <DialogTrigger>
+        <NewHabitButton />
+      </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Create a new habit</DialogTitle>
