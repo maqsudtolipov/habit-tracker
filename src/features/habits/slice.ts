@@ -12,6 +12,7 @@ const habitsSlice = createSlice({
   name: "habits",
   initialState: INITIAL_STATE,
   reducers: {
+    // Habits
     createNewHabit: (
       state: HabitsState,
       action: PayloadAction<{
@@ -52,6 +53,8 @@ const habitsSlice = createSlice({
         (habit) => habit.id !== action.payload,
       );
     },
+
+    // Date
     changeSelectedDate: (state: HabitsState, action: PayloadAction<Date>) => {
       state.selectedDate = action.payload;
     },
