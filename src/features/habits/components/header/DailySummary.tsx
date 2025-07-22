@@ -1,6 +1,7 @@
 import {useSelector} from "react-redux";
 import type {RootState} from "@/app/store.ts";
 import {format, isSameDay} from "date-fns";
+import {useMemo} from "react";
 
 const DailySummary = () => {
   const { habits, selectedDate } = useSelector(
@@ -8,16 +9,25 @@ const DailySummary = () => {
   );
   const progress = useSelector((state: RootState) => state.progress);
 
-  const completedHabitsCount = progress.filter(
-    (progress) =>
-      isSameDay(progress.date, selectedDate.toISOString()) &&
-      progress.status === "completed",
-  ).length;
+  const completedHabitsCount = useMemo(
+    () =>
+      progress.filter(
+        (progress) =>
+          isSameDay(progress.date, selectedDate) &&
+          progress.status === "completed",
+      ).length,
+    [progress, selectedDate],
+  );
+
+  const formattedDate = useMemo(
+    () => format(selectedDate, "MMM d, yyyy"),
+    [selectedDate],
+  );
 
   return (
     <span className="text-lg">
-      For <em>{format(selectedDate, "MMM d, yyyy")}</em> -{" "}
-      {completedHabitsCount} of {habits.length} habits completed
+      For <em>{formattedDate}</em> - {completedHabitsCount} of {habits.length}{" "}
+      habits completed
     </span>
   );
 };
