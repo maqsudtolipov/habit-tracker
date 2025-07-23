@@ -19,7 +19,7 @@ const EditHabitButton = ({ habit }: HabitEditButtonProps) => {
         </Button>
       }
     >
-      {() => <HabitForm type="edit" habit={habit} />}
+      {(onClose) => <HabitForm type="edit" habit={habit} onClose={onClose} />}
     </DialogWrapper>
   );
 };
