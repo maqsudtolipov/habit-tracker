@@ -4,9 +4,9 @@ import {useParams} from "react-router-dom";
 import NotFoundPage from "@/pages/NotFoundPage.tsx";
 
 const HabitPage = () => {
-  const habitList = useSelector((state: RootState) => state.habits.habits);
+  const habitsList = useSelector((state: RootState) => state.habits.habitsList);
   const { id } = useParams();
-  const currentHabit = habitList.find((habit) => habit.id === id);
+  const currentHabit = habitsList.find((habit) => habit.id === id);
 
   if (!currentHabit) {
     return <NotFoundPage />;
