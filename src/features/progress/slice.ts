@@ -34,8 +34,12 @@ const progressSlice = createSlice({
         });
       }
     },
+    deleteHabitProgress: (state, action: PayloadAction<string>) => {
+      return state.filter((progress) => progress.habitId !== action.payload);
+    },
   },
 });
 
-export const { toggleProgressStatus } = progressSlice.actions;
+export const { toggleProgressStatus, deleteHabitProgress } =
+  progressSlice.actions;
 export default progressSlice;
