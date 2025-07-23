@@ -11,29 +11,27 @@ const progressSlice = createSlice({
       state,
       action: PayloadAction<{ date: string; habitId: string }>,
     ) => {
-      // Check if progress is sored
-      const existingProgressIndex = state.findIndex(
-        (progress) =>
-          progress.date === action.payload.date &&
-          progress.habitId === action.payload.habitId,
+      const { date, habitId } = action.payload;
+
+      const existingIndex = state.find(
+        (progress) => progress.date === date && progress.habitId === habitId,
       );
-      const progress = state[existingProgressIndex];
 
-      // Toggle if status exists
-      if (existingProgressIndex > -1) {
-        progress.status = progress.status === "completed" ? null : "completed";
-      }
+      if (existingIndex) {
+        // Toggle existing progress
 
-      // Create new progress if status doesn't exist
-      else {
-        const newProgress = {
-          habitId: action.payload.habitId,
-          date: action.payload.date,
-          status: "completed" as const,
+        existingIndex.status =
+          existingIndex.status === "completed" ? null : "completed";
+        existingIndex.updatedAt = new Date().toISOString();
+      } else {
+        // Add new completed progress
+
+        state.push({
+          habitId,
+          date,
+          status: "completed",
           updatedAt: new Date().toISOString(),
-        };
-
-        state.push(newProgress);
+        });
       }
     },
   },

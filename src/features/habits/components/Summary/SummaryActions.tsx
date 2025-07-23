@@ -1,0 +1,34 @@
+import DatePicker from "@/shared/components/DatePicker.tsx";
+import {useDispatch, useSelector} from "react-redux";
+import type {RootState} from "@/app/store.ts";
+import {changeSelectedDate} from "@/features/habits/slice.ts";
+import NewHabitDialog from "@/features/habits/components/HabitCard/newHabit/NewHabitDialog.tsx";
+
+const SummaryActions = () => {
+  const dispatch = useDispatch();
+  const selectedDate = useSelector(
+    (state: RootState) => state.habits.selectedDate,
+  );
+
+  const handleDateChange = (date: Date) => {
+    dispatch(changeSelectedDate(date.toISOString()));
+  };
+
+  return (
+    <div className="flex items-center justify-end flex-1">
+      <div>
+        <label id="date-label" className="sr-only">
+          Pick date to see habit progress
+        </label>
+        <DatePicker
+          value={new Date(selectedDate)}
+          onChange={handleDateChange}
+          ariaLabelledBy="date-label"
+        />
+      </div>
+      <NewHabitDialog />
+    </div>
+  );
+};
+
+export default SummaryActions;
