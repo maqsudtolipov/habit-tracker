@@ -22,6 +22,16 @@ export const useHabitDatePicker = (habit: Habit) => {
 
   const [selectedDate, setSelectedDate] = useState<Date>(globalDate);
 
+  const formattedDate = useMemo(
+    () => getFormattedDate(globalDate),
+    [globalDate],
+  );
+
+  const formattedSelectedDate = useMemo(
+    () => getFormattedDate(selectedDate),
+    [selectedDate],
+  );
+
   useEffect(() => {
     setSelectedDate(globalDate);
   }, [globalDate]);
@@ -38,15 +48,11 @@ export const useHabitDatePicker = (habit: Habit) => {
     e.preventDefault();
     e.stopPropagation();
 
-    const formatted = getFormattedDate(selectedDate);
-    dispatch(toggleProgressStatus({ habitId: habit.id, date: formatted }));
-    toast.success(`Habit Completed for ${formatted}`);
+    dispatch(
+      toggleProgressStatus({ habitId: habit.id, date: formattedSelectedDate }),
+    );
+    toast.success(`Habit Completed for ${formattedSelectedDate}`);
   };
-
-  const formattedDate = useMemo(
-    () => getFormattedDate(globalDate),
-    [globalDate],
-  );
 
   const isToday = useMemo(
     () => isSameDay(selectedDate, globalDate),
@@ -55,13 +61,13 @@ export const useHabitDatePicker = (habit: Habit) => {
 
   const isAlreadyCompleted = useMemo(
     () =>
-      progress.some(
+      progress.find(
         (item) =>
           item.habitId === habit.id &&
-          item.date === getFormattedDate(selectedDate) &&
+          item.date === formattedSelectedDate &&
           item.status === "completed",
       ),
-    [progress, habit.id, selectedDate],
+    [progress, habit.id, formattedSelectedDate],
   );
 
   return {

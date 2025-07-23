@@ -5,8 +5,8 @@ import {compareAsc} from "date-fns";
 import NoHabitsMessage from "@/features/habits/components/HabitsList/NoHabitsMessage.tsx";
 
 const HabitsList = () => {
-  const habits = useSelector((state: RootState) => state.habits.habits);
-  const sortedHabitsByDate = [...habits].sort((a, b) =>
+  const habitsList = useSelector((state: RootState) => state.habits.habitsList);
+  const sortedHabitsByDate = [...habitsList].sort((a, b) =>
     compareAsc(b.createdAt, a.createdAt),
   );
 

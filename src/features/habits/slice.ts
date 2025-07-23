@@ -2,14 +2,14 @@ import {createSlice, type PayloadAction} from "@reduxjs/toolkit";
 import type {HabitsState} from "@/features/habits/types.ts";
 import {nanoid} from "nanoid";
 
-const INITIAL__EMPTY_STATE: HabitsState = {
+const INITIAL_STATE: HabitsState = {
   selectedDate: new Date().toISOString(),
-  habits: [],
+  habitsList: [],
 };
 
 const habitsSlice = createSlice({
   name: "habits",
-  initialState: INITIAL__EMPTY_STATE,
+  initialState: INITIAL_STATE,
   reducers: {
     // Habits
     createNewHabit: (
@@ -22,7 +22,7 @@ const habitsSlice = createSlice({
       }>,
     ) => {
       const timestamp = new Date().toISOString();
-      state.habits.push({
+      state.habitsList.push({
         id: action.payload.id || nanoid(),
         name: action.payload.name,
         description: action.payload.description,
@@ -39,7 +39,7 @@ const habitsSlice = createSlice({
         description: string;
       }>,
     ) => {
-      const habit = state.habits.find(
+      const habit = state.habitsList.find(
         (habit) => habit.id === action.payload.id,
       );
       if (!habit) return;
@@ -49,7 +49,7 @@ const habitsSlice = createSlice({
       habit.updatedAt = new Date().toISOString();
     },
     deleteHabit: (state: HabitsState, action: PayloadAction<string>) => {
-      state.habits = state.habits.filter(
+      state.habitsList = state.habitsList.filter(
         (habit) => habit.id !== action.payload,
       );
     },

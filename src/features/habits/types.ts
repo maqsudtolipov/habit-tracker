@@ -9,5 +9,5 @@ export interface Habit {
 
 export interface HabitsState {
   selectedDate: string; // ISO 8601
-  habits: Habit[];
+  habitsList: Habit[];
 }

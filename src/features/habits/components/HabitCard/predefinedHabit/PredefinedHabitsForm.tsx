@@ -13,7 +13,7 @@ const PredefinedHabitsForm = ({
 }: {
   onCloseDialog: () => void;
 }) => {
-  const habits = useSelector((state: RootState) => state.habits.habits);
+  const habitsList = useSelector((state: RootState) => state.habits.habitsList);
   const [selectedHabitId, setSelectedHabitId] = useState<null | string>(null);
   const { handleSubmit } = useSubmitPredefinedHabit(onCloseDialog);
 
@@ -29,7 +29,7 @@ const PredefinedHabitsForm = ({
   };
 
   const filteredHabits = PREDEFINED_HABITS.filter(
-    (habit) => !habits.find((storedHabit) => habit.id === storedHabit.id),
+    (habit) => !habitsList.find((storedHabit) => habit.id === storedHabit.id),
   );
 
   return (

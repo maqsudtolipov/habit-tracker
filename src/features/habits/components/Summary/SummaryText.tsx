@@ -4,7 +4,7 @@ import {format, isSameDay} from "date-fns";
 import {useMemo} from "react";
 
 const SummaryText = () => {
-  const { habits, selectedDate } = useSelector(
+  const { habitsList, selectedDate } = useSelector(
     (state: RootState) => state.habits,
   );
   const progress = useSelector((state: RootState) => state.progress);
@@ -26,7 +26,7 @@ const SummaryText = () => {
 
   return (
     <span className="text-lg">
-      For <em>{formattedDate}</em> - {completedHabitsCount} of {habits.length}{" "}
+      For <em>{formattedDate}</em> - {completedHabitsCount} of {habitsList.length}{" "}
       habits completed
     </span>
   );
