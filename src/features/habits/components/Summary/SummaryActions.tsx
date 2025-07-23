@@ -16,7 +16,16 @@ const SummaryActions = () => {
 
   return (
     <div className="flex items-center justify-end flex-1">
-      <DatePicker value={new Date(selectedDate)} onChange={handleDateChange} />
+      <div>
+        <label id="date-label" className="sr-only">
+          Pick date to see habit progress
+        </label>
+        <DatePicker
+          value={new Date(selectedDate)}
+          onChange={handleDateChange}
+          ariaLabelledBy="date-label"
+        />
+      </div>
       <NewHabitDialog />
     </div>
   );

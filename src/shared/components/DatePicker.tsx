@@ -7,9 +7,16 @@ import {Button} from "@/shared/ui/button.tsx";
 interface DatePickerProps {
   value: Date;
   onChange: (date: Date) => void;
+  ariaLabel?: string;
+  ariaLabelledBy?: string;
 }
 
-const DatePicker = ({ value, onChange }: DatePickerProps) => {
+const DatePicker = ({
+  value,
+  onChange,
+  ariaLabel,
+  ariaLabelledBy,
+}: DatePickerProps) => {
   const [open, setOpen] = React.useState(false);
 
   const handleSelect = (date: Date | undefined) => {
@@ -29,7 +36,10 @@ const DatePicker = ({ value, onChange }: DatePickerProps) => {
             variant="outline"
             className="w-36 justify-between font-normal"
             size="sm"
-            aria-label={`Pick a date. Currently selected: ${label}`}
+            aria-label={
+              ariaLabel ?? `Pick a date. Currently selected: ${label}`
+            }
+            aria-labelledby={ariaLabelledBy}
           >
             <CalendarIcon />
             {label}
