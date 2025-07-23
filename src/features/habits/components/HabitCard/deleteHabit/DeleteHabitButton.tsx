@@ -4,6 +4,7 @@ import {Trash2} from "lucide-react";
 import type {Habit} from "@/features/habits/types.ts";
 import {useDispatch} from "react-redux";
 import {deleteHabit} from "@/features/habits/slice.ts";
+import {deleteHabitProgress} from "@/features/progress/slice.ts";
 
 interface HabitDeleteButtonProps {
   habit: Habit;
@@ -11,7 +12,10 @@ interface HabitDeleteButtonProps {
 
 const DeleteHabitButton = ({ habit }: HabitDeleteButtonProps) => {
   const dispatch = useDispatch();
-  const handleDeleteHabit = () => dispatch(deleteHabit(habit.id));
+  const handleDeleteHabit = () => {
+    dispatch(deleteHabit(habit.id));
+    dispatch(deleteHabitProgress(habit.id));
+  };
 
   return (
     <ConfirmDialog onConfirm={handleDeleteHabit}>
