@@ -1,5 +1,5 @@
 import {useSelector} from "react-redux";
-import getFormatedDate from "@/shared/utils/getFormatedDate.ts";
+import getFormattedDate from "@/shared/utils/getFormattedDate.ts";
 import type {RootState} from "@/app/store.ts";
 
 export const useHabitProgress = (habitId: string) => {
@@ -9,10 +9,10 @@ export const useHabitProgress = (habitId: string) => {
   );
 
   const todayProgress = progress
-    .filter((progress) => progress.date === getFormatedDate(selectedDate))
+    .filter((progress) => progress.date === getFormattedDate(selectedDate))
     .find(
       (progress) =>
-        progress.date === getFormatedDate(selectedDate) &&
+        progress.date === getFormattedDate(selectedDate) &&
         progress.habitId === habitId,
     );
 

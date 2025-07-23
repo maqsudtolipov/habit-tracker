@@ -2,7 +2,7 @@ import {useDispatch, useSelector} from "react-redux";
 import type {RootState} from "@/app/store.ts";
 import type {Habit} from "@/features/habits/types.ts";
 import {toggleProgressStatus} from "@/features/progress/slice.ts";
-import getFormatedDate from "@/shared/utils/getFormatedDate.ts";
+import getFormattedDate from "@/shared/utils/getFormattedDate.ts";
 import {Checkbox} from "@/shared/ui/checkbox.tsx";
 import {Box, Sparkle} from "lucide-react";
 import HabitControlButtons from "@/features/habits/components/HabitCard/information/HabitControlButtons.tsx";
@@ -21,7 +21,7 @@ const HabitHeader = ({ habit, isCompleted }: HabitHeaderProps) => {
   const handleToggleCompleted = () => {
     dispatch(
       toggleProgressStatus({
-        date: getFormatedDate(selectedDate),
+        date: getFormattedDate(selectedDate),
         habitId: habit.id,
       }),
     );

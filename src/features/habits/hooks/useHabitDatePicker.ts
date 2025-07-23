@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {type MouseEvent, useEffect, useMemo, useState} from "react";
 import {toggleProgressStatus} from "@/features/progress/slice.ts";
-import getFormatedDate from "@/shared/utils/getFormatedDate.ts";
+import getFormattedDate from "@/shared/utils/getFormattedDate.ts";
 import {toast} from "sonner";
 import {isSameDay} from "date-fns";
 import type {RootState} from "@/app/store.ts";
@@ -38,13 +38,13 @@ export const useHabitDatePicker = (habit: Habit) => {
     e.preventDefault();
     e.stopPropagation();
 
-    const formatted = getFormatedDate(selectedDate);
+    const formatted = getFormattedDate(selectedDate);
     dispatch(toggleProgressStatus({ habitId: habit.id, date: formatted }));
     toast.success(`Habit Completed for ${formatted}`);
   };
 
   const formattedDate = useMemo(
-    () => getFormatedDate(globalDate),
+    () => getFormattedDate(globalDate),
     [globalDate],
   );
 
@@ -58,7 +58,7 @@ export const useHabitDatePicker = (habit: Habit) => {
       progress.some(
         (item) =>
           item.habitId === habit.id &&
-          item.date === getFormatedDate(selectedDate) &&
+          item.date === getFormattedDate(selectedDate) &&
           item.status === "completed",
       ),
     [progress, habit.id, selectedDate],
