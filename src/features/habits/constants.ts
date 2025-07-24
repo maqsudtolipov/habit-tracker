@@ -1,6 +1,6 @@
 import type {Habit} from "@/features/habits/types.ts";
 
-// For fater testing only 4 shown
+// For faster testing only 4 shown
 export const PREDEFINED_HABITS: Habit[] = [
   {
     id: "a1b2c3d4e5f6g7h8i9j0k",
@@ -164,5 +164,6 @@ export const PREDEFINED_HABITS: Habit[] = [
   // },
 ];
 
+export const MIN_NAME_LENGTH = 3;
 export const MAX_NAME_LENGTH = 24;
-export const MAX_DESCRIPTION_LENGTH = 200;
+export const MAX_DESCRIPTION_LENGTH = 160;
