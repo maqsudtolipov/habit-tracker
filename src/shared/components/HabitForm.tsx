@@ -7,10 +7,18 @@ import {Input} from "@/shared/ui/input.tsx";
 import {useSubmitHabitForm} from "@/features/habits/hooks/useSubmitHabitForm.ts";
 import type {Habit} from "@/features/habits/types.ts";
 import {DialogClose, DialogFooter} from "@/shared/ui/dialog.tsx";
+import {MAX_DESCRIPTION_LENGTH, MAX_NAME_LENGTH, MIN_NAME_LENGTH,} from "@/features/habits/constants.ts";
 
 const schema = z.object({
-  name: z.string().min(3).max(24),
-  description: z.string().max(160),
+  name: z
+    .string()
+    .min(MIN_NAME_LENGTH, { message: "Name must be at least 3 characters." })
+    .max(MAX_NAME_LENGTH, { message: "Name must be at most 24 characters." }),
+  description: z
+    .string()
+    .max(MAX_DESCRIPTION_LENGTH, {
+      message: "Description must be at most 160 characters.",
+    }),
 });
 
 type HabitFormSchema = z.infer<typeof schema>;
