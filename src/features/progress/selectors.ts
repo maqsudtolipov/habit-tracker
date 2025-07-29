@@ -16,14 +16,19 @@ export const selectCompletedHabitsCount = createSelector(
     ).length,
 );
 
-export const selectHabitProgressByDate = (habitId: string) =>
+export const selectHabitProgressByDate = (
+  habitId: string,
+  outsideSelectedDate?: Date,
+) =>
   createSelector(
     [
       (state: RootState) => state.progress,
       (state: RootState) => state.habits.selectedDate,
     ],
     (progress, selectedDate) => {
-      const date = getFormattedDate(selectedDate);
+      const date = outsideSelectedDate
+        ? getFormattedDate(outsideSelectedDate)
+        : getFormattedDate(selectedDate);
       return progress.find(
         (entry) => entry.habitId === habitId && entry.date === date,
       );
