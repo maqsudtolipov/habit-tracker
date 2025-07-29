@@ -1,7 +1,7 @@
 import {format} from "date-fns";
 import {useMemo} from "react";
 import {useAppSelector} from "@/app/hooks.ts";
-import {selectCompletedHabitsLength} from "@/features/progress/slice.ts";
+import {selectCompletedHabitsLength} from "@/features/progress/selectors.ts";
 
 const SummaryText = () => {
   const { habitsList, selectedDate } = useAppSelector((state) => state.habits);
