@@ -1,11 +1,10 @@
-import {useSelector} from "react-redux";
-import type {RootState} from "@/app/store.ts";
 import HabitCard from "@/features/habits/components/HabitCard/HabitCard.tsx";
 import {compareAsc} from "date-fns";
 import NoHabitsMessage from "@/features/habits/components/HabitsList/NoHabitsMessage.tsx";
+import {useAppSelector} from "@/app/hooks.ts";
 
 const HabitsList = () => {
-  const habitsList = useSelector((state: RootState) => state.habits.habitsList);
+  const habitsList = useAppSelector((state) => state.habits.habitsList);
   const sortedHabitsByDate = [...habitsList].sort((a, b) =>
     compareAsc(b.createdAt, a.createdAt),
   );
@@ -20,7 +19,7 @@ const HabitsList = () => {
       aria-label="List of your habits"
     >
       {sortedHabitsByDate.map((habit) => (
-          <HabitCard key={habit.id} habit={habit}/>
+        <HabitCard key={habit.id} habit={habit} />
       ))}
     </ul>
   );
