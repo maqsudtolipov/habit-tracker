@@ -61,7 +61,7 @@ const PredefinedHabitsForm = ({
             ))}
           </ul>
         ) : (
-          <p className="p-4">
+          <p className="p-4 text-sm text-neutral-600">
             You already selected all the predefined habits. You can create a
             custom one on the next tab.
           </p>
