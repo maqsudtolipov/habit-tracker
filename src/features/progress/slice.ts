@@ -2,6 +2,7 @@ import {createSelector, createSlice, type PayloadAction,} from "@reduxjs/toolkit
 import type {HabitProgressState} from "@/features/progress/types.ts";
 import type {RootState} from "@/app/store.ts";
 import {isSameDay} from "date-fns";
+import getFormattedDate from "@/shared/utils/getFormattedDate.ts";
 
 const INITIAL_STATE: HabitProgressState = [];
 
@@ -42,10 +43,11 @@ const progressSlice = createSlice({
   },
 });
 
-const items = (state: RootState) => state.progress;
-
-export const completedProgressSelector = createSelector(
-  [items, (_: RootState, selectedDate: string) => selectedDate],
+export const selectCompletedHabitsLength = createSelector(
+  [
+    (state: RootState) => state.progress,
+    (_: RootState, selectedDate: string) => selectedDate,
+  ],
   (items, selectedDate) =>
     items.filter(
       (progress) =>
@@ -53,6 +55,20 @@ export const completedProgressSelector = createSelector(
         progress.status === "completed",
     ).length,
 );
+
+export const selectHabitProgressByDate = (habitId: string) =>
+  createSelector(
+    [
+      (state: RootState) => state.progress,
+      (state: RootState) => state.habits.selectedDate,
+    ],
+    (progress, selectedDate) => {
+      const date = getFormattedDate(selectedDate);
+      return progress.find(
+        (entry) => entry.habitId === habitId && entry.date === date,
+      );
+    },
+  );
 
 export const { toggleProgressStatus, deleteHabitProgress } =
   progressSlice.actions;
