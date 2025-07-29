@@ -1,14 +1,11 @@
 import DatePicker from "@/shared/components/DatePicker.tsx";
-import {useDispatch, useSelector} from "react-redux";
-import type {RootState} from "@/app/store.ts";
 import {changeSelectedDate} from "@/features/habits/slice.ts";
 import NewHabitDialog from "@/features/habits/components/HabitCard/newHabit/NewHabitDialog.tsx";
+import {useAppDispatch, useAppSelector} from "@/app/hooks.ts";
 
 const SummaryActions = () => {
-  const dispatch = useDispatch();
-  const selectedDate = useSelector(
-    (state: RootState) => state.habits.selectedDate,
-  );
+  const dispatch = useAppDispatch();
+  const selectedDate = useAppSelector((state) => state.habits.selectedDate);
 
   const handleDateChange = (date: Date) => {
     dispatch(changeSelectedDate(date.toISOString()));

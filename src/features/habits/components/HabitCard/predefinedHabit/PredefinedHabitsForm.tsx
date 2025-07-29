@@ -5,15 +5,14 @@ import {DialogClose, DialogFooter} from "@/shared/ui/dialog.tsx";
 import {Button} from "@/shared/ui/button.tsx";
 import PredefinedHabitItem from "@/features/habits/components/HabitCard/predefinedHabit/PredefinedHabitItem.tsx";
 import {useSubmitPredefinedHabit} from "@/features/habits/hooks/useSubmitPredefinedHabit.ts";
-import {useSelector} from "react-redux";
-import type {RootState} from "@/app/store.ts";
+import {useAppSelector} from "@/app/hooks.ts";
 
 const PredefinedHabitsForm = ({
   onCloseDialog,
 }: {
   onCloseDialog: () => void;
 }) => {
-  const habitsList = useSelector((state: RootState) => state.habits.habitsList);
+  const habitsList = useAppSelector((state) => state.habits.habitsList);
   const [selectedHabitId, setSelectedHabitId] = useState<null | string>(null);
   const { handleSubmit } = useSubmitPredefinedHabit(onCloseDialog);
 

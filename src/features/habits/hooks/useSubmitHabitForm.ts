@@ -1,13 +1,13 @@
-import {useDispatch} from "react-redux";
 import {createNewHabit, editHabit} from "@/features/habits/slice.ts";
 import {toast} from "sonner";
+import {useAppDispatch} from "@/app/hooks.ts";
 
 export const useSubmitHabitForm = (
   mode: "createNew" | "edit",
   onSuccess: () => void,
   habitId?: string,
 ) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   // Assumed form data comes validated
   const handleSubmit = ({

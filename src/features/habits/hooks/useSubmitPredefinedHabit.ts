@@ -1,10 +1,10 @@
-import {useDispatch} from "react-redux";
 import {MAX_DESCRIPTION_LENGTH, MAX_NAME_LENGTH,} from "@/features/habits/constants.ts";
 import {createNewHabit} from "@/features/habits/slice.ts";
 import {toast} from "sonner";
+import {useAppDispatch} from "@/app/hooks.ts";
 
 export const useSubmitPredefinedHabit = (onSuccess: () => void) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleSubmit = (id: string, name: string, description: string) => {
     if (

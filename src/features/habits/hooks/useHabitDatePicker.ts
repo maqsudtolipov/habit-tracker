@@ -1,19 +1,18 @@
-import {useDispatch, useSelector} from "react-redux";
 import {type MouseEvent, useEffect, useMemo, useState} from "react";
 import {toggleProgressStatus} from "@/features/progress/slice.ts";
 import getFormattedDate from "@/shared/utils/getFormattedDate.ts";
 import {toast} from "sonner";
 import {isSameDay} from "date-fns";
-import type {RootState} from "@/app/store.ts";
 import type {Habit} from "@/features/habits/types.ts";
+import {useAppDispatch, useAppSelector} from "@/app/hooks.ts";
 
 export const useHabitDatePicker = (habit: Habit) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const globalSelectedDate = useSelector(
-    (state: RootState) => state.habits.selectedDate,
+  const globalSelectedDate = useAppSelector(
+    (state) => state.habits.selectedDate,
   );
-  const progress = useSelector((state: RootState) => state.progress);
+  const progress = useAppSelector((state) => state.progress);
 
   const globalDate = useMemo(
     () => new Date(globalSelectedDate),
