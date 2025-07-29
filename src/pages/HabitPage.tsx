@@ -1,10 +1,9 @@
-import {useSelector} from "react-redux";
-import type {RootState} from "@/app/store.ts";
 import {useParams} from "react-router-dom";
 import NotFoundPage from "@/pages/NotFoundPage.tsx";
+import {useAppSelector} from "@/app/hooks.ts";
 
 const HabitPage = () => {
-  const habitsList = useSelector((state: RootState) => state.habits.habitsList);
+  const habitsList = useAppSelector((state) => state.habits.habitsList);
   const { id } = useParams();
   const currentHabit = habitsList.find((habit) => habit.id === id);
 
