@@ -12,19 +12,21 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
         element: <HomePage />,
+        errorElement: <ErrorPage />,
       },
       {
         path: "/habit/:id",
         element: <HabitPage />,
+        errorElement: <ErrorPage message='Failed to load habit details.' />,
       },
       {
         path: "/stats",
         element: <StatsPage />,
+        errorElement: <ErrorPage message='Unable to fetch statistics' />,
       },
       {
         path: "*",
