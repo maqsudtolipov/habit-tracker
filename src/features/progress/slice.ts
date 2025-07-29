@@ -1,5 +1,7 @@
-import {createSlice, type PayloadAction} from "@reduxjs/toolkit";
+import {createSelector, createSlice, type PayloadAction,} from "@reduxjs/toolkit";
 import type {HabitProgressState} from "@/features/progress/types.ts";
+import type {RootState} from "@/app/store.ts";
+import {isSameDay} from "date-fns";
 
 const INITIAL_STATE: HabitProgressState = [];
 
@@ -39,6 +41,18 @@ const progressSlice = createSlice({
     },
   },
 });
+
+const items = (state: RootState) => state.progress;
+
+export const completedProgressSelector = createSelector(
+  [items, (_: RootState, selectedDate: string) => selectedDate],
+  (items, selectedDate) =>
+    items.filter(
+      (progress) =>
+        isSameDay(progress.date, selectedDate) &&
+        progress.status === "completed",
+    ).length,
+);
 
 export const { toggleProgressStatus, deleteHabitProgress } =
   progressSlice.actions;

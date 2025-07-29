@@ -1,23 +1,12 @@
-import {useSelector} from "react-redux";
-import type {RootState} from "@/app/store.ts";
-import {format, isSameDay} from "date-fns";
+import {format} from "date-fns";
 import {useMemo} from "react";
 import {useAppSelector} from "@/app/hooks.ts";
+import {completedProgressSelector} from "@/features/progress/slice.ts";
 
 const SummaryText = () => {
-  const { habitsList, selectedDate } = useAppSelector(
-    (state) => state.habits,
-  );
-  const progress = useSelector((state: RootState) => state.progress);
-
-  const completedHabitsCount = useMemo(
-    () =>
-      progress.filter(
-        (progress) =>
-          isSameDay(progress.date, selectedDate) &&
-          progress.status === "completed",
-      ).length,
-    [progress, selectedDate],
+  const { habitsList, selectedDate } = useAppSelector((state) => state.habits);
+  const completedHabitsCount = useAppSelector((state) =>
+    completedProgressSelector(state, selectedDate),
   );
 
   const formattedDate = useMemo(
