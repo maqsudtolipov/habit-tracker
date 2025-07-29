@@ -3,7 +3,7 @@ import {toggleProgressStatus} from "@/features/progress/slice.ts";
 import getFormattedDate from "@/shared/utils/getFormattedDate.ts";
 import {Checkbox} from "@/shared/ui/checkbox.tsx";
 import {Box, Sparkle} from "lucide-react";
-import HabitControlButtons from "@/features/habits/components/HabitCard/information/HabitControlButtons.tsx";
+import HabitControlButtons from "@/features/habits/components/HabitCard/Header/HabitControlButtons.tsx";
 import {useAppDispatch, useAppSelector} from "@/app/hooks.ts";
 
 interface HabitHeaderProps {

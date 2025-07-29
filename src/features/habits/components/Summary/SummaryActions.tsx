@@ -1,6 +1,6 @@
 import DatePicker from "@/shared/components/DatePicker.tsx";
 import {changeSelectedDate} from "@/features/habits/slice.ts";
-import NewHabitDialog from "@/features/habits/components/HabitCard/newHabit/NewHabitDialog.tsx";
+import NewHabitDialog from "@/features/habits/components/NewHabit/NewHabitDialog.tsx";
 import {useAppDispatch, useAppSelector} from "@/app/hooks.ts";
 
 const SummaryActions = () => {

@@ -1,4 +1,4 @@
-import NewHabitTabs from "@/features/habits/components/HabitCard/newHabit/NewHabitTabs.tsx";
+import NewHabitTabs from "@/features/habits/components/NewHabit/NewHabitTabs.tsx";
 import {Button} from "@/shared/ui/button.tsx";
 import {Plus} from "lucide-react";
 import DialogWrapper from "@/shared/components/DialogWrapper.tsx";
