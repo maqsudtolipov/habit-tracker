@@ -1,12 +1,12 @@
 import {format} from "date-fns";
 import {useMemo} from "react";
 import {useAppSelector} from "@/app/hooks.ts";
-import {selectCompletedHabitsLength} from "@/features/progress/selectors.ts";
+import {selectCompletedHabitsCount} from "@/features/progress/selectors.ts";
 
 const SummaryText = () => {
   const { habitsList, selectedDate } = useAppSelector((state) => state.habits);
   const completedHabitsCount = useAppSelector((state) =>
-    selectCompletedHabitsLength(state, selectedDate),
+    selectCompletedHabitsCount(state),
   );
 
   const formattedDate = useMemo(

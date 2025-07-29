@@ -3,10 +3,10 @@ import type {RootState} from "@/app/store.ts";
 import {isSameDay} from "date-fns";
 import getFormattedDate from "@/shared/utils/getFormattedDate.ts";
 
-export const selectCompletedHabitsLength = createSelector(
+export const selectCompletedHabitsCount = createSelector(
   [
     (state: RootState) => state.progress,
-    (_: RootState, selectedDate: string) => selectedDate,
+    (state: RootState) => state.habits.selectedDate,
   ],
   (items, selectedDate) =>
     items.filter(
