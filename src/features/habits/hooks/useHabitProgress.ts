@@ -11,9 +11,13 @@ export const useHabitProgress = (habitId: string) => {
     [selectedDate],
   );
 
-  const todayProgress = progress
-    .filter((progress) => progress.habitId === habitId)
-    .find((progress) => progress.date === formattedDate);
+  const todayProgress = useMemo(
+    () =>
+      progress
+        .filter((progress) => progress.habitId === habitId)
+        .find((progress) => progress.date === formattedDate),
+    [progress, habitId, formattedDate],
+  );
 
   const isCompleted = todayProgress?.status === "completed";
 
