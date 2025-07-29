@@ -12,11 +12,8 @@ export const useHabitProgress = (habitId: string) => {
   );
 
   const todayProgress = progress
-    .filter((progress) => progress.date === formattedDate)
-    .find(
-      (progress) =>
-        progress.date === formattedDate && progress.habitId === habitId,
-    );
+    .filter((progress) => progress.habitId === habitId)
+    .find((progress) => progress.date === formattedDate);
 
   const isCompleted = todayProgress?.status === "completed";
 
