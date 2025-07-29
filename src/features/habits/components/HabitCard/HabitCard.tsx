@@ -11,8 +11,6 @@ interface HabitCardProps {
 const HabitCard = ({ habit }: HabitCardProps) => {
   const { isCompleted } = useHabitProgress(habit.id);
 
-  console.log(`${habit.id} (${habit.createdAt}): is now ${isCompleted}`);
-
   return (
     <HabitCardContainer isCompleted={isCompleted} habitId={habit.id}>
       <HabitInformation habit={habit} isCompleted={isCompleted} />
