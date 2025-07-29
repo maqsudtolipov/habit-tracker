@@ -3,12 +3,13 @@ import HabitCardContainer from "@/features/habits/components/HabitCard/HabitCard
 import HabitInformation from "@/features/habits/components/HabitCard/Header/HabitInformation.tsx";
 import {useHabitProgress} from "@/features/habits/hooks/useHabitProgress.ts";
 import HabitFooter from "@/features/habits/components/HabitCard/Footer/HabitFooter.tsx";
+import {memo} from "react";
 
 interface HabitCardProps {
   habit: Habit;
 }
 
-const HabitCard = ({ habit }: HabitCardProps) => {
+const HabitCard = memo(({ habit }: HabitCardProps) => {
   const { isCompleted } = useHabitProgress(habit.id);
 
   return (
@@ -17,6 +18,6 @@ const HabitCard = ({ habit }: HabitCardProps) => {
       <HabitFooter habit={habit} />
     </HabitCardContainer>
   );
-};
+});
 
 export default HabitCard;
