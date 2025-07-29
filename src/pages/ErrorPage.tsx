@@ -8,8 +8,8 @@ const ErrorPage = () => {
     <div className="px-10 py-20 flex flex-col items-center justify-center">
       <span className="pb-8 text-9xl">💥</span>
       <h2 className="text-2xl font-medium"> Something went wrong</h2>
-      <Link className="hover:underline" to="/">
-        Take me back to safety
+      <Link className=" text-blue-600 hover:underline" to="/">
+        Go to home page
       </Link>
     </div>
   );
