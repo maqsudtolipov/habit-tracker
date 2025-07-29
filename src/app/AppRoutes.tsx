@@ -1,9 +1,11 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import HomePage from "@/pages/HomePage.tsx";
 import Layout from "@/app/components/Layout.tsx";
-import HabitPage from "@/pages/HabitPage.tsx";
-import StatsPage from "@/pages/StatsPage.tsx";
-import NotFoundPage from "@/pages/NotFoundPage.tsx";
+import {lazy} from "react";
+
+const HabitPage = lazy(() => import("@/pages/HabitPage.tsx"));
+const StatsPage = lazy(() => import("@/pages/StatsPage.tsx"));
+const NotFoundPage = lazy(() => import("@/pages/NotFoundPage.tsx"));
 
 function AppRoutes() {
   return (
