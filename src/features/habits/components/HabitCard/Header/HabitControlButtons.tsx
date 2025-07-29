@@ -1,6 +1,6 @@
 import type {Habit} from "@/features/habits/types.ts";
-import EditHabitButton from "@/features/habits/components/HabitCard/editHabit/EditHabitButton.tsx";
-import DeleteHabitButton from "@/features/habits/components/HabitCard/deleteHabit/DeleteHabitButton.tsx";
+import EditHabitButton from "@/features/habits/components/HabitCard/EditHabitButton/EditHabitButton.tsx";
+import DeleteHabitButton from "@/features/habits/components/HabitCard/DeleteHabitButton/DeleteHabitButton.tsx";
 
 interface HabitControlsProps {
   habit: Habit;

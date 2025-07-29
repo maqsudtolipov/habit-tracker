@@ -1,21 +1,21 @@
 import {PREDEFINED_HABITS} from "@/features/habits/constants.ts";
 import {ScrollArea} from "@/shared/ui/scroll-area.tsx";
-import {type FormEvent, useState} from "react";
+import {type FormEvent, useMemo, useState} from "react";
 import {DialogClose, DialogFooter} from "@/shared/ui/dialog.tsx";
 import {Button} from "@/shared/ui/button.tsx";
-import PredefinedHabitItem from "@/features/habits/components/HabitCard/predefinedHabit/PredefinedHabitItem.tsx";
-import {useSubmitPredefinedHabit} from "@/features/habits/hooks/useSubmitPredefinedHabit.ts";
-import {useSelector} from "react-redux";
-import type {RootState} from "@/app/store.ts";
+import PredefinedHabitItem from "@/features/habits/components/NewHabit/PredefinedHabit/PredefinedHabitItem.tsx";
+import {useAppDispatch, useAppSelector} from "@/app/hooks.ts";
+import {createNewHabit} from "@/features/habits/slice.ts";
+import {toast} from "sonner";
 
 const PredefinedHabitsForm = ({
   onCloseDialog,
 }: {
   onCloseDialog: () => void;
 }) => {
-  const habitsList = useSelector((state: RootState) => state.habits.habitsList);
+  const habitsList = useAppSelector((state) => state.habits.habitsList);
   const [selectedHabitId, setSelectedHabitId] = useState<null | string>(null);
-  const { handleSubmit } = useSubmitPredefinedHabit(onCloseDialog);
+  const dispatch = useAppDispatch();
 
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,11 +25,21 @@ const PredefinedHabitsForm = ({
     );
     if (!habit) return;
 
-    handleSubmit(habit.id, habit.name, habit.description);
+    const { id, name, description } = habit;
+
+    dispatch(createNewHabit({ id, name, description, type: "predefined" }));
+    toast.success(`New habit is created`);
+
+    onCloseDialog();
   };
 
-  const filteredHabits = PREDEFINED_HABITS.filter(
-    (habit) => !habitsList.find((storedHabit) => habit.id === storedHabit.id),
+  const filteredHabits = useMemo(
+    () =>
+      PREDEFINED_HABITS.filter(
+        (habit) =>
+          !habitsList.find((storedHabit) => habit.id === storedHabit.id),
+      ),
+    [habitsList],
   );
 
   return (
@@ -51,7 +61,7 @@ const PredefinedHabitsForm = ({
             ))}
           </ul>
         ) : (
-          <p className="p-4">
+          <p className="p-4 text-sm text-neutral-600">
             You already selected all the predefined habits. You can create a
             custom one on the next tab.
           </p>
@@ -62,7 +72,9 @@ const PredefinedHabitsForm = ({
         <DialogClose asChild>
           <Button variant="outline">Cancel</Button>
         </DialogClose>
-        <Button type="submit">Save changes</Button>
+        <Button type="submit" disabled={!selectedHabitId}>
+          Save changes
+        </Button>
       </DialogFooter>
     </form>
   );

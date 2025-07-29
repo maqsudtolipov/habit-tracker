@@ -1,5 +1,6 @@
 import type {Habit} from "@/features/habits/types.ts";
 import type {KeyboardEvent} from "react";
+import {cn} from "@/shared/utils/utils.ts";
 
 interface PredefinedHabitItemProps {
   habit: Habit;
@@ -27,10 +28,16 @@ const PredefinedHabitItem = ({
     }
   };
 
+  const listItemClass = cn(
+    "p-2 rounded",
+    "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
+    { "bg-neutral-100 outline-2 outline-neutral-200": isSelected },
+  );
+
   return (
     <li
       key={habit.id}
-      className={`p-2 rounded focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]  ${isSelected && " bg-neutral-100 outline-2 outline-neutral-200"}`}
+      className={listItemClass}
       onClick={() => onSelectHabit(habit.id)}
       role="radio"
       aria-checked={isSelected}
