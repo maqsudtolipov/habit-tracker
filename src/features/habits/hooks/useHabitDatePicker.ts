@@ -17,9 +17,9 @@ export const useHabitDatePicker = (habit: Habit) => {
   }, [globalSelectedDate]);
 
   const isToday = isSameDay(selectedDate, globalSelectedDate);
-  const isAlreadyCompleted = useAppSelector(
-    selectHabitProgressByDate(habit.id, selectedDate),
-  );
+  const isAlreadyCompleted =
+    useAppSelector(selectHabitProgressByDate(habit.id, selectedDate))
+      ?.status === "completed";
 
   return {
     selectedDate,
