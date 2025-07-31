@@ -28,9 +28,9 @@ const Nav = () => {
         <Link
           className="flex items-center gap-2 font-medium select-none"
           to="/"
+          aria-label="Open home page"
         >
           <img className="size-8" src="/logo.svg" alt="" aria-hidden="true" />
-          <span>Habits</span>
         </Link>
 
         <NavigationMenu>
