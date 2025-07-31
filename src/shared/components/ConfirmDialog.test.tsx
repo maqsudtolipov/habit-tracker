@@ -62,5 +62,20 @@ describe("<ConfirmDialog/>", () => {
     expect(onConfirm).toHaveBeenCalled();
   });
 
-  it("should close on 'escape' key pressed", () => {});
+  it("should close on 'escape' key pressed", async () => {
+    const user = userEvent.setup();
+    render(
+      <ConfirmDialog onConfirm={() => {}}>
+        <button>Delete habit</button>
+      </ConfirmDialog>,
+    );
+
+    // Open dialog
+    await user.click(screen.getByRole("button", { name: "Delete habit" }));
+
+    // Press escape
+    await user.keyboard("{Escape}");
+
+    expect(screen.queryByText("Are you sure?")).not.toBeInTheDocument();
+  });
 });
