@@ -6,13 +6,21 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/shared/ui/navigation-menu";
+import {cn} from "@/shared/utils/utils.ts";
+
+const NAVIGATION_LINKS = [
+  {
+    path: "/",
+    name: "Home",
+  },
+  {
+    path: "/stats",
+    name: "Stats",
+  },
+];
 
 const Nav = () => {
-  const data = useLocation();
-
-  const generateActiveLinkStyle = (path: string) => {
-    return data.pathname === path ? "bg-gray-100" : "";
-  };
+  const { pathname } = useLocation();
 
   return (
     <nav className=" border-b">
@@ -21,32 +29,25 @@ const Nav = () => {
           className="flex items-center gap-2 font-medium select-none"
           to="/"
         >
-          <img
-            className="size-8"
-            src="/logo.svg"
-            alt="Check mark inside rounded box"
-          />
+          <img className="size-8" src="/logo.svg" alt="" aria-hidden="true" />
           <span>Habits</span>
         </Link>
 
         <NavigationMenu>
           <NavigationMenuList>
-            <NavigationMenuItem>
-              <NavigationMenuLink
-                asChild
-                className={`${navigationMenuTriggerStyle()} ${generateActiveLinkStyle("/")}`}
-              >
-                <Link to="/">Home</Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink
-                asChild
-                className={`${navigationMenuTriggerStyle()} ${generateActiveLinkStyle("/stats")}`}
-              >
-                <Link to="/stats">Stats</Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
+            {NAVIGATION_LINKS.map((link) => (
+              <NavigationMenuItem key={link.path}>
+                <NavigationMenuLink
+                  asChild
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    pathname === link.path && "bg-gray-100",
+                  )}
+                >
+                  <Link to={link.path}>{link.name}</Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            ))}
           </NavigationMenuList>
         </NavigationMenu>
       </div>
