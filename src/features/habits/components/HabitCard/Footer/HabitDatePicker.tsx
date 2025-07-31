@@ -43,10 +43,11 @@ const HabitDatePicker = ({ habit }: { habit: Habit }) => {
 
   return (
     <div className="flex items-center gap-2 shrink-0">
-      <span id={`date-label-${habit.id}`} className="sr-only">
-        Select date to mark habit "{habit.name}" as complete
-      </span>
-      <DatePicker value={selectedDate} onChange={handlePickDate} />
+      <DatePicker
+        value={selectedDate}
+        onChange={handlePickDate}
+        aria-label={`Select a date to mark the "${habit.name}" habit as completed`}
+      />
       {!isAlreadyCompleted && !isToday ? (
         <HabitDatePickerActions
           onReset={handleReset}
