@@ -44,7 +44,23 @@ describe("<ConfirmDialog/>", () => {
     expect(screen.queryByText("Are you sure?")).not.toBeInTheDocument();
   });
 
-  it("should call onClose() and close on 'delete' clicked", () => {});
+  it("should call onClose() and close on 'delete' clicked", async () => {
+    const user = userEvent.setup();
+    const onConfirm = vi.fn();
+    render(
+      <ConfirmDialog onConfirm={onConfirm}>
+        <button>Delete habit</button>
+      </ConfirmDialog>,
+    );
+
+    // Open dialog
+    await user.click(screen.getByRole("button", { name: "Delete habit" }));
+
+    // Click delete
+    await user.click(screen.getByRole("button", { name: "Delete" }));
+
+    expect(onConfirm).toHaveBeenCalled();
+  });
 
   it("should close on 'escape' key pressed", () => {});
 });
