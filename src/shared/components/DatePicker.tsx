@@ -7,15 +7,15 @@ import {useState} from "react";
 interface DatePickerProps {
   value: Date;
   onChange: (date: Date) => void;
-  ariaLabel?: string;
-  ariaLabelledBy?: string;
+  ["aria-labelledby"]?: string;
+  ["aria-label"]?: string;
 }
 
 const DatePicker = ({
   value,
   onChange,
-  ariaLabel,
-  ariaLabelledBy,
+  ["aria-labelledby"]: ariaLabelledBy,
+  ["aria-label"]: ariaLabel,
 }: DatePickerProps) => {
   const [open, setOpen] = useState(false);
 
