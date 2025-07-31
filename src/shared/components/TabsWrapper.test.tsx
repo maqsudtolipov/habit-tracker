@@ -3,7 +3,7 @@ import TabsWrapper from "@/shared/components/TabsWrapper.tsx";
 import {render, screen} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-describe("A truthy statement", () => {
+describe("<TabsWrapper />", () => {
   const tabItems = [
     { label: "Fruits", value: "fruits", content: <p>Fruits list</p> },
     {
