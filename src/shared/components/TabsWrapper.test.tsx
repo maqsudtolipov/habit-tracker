@@ -1,6 +1,7 @@
 import {describe, expect, it} from "vitest";
 import TabsWrapper from "@/shared/components/TabsWrapper.tsx";
 import {render, screen} from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 describe("A truthy statement", () => {
   const tabItems = [
@@ -16,5 +17,22 @@ describe("A truthy statement", () => {
     render(<TabsWrapper defaultValue="fruits" items={tabItems} />);
 
     expect(screen.getByText("Fruits")).toBeInTheDocument();
+    expect(screen.getByText("Vegetables")).toBeInTheDocument();
+  });
+
+  it("should show default tab content", () => {
+    render(<TabsWrapper defaultValue="fruits" items={tabItems} />);
+
+    expect(screen.getByText("Fruits list")).toBeInTheDocument();
+  });
+
+  it("should switch content when tab changes", async () => {
+    const user = userEvent.setup();
+    render(<TabsWrapper defaultValue="fruits" items={tabItems} />);
+
+    await user.click(screen.getByRole("tab", { name: "Vegetables" }));
+
+    expect(screen.getByText("Vegetables list")).toBeInTheDocument();
+    expect(screen.queryByText("Fruits list")).not.toBeInTheDocument();
   });
 });
