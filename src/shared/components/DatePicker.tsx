@@ -1,4 +1,3 @@
-import React from "react";
 import {Popover, PopoverContent, PopoverTrigger,} from "@radix-ui/react-popover";
 import {CalendarIcon, ChevronDownIcon} from "lucide-react";
 import {Calendar} from "@/shared/ui/calendar.tsx";
