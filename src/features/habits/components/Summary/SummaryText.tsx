@@ -5,9 +5,7 @@ import {selectCompletedHabitsCount} from "@/features/progress/selectors.ts";
 
 const SummaryText = () => {
   const { habitsList, selectedDate } = useAppSelector((state) => state.habits);
-  const completedHabitsCount = useAppSelector((state) =>
-    selectCompletedHabitsCount(state),
-  );
+  const completedHabitsCount = useAppSelector(selectCompletedHabitsCount);
 
   const formattedDate = useMemo(
     () => format(selectedDate, "MMM d, yyyy"),
