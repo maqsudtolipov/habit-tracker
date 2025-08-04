@@ -43,7 +43,30 @@ describe("<DialogWrapper />", () => {
     ).toBeInTheDocument();
   });
 
-  it("should pass onClose correctly to the children", () => {});
+  it("should pass onClose correctly to the children", async () => {
+    const user = userEvent.setup();
+    render(
+      <DialogWrapper title="Edit Habit" trigger={<button>Edit dialog</button>}>
+        {(onClose) => (
+          <div>
+            <span>Edit details here</span>
+            <button onClick={onClose}>Update Habit</button>
+          </div>
+        )}
+      </DialogWrapper>,
+    );
 
-  it("should ", () => {});
+    // Render trigger
+    const trigger = screen.getByRole("button", { name: /edit dialog/i });
+    expect(trigger).toBeInTheDocument();
+    await user.click(trigger);
+
+    // Run children onClose()
+    const closeBtn = screen.getByRole("button", { name: /Update Habit/i });
+    await user.click(closeBtn);
+
+    expect(
+      screen.queryByRole("span", { name: /edit details here/i }),
+    ).not.toBeInTheDocument();
+  });
 });
