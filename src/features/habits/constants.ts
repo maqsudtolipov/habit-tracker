@@ -167,3 +167,7 @@ export const PREDEFINED_HABITS: Habit[] = [
 export const MIN_NAME_LENGTH = 3;
 export const MAX_NAME_LENGTH = 24;
 export const MAX_DESCRIPTION_LENGTH = 160;
+
+// Redux
+export const REDUX_PERSIST_WHITELISTED_SLICES = ["habits", "progress"];
+export const REDUX_PERSIST_HABIT_TRANSFORM_WHITELIST = ["habits"];

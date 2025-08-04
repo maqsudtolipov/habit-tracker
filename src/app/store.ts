@@ -4,6 +4,7 @@ import progressSlice from "@/features/progress/slice.ts";
 import storage from "redux-persist/lib/storage";
 import {FLUSH, PAUSE, PERSIST, persistReducer, PURGE, REGISTER, REHYDRATE,} from "redux-persist";
 import {habitTransform} from "@/features/habits/transforms.ts";
+import {REDUX_PERSIST_WHITELISTED_SLICES} from "@/features/habits/constants.ts";
 
 const rootReducer = combineReducers({
   habits: habitsSlice.reducer,
@@ -15,7 +16,7 @@ type RootReducerState = ReturnType<typeof rootReducer>;
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["habits", "progress"],
+  whitelist: REDUX_PERSIST_WHITELISTED_SLICES,
   transforms: [habitTransform],
 };
 
