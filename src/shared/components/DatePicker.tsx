@@ -1,23 +1,23 @@
-import React from "react";
 import {Popover, PopoverContent, PopoverTrigger,} from "@radix-ui/react-popover";
 import {CalendarIcon, ChevronDownIcon} from "lucide-react";
 import {Calendar} from "@/shared/ui/calendar.tsx";
 import {Button} from "@/shared/ui/button.tsx";
+import {useState} from "react";
 
 interface DatePickerProps {
   value: Date;
   onChange: (date: Date) => void;
-  ariaLabel?: string;
-  ariaLabelledBy?: string;
+  ["aria-labelledby"]?: string;
+  ["aria-label"]?: string;
 }
 
 const DatePicker = ({
   value,
   onChange,
-  ariaLabel,
-  ariaLabelledBy,
+  ["aria-labelledby"]: ariaLabelledBy,
+  ["aria-label"]: ariaLabel,
 }: DatePickerProps) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleSelect = (date: Date | undefined) => {
     if (date) {

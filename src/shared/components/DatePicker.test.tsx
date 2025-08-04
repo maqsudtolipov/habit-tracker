@@ -34,6 +34,7 @@ describe("<DatePicker />", () => {
   it("should call onChange() when a new date is selected", async () => {
     const user = userEvent.setup();
     const handleChange = vi.fn();
+    vi.setSystemTime(new Date("2025-07-20"));
 
     const initialDate = new Date("2025-07-01");
     render(<DatePicker value={initialDate} onChange={handleChange} />);
@@ -41,7 +42,7 @@ describe("<DatePicker />", () => {
     const button = screen.getByRole("button", { name: /pick a date/i });
     await user.click(button);
 
-    const newDateBtn = screen.getByLabelText("Tuesday, July 15th, 2025");
+    const newDateBtn = await screen.findByLabelText("Tuesday, July 15th, 2025");
     await user.click(newDateBtn);
 
     expect(handleChange).toHaveBeenCalledTimes(1);

@@ -1,4 +1,5 @@
-import {Link, useRouteError} from "react-router-dom";
+import {Link, useLocation, useRouteError} from "react-router-dom";
+import {logError} from "@/shared/utils/logError.ts";
 
 interface ErrorPageProps {
   message?: string;
@@ -6,7 +7,9 @@ interface ErrorPageProps {
 
 const ErrorPage = ({ message }: ErrorPageProps) => {
   const error = useRouteError();
-  console.log(error);
+  const { pathname } = useLocation();
+
+  logError(`Error occured inside <ErrorPage /> on route ${pathname}`, error);
 
   return (
     <div className="px-10 py-20 flex flex-col items-center justify-center">
