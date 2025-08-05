@@ -1,12 +1,38 @@
-import {configureStore} from "@reduxjs/toolkit";
+import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import habitsSlice from "@/features/habits/slice.ts";
 import progressSlice from "@/features/progress/slice.ts";
+import storage from "redux-persist/lib/storage";
+import {FLUSH, PAUSE, PERSIST, persistReducer, PURGE, REGISTER, REHYDRATE,} from "redux-persist";
+import {habitTransform} from "@/features/habits/transforms.ts";
+import {REDUX_PERSIST_WHITELISTED_SLICES} from "@/features/habits/constants.ts";
+
+const rootReducer = combineReducers({
+  habits: habitsSlice.reducer,
+  progress: progressSlice.reducer,
+});
+
+type RootReducerState = ReturnType<typeof rootReducer>;
+
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: REDUX_PERSIST_WHITELISTED_SLICES,
+  transforms: [habitTransform],
+};
+
+const persistedReducer = persistReducer<RootReducerState>(
+  persistConfig,
+  rootReducer,
+);
 
 export const store = configureStore({
-  reducer: {
-    habits: habitsSlice.reducer,
-    progress: progressSlice.reducer,
-  },
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
